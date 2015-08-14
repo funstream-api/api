@@ -1,15 +1,15 @@
 ## Поддержка
 
 #### /api/support/list
-запрос
-```js
+*запрос:*
+```json
 {
     "category": "<int|null> id of category",
     "from": "<int|null> starting date of search (unix timestamp)",
     "onlyActive": "<bool|null> return only active questions (unanswered), true by default"
 }
 ```
-ответ
+*ответ<sup>1</sup>:*
 ```
 [
     ...,
@@ -17,7 +17,7 @@
     ...
 ]
 ```
-вернет ошибку если нет прав или неверная категория
+**<sup>1</sup>вернет ошибку если нет прав или неверная категория**
 
 #### /api/support/ask
 запрос
