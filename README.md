@@ -1,2 +1,1 @@
-# api
-funstream.tv api и утилиты для помощи с интеграцией
+[funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
