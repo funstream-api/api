@@ -1,6 +1,6 @@
 ## Поддержка
 
-#### /api/support/list
+#### `/api/support/list`
 *запрос:*
 ```json
 {
@@ -19,7 +19,7 @@
 ```
 <sup>1</sup>вернет ошибку если нет прав или неверная категория
 
-#### /api/support/ask
+#### `/api/support/ask`
 запрос
 ```
 {
@@ -40,7 +40,7 @@
 
 ## Модерация
 
-#### /api/moderation/check
+#### `/api/moderation/check`
 запрос
 ```
 {
@@ -57,7 +57,7 @@
 Если банов несколько, то вернет тот, который заканчивается позднее всего. Вернёт ошибку на пустой или 
 несуществующий userId
 
-#### /api/moderation/accuse
+#### `/api/moderation/accuse`
 запрос
 ```
 {
@@ -68,7 +68,7 @@
 ```
 ответ пустой, вернет ошибку если пользователь или причина не существует, либо если пользователь не залогинен
 
-#### /api/moderation/reasons
+#### `/api/moderation/reasons`
 запрос
 ```
 {
@@ -89,7 +89,7 @@
 ]
 ```
 
-#### /api/moderation/list
+#### `/api/moderation/list`
 запрос
 ```
 {
@@ -112,7 +112,7 @@
 ]
 ```
  
-#### /api/moderation/undo
+#### `/api/moderation/undo`
 запрос
 ```
 {
