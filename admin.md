@@ -2,7 +2,7 @@
 
 #### /api/support/list
 запрос
-```json
+```js
 {
     "category": "<int|null> id of category",
     "from": "<int|null> starting date of search (unix timestamp)",
