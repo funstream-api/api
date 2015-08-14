@@ -8,9 +8,9 @@ API Администратора:
 **запрос:**
 ```js
 {
-    category: <int|null> "id of category",
-    from: <int|null> "starting date of search (unix timestamp)",
-    onlyActive: <bool|null> "return only active questions (unanswered), true by default"
+    category: <int|null> "Идентификатор категории.",
+    from: <int|null> "Дата начала поиска (Юникс формат).",
+    onlyActive: <bool|null> "Вернуть только активные вопросы(без ответов), true по умолчанию."
 }
 ```
 **ответ<sup>1</sup>:**
@@ -27,18 +27,18 @@ API Администратора:
 **запрос:**
 ```js
 {
-    category: <int> "id of category",
-    question: <string> "text of question"
+    category: <int> "Идентификатор категории.",
+    question: <string> "Текст вопроса."
 }
 ```
 **ответ:**
 ```js
 {
-    id: <int> "id of question",
-    time: <string> "datetime of question (unix timestamp)",
-    category: <obj> {"... same data as /stream/category api request, no options..."},
-    question: <string> text of question",
-    active: <bool> "true if no answer"
+    id: <int> "Идентификатор вопроса.",
+    time: <string> "Дата и время вопроса(Юникс формат).",
+    category: <obj> {"... Те же данные, что и  /stream/category API запрос, без опций..."},
+    question: <string> "Текст вопроса.",
+    active: <bool> "true если нет ответа."
 }
 ```
 
@@ -48,14 +48,14 @@ API Администратора:
 **запрос:**
 ```js
 {
-    userId: <int> "id of user to check"
+    userId: <int> "Идентификатор пользователя, которого нужно проверить."
 }
 ```
 **ответ:**
 ```js
 {
-    banned: <bool> "true if banned, false if not or if user is not exist",
-    expire: <int> "ban expire timestamp, or 0 if not banned"
+    banned: <bool> "true если забанен, false если не забанен или пользователь не существует.",
+    expire: <int> "Время истечения бана или 0 если не забанен."
 }
 ```
 *Если банов несколько, то вернет тот, который заканчивается позднее всего. Вернёт ошибку на пустой или 
@@ -65,9 +65,9 @@ API Администратора:
 **запрос:**
 ```js
 {
-    userId: <int> "id of user for ban attempt",
-    reasonId: <int> "id of reason",
-    data: <object|null> "any custom data to store"
+    userId: <int> "Идентификатор пользователя, которого нужно пытаться забанить.",
+    reasonId: <int> "Идентификатор причины бана.",
+    data: <object|null> "Дополнительная информация."
 }
 ```
 *Ответ пустой, вернет ошибку если пользователь или причина не существует, либо если пользователь не залогинен.*
@@ -76,7 +76,7 @@ API Администратора:
 **запрос:**
 ```js
 {
-    content: <string> "content of the ban reason, 'chat' by default"
+    content: <string> "Содержание причины запрета, 'chat' по умолчанию."
 }
 ```
  
@@ -85,9 +85,9 @@ API Администратора:
 [
     ...,
     {
-        id: <int> "id of reason",
-        name: <string> "name of reason",
-        content: <string> "content of reason"
+        id: <int> "Идентификатор причины.",
+        name: <string> "имя причины.",
+        content: <string> "Содержание причины."
     }
     ...,
 ]
@@ -97,9 +97,9 @@ API Администратора:
 **запрос:**
 ```js
 {
-    from: <int|null> "from timestamp",
-    to: <int|null> "to timestamp",
-    reason: <int|null> "filter by given reason",
+    from: <int|null> "От временной метки.",
+    to: <int|null> "До временной метки.",
+    reason: <int|null> "Фильтр по указанной причине.",
 }
 ```
 **ответ:**
@@ -107,10 +107,10 @@ API Администратора:
 [
     ...,
     {
-        id: <int> "id of ban",
-        start: <int> "start time of ban, timestamp",
-        end: <int> "end time of ban, timestamp",
-        reason: <obj> "same as /api/moderation/reasons object"
+        id: <int> "Идентификатор бана.",
+        start: <int> "Время начала бана, временная метка.",
+        end: <int> "Время истечения бана, временная метка.",
+        reason: <obj> "То же самое, что и /api/moderation/reasons объект"
     }
     ...,
 ]
@@ -120,7 +120,7 @@ API Администратора:
 **запрос:**
 ```js
 {
-    ban: <int> "id of ban"
+    ban: <int> "Идентификатор бана"
 }
 ```
 *Ответ пустой.*
