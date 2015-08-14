@@ -1,7 +1,7 @@
 ## Поддержка
 
 #### `/api/support/list`
-*запрос:*
+**запрос:**
 ```json
 {
     "category": "<int|null> id of category",
@@ -9,7 +9,7 @@
     "onlyActive": "<bool|null> return only active questions (unanswered), true by default"
 }
 ```
-*ответ<sup>1</sup>:*
+**ответ<sup>1</sup>:**
 ```
 [
     ...,
