@@ -5,7 +5,7 @@ API Администратора:
 
 ## Поддержка
 
-#### `/api/support/list`
+#### [`/api/support/list`](http://funstream.tv/api/support/list)
 **запрос:**
 ```js
 {
@@ -24,7 +24,7 @@ API Администратора:
 ```
 <sup>1</sup>вернет ошибку если нет прав или неверная категория.
 
-#### `/api/support/ask`
+#### [`/api/support/ask`](http://funstream.tv/api/support/ask)
 **запрос:**
 ```js
 {
@@ -45,7 +45,7 @@ API Администратора:
 
 ## Модерация
 
-#### `/api/moderation/check`
+#### [`/api/moderation/check`](http://funstream.tv/api/moderation/check)
 **запрос:**
 ```js
 {
@@ -62,7 +62,7 @@ API Администратора:
 *Если банов несколько, то вернет тот, который заканчивается позднее всего. Вернёт ошибку на пустой или 
 несуществующий `userId`.*
 
-#### `/api/moderation/accuse`
+#### [`/api/moderation/accuse`](http://funstream.tv/api/moderation/accuse)
 **запрос:**
 ```js
 {
@@ -73,7 +73,7 @@ API Администратора:
 ```
 *Ответ пустой, вернет ошибку если пользователь или причина не существует, либо если пользователь не залогинен.*
 
-#### `/api/moderation/reasons`
+#### [`/api/moderation/reasons`](http://funstream.tv/api/moderation/reasons)
 **запрос:**
 ```js
 {
@@ -94,7 +94,7 @@ API Администратора:
 ]
 ```
 
-#### `/api/moderation/list`
+#### [`/api/moderation/list`](http://funstream.tv/api/moderation/list)
 **запрос"**
 ```js
 {
@@ -117,7 +117,7 @@ API Администратора:
 ]
 ```
  
-#### `/api/moderation/undo`
+#### [`/api/moderation/undo`](http://funstream.tv/api/moderation/undo)
 **запрос:**
 ```js
 {
