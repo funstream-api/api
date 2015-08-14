@@ -2,11 +2,11 @@
 
 #### /api/support/list
 запрос
-```
+```json
 {
-    category: <int|null> id of category,
-    from: <int|null> starting date of search (unix timestamp)
-    onlyActive: <bool|null> return only active questions (unanswered), true by default
+    "category": "<int|null> id of category",
+    "from": "<int|null> starting date of search (unix timestamp)",
+    "onlyActive": "<bool|null> return only active questions (unanswered), true by default"
 }
 ```
 ответ
