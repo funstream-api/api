@@ -95,7 +95,7 @@ API Администратора:
 ```
 
 #### [`/api/moderation/list`](http://funstream.tv/api/moderation/list)
-**запрос"**
+**запрос:**
 ```js
 {
     from: <int|null> "from timestamp",
