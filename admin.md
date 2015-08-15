@@ -1,10 +1,19 @@
 API Администратора:
 ------------------
-[Поддержка](#Поддержка),[Модерация](#Модерация)
+1. [Поддержка:](#Поддержка)  
+  - [Получить список вопросов.](#Получить-список-вопросов)
+  - [Задать вопрос.](#Задать-вопрос)
+2. [Модерация:](#Модерация)  
+  - [Проверить забанен ли пользователь.](#Проверить-забанен-ли-пользователь)
+  - [Забанить пользователя.](#Забанить-пользователя)
+  - [Получить причину бана.](#Получить-причину-бана)
+  - [Получить список банов.](#Получить-список-банов)
+  - [Отменить бан.](#Отменить-бан)
 
 ## Поддержка
 
-#### [`/api/support/list`](http://funstream.tv/api/support/list)
+#### Получить список вопросов:
+#####URL:[`/api/support/list`](http://funstream.tv/api/support/list)  
 **запрос:**
 ```js
 {
@@ -23,7 +32,8 @@ API Администратора:
 ```
 <sup>1</sup>вернет ошибку если нет прав или неверная категория.
 
-#### [`/api/support/ask`](http://funstream.tv/api/support/ask)
+#### Задать вопрос:  
+#####URL:[`/api/support/ask`](http://funstream.tv/api/support/ask)  
 **запрос:**
 ```js
 {
@@ -44,7 +54,8 @@ API Администратора:
 
 ## Модерация
 
-#### [`/api/moderation/check`](http://funstream.tv/api/moderation/check)
+####  Проверить забанен ли пользователь:  
+#####URL:[`/api/moderation/check`](http://funstream.tv/api/moderation/check)  
 **запрос:**
 ```js
 {
@@ -61,18 +72,20 @@ API Администратора:
 *Если банов несколько, то вернет тот, который заканчивается позднее всего. Вернёт ошибку на пустой или 
 несуществующий `userId`.*
 
-#### [`/api/moderation/accuse`](http://funstream.tv/api/moderation/accuse)
+#### Забанить пользователя:  
+#####URL:[`/api/moderation/accuse`](http://funstream.tv/api/moderation/accuse)  
 **запрос:**
 ```js
 {
-    userId: <int> "Идентификатор пользователя, которого нужно пытаться забанить.",
+    userId: <int> "Идентификатор пользователя, которого нужно попытаться забанить.",
     reasonId: <int> "Идентификатор причины бана.",
     data: <object|null> "Дополнительная информация."
 }
 ```
 *Ответ пустой, вернет ошибку если пользователь или причина не существует, либо если пользователь не залогинен.*
 
-#### [`/api/moderation/reasons`](http://funstream.tv/api/moderation/reasons)
+#### Получить причину бана:
+#####URL:[`/api/moderation/reasons`](http://funstream.tv/api/moderation/reasons)
 **запрос:**
 ```js
 {
@@ -93,7 +106,8 @@ API Администратора:
 ]
 ```
 
-#### [`/api/moderation/list`](http://funstream.tv/api/moderation/list)
+#### Получить список банов:
+#####URL:[`/api/moderation/list`](http://funstream.tv/api/moderation/list)
 **запрос:**
 ```js
 {
@@ -116,7 +130,8 @@ API Администратора:
 ]
 ```
  
-#### [`/api/moderation/undo`](http://funstream.tv/api/moderation/undo)
+#### Отменить бан:
+#####URL:[`/api/moderation/undo`](http://funstream.tv/api/moderation/undo)
 **запрос:**
 ```js
 {
