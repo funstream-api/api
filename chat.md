@@ -67,10 +67,10 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/login`](http://funstream.tv/api/chat/login)  
 ```js
 {
-    token: <string>, jwt токен<sup>1</sup>
+    token: <string>, jwt токен¹
 }
 ```
-*<sup>1</sup>[Что это?](http://jwt.io/)*  
+*¹[Что это?](http://jwt.io/)*  
 
 подписывает на события, относящиеся к пользователю
  
