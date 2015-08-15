@@ -27,7 +27,7 @@ API Чата:
 **Формат ответа:**
 ```js
 {
-    status: <string> "ok" on success, "error" on failure
+    status: <string>, //""ok" on success, "error" on failure"
     result: <array|obj|null>
 }
 ```
