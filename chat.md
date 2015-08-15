@@ -105,10 +105,10 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/history`](http://funstream.tv/api/chat/history)  
 ```js
 {
-    channel: <string|null> //"имя канала, канал по умолчанию если null"
-    id: <int|null> //"идентификатор начального сообщения, последнее если null"
-    amount: <int> //"необходимое количество сообщений для выборки."
-    direction: <string> //"'up' и 'down', направление выборки."
+    channel: <string|null>, //"имя канала, канал по умолчанию если null"
+    id: <int|null>, //"идентификатор начального сообщения, последнее если null"
+    amount: <int>, //"необходимое количество сообщений для выборки."
+    direction: <string>, //"'up' и 'down', направление выборки."
     options: <obj|null> {
         addressed: <int|null> //"указать идентификатор пользователя 
           если нужны только адресованные сообщения "+user", все сообщения если null."
@@ -122,16 +122,16 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/publish`](http://funstream.tv/api/chat/publish)  
 ```js
 {
-    channel: <string> имя канала.
+    channel: <string>, "имя канала."
     from: <obj> {
-        id: <int> идентификатор пользователя, требует дополнительных привилегий. ,
-        name: <string> имя пользователя.
+        id: <int>, //"идентификатор пользователя, требует дополнительных привилегий."
+        name: <string> //"имя пользователя."
     }
     to: <obj|null> {
-        id: <int>  идентификатор пользователя. ,
-        name: <string> имя пользователя.
+        id: <int>, //"идентификатор пользователя."
+        name: <string> //"имя пользователя."
     }
-    text: <string> текст сообщения.   
+    text: <string> //"текст сообщения."  
 }
 ```
 Будет работать только после `/chat/login`  
@@ -140,8 +140,8 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/command`](http://funstream.tv/api/chat/command)  
 ```js
 {
-    command: <string> имя команды.,
-    params: <obj> параметры команды.
+    command: <string>, //"имя команды."
+    params: <obj> //"параметры команды."
 }
 ```
  
@@ -151,15 +151,15 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/message`](http://funstream.tv/api/chat/message)  
 ```js
 {
-    id: <int> идентификатор сообщения,
+    id: <int>, //"идентификатор сообщения."
     from: <obj> {
-        id: <int> идентификатор пользователя.
-        name: <string> имя пользователя.
+        id: <int>, //"идентификатор пользователя."
+        name: <string> //"имя пользователя."
     },
-    to: <obj|null> user object, тоже самое что и from,
-    channel: <int> идентификатор канала,
-    text: <string> текст сообщения.
-    time: <datetime> дата и время сообщения.
+    to: <obj|null>, //"user object, тоже самое что и from."
+    channel: <int>, //"идентификатор канала."
+    text: <string>, //"текст сообщения."
+    time: <datetime> //"дата и время сообщения."
 }
 ```
 Приходит для всех сообщений в текущий канал пользователя. Если пользователь авторизован, то и для всех сообщений, адресованных текущему пользователю, для любого канала.
@@ -168,8 +168,8 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/message/remove`](http://funstream.tv/api/chat/message/remove)  
 ```js
 { 
-    id: <int> идентификатор сообщения.
-    channel: <string> канал сообщения.
+    id: <int>, //"идентификатор сообщения."
+    channel: <string> "канал сообщения."
 }
 ```
 Приходит для сообщений, которые должны быть удалены из чата.
@@ -177,7 +177,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #### Присоединение к каналу:  
 #####URL:[`/chat/user/join`](http://funstream.tv/api/chat/user/join)  
 ```js
-{...данные из /user/current API запроса..}
+{
+//...данные из /user/current API запроса..
+}
 ```
 Приходит для всех пользователей, подключившихся к чату, после` /chat/join`. Приходит полный список пользователей текущего канала, используя это событие.
 
@@ -185,7 +187,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/user/leave`](http://funstream.tv/api/chat/user/leave)  
 ```
 {
-    id: <int> Идентификатор отсоединившегося пользователя.
+    id: <int> //"Идентификатор отсоединившегося пользователя."
 }
 ```
 Приходит для всех пользователей данного канала, покинувших его.
