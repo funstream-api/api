@@ -118,7 +118,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/publish`](http://funstream.tv/api/chat/publish)  
 ```js
 {
-    channel: <string>, "имя канала."
+    channel: <string>, //"имя канала."
     from: <obj> {
         id: <int>, //"идентификатор пользователя, требует дополнительных привилегий."
         name: <string> //"имя пользователя."
