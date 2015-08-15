@@ -1,4 +1,5 @@
-**[Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.**
+*[Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.*
+
 F.A.Q:
 ------------------
   - Почему документация API именно на [Github.com](https://github.com/)?
