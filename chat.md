@@ -182,7 +182,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 
 #### Отсоединение от канала:  
 #####URL:[`/chat/user/leave`](http://funstream.tv/api/chat/user/leave)  
-```
+```js
 {
     id: <int> //"Идентификатор отсоединившегося пользователя."
 }
