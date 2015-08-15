@@ -90,7 +90,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 }
 присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему
 
-#### Покинуть  канала  
+#### Покинуть канал    
 #####URL:[`/chat/leave`](http://funstream.tv/api/chat/leave)  
 ```js
 {
