@@ -70,7 +70,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
     token: <string>, jwt токен*
 }
 ```
-*[*Что это?](http://jwt.io/)*  
+*[`jwt.io`](http://jwt.io/)   
 
 подписывает на события, относящиеся к пользователю
  
