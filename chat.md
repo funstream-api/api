@@ -64,7 +64,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ## События для сервера:
 
 #### Логин  
-#####URL:[`/chat/login`](http://funstream.tv/api/)  
+#####URL:[`/chat/login`](http://funstream.tv/api/chat/login)  
 ```js
 {
     token: <string>, jwt token
@@ -90,7 +90,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему
 
 #### Покинуть  
-#####URL:[`/chat/leave'](http://funstream.tv/api/chat/leave)  
+#####URL:[`/chat/leave`](http://funstream.tv/api/chat/leave)  
 ```js
 {
     channel: <string|null> id of channel
@@ -131,7 +131,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
     text: <string> message text   
 }
 ```
-сработает только после /chat/login
+сработает только после `/chat/login`
 
 #### Команда  
 #####URL:[`/chat/command`](http://funstream.tv/api/chat/command)  
