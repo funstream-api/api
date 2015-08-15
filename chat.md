@@ -4,14 +4,14 @@ API Чата:
   - [Пример на `Node.js`](#Примеры-использования-на-nodejs)
   - [Пример на `C#`](#Примеры-использования-на-c)
 2. [**Оповещение сервера:**](#Оповещение-сервера)  
-  - [Подписатся на события пользователя.](#Подписатся-на-события-пользователя)
-  - [Отписатся от событий пользователя.](#Отписатся-от-событий-пользователя)
+  - [Подписаться на события пользователя.](#Подписаться-на-события-пользователя)
+  - [Отписаться от событий пользователя.](#Отписаться-от-событий-пользователя)
   - [Присоединится к каналу.](#Присоединится-к-каналу)
   - [Покинуть канал.](#Покинуть-канал)
   - [История канала.](#История-канала)
   - [Отправить сообщение.](#Отправить-сообщение)
   - [Выполнить команду.](#Выполнить-команду)
-3. [**Оповищение клиента:**](#Оповещение-клиента)
+3. [**Оповещение клиента:**](#Оповещение-клиента)
   - [Сообщение.](#Сообщение) 
   - [Удаление.](#Удаление)
   - [Присоединение к каналу.](#Присоединение-к-каналу)  
@@ -63,7 +63,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
  
 ## Оповещение сервера:
 
-#### Подписатся на события пользователя:  
+#### Подписаться на события пользователя:  
 #####URL:[`/chat/login`](http://funstream.tv/api/chat/login)  
 ```js
 {
@@ -72,24 +72,25 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 *[`jwt.io`](http://jwt.io/)   
 
-подписывает на события, относящиеся к пользователю
+Подписывает на события, относящиеся к пользователю.
  
-#### Отписатся от событий пользователя:  
+#### Отписаться от событий пользователя:  
 #####URL:[`/chat/logout`](http://funstream.tv/api/)  
-отписывает от событий, относящихся к пользователю.  
+
+Отписывает от событий, относящихся к пользователю.  
 
 #### Присоединится к каналу:  
 #####URL:[`/chat/join`](http://funstream.tv/api/chat/join)  
 ```js
 {
-    channel: <string|null> Идентификатор канала, `null`  по умолчанию.
+    channel: <string|null> Идентификатор канала, null  по умолчанию.
 }
 ```js 
 {
     status: 'ok',
 }
 ```
-присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему.
+Присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему.
 
 #### Покинуть канал:    
 #####URL:[`/chat/leave`](http://funstream.tv/api/chat/leave)  
@@ -98,49 +99,48 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
     channel: <string|null> id of channel
 }
 ```
-отсоединяет от событий выбранного канала.
+Отсоединяет от событий выбранного канала.
 
 #### История канала:   
 #####URL:[`/chat/history`](http://funstream.tv/api/chat/history)  
 ```js
 {
-    channel: <string|null> channel id or null for default
-    id: <int|null> id of starting message, last if not set
-    amount: <int> amount of messages to select
-    direction: <string> "up" or "down", the direction of message selection
+    channel: <string|null> имя канала, канал по умолчанию если null
+    id: <int|null> идентификатор начального сообщения, последнее если null
+    amount: <int> необходимое количество сообщений для выборки.
+    direction: <string> "up" и "down", направление выборки.
     options: <obj|null> {
-        addressed: <int|null> put user id here to receive only addressed+user messages or all messages
+        addressed: <int|null> указать идентификатор пользователя если нужны только адресованные сообщения "+user", все сообщения если null.
     }
 }
 ```
-возвращает amount сообщений в указанном направлении от текущего. Если направление вниз - то вернет более 
-поздние, если вверх - более ранние.
-(для более поздних в sql order by id, для более ранних order by id desc, чтобы было более понятно)
+Возвращает `amount` сообщений в указанном направлении от текущего. Если направление вниз - то вернет более поздние, если вверх - более ранние.  
+*(На примере SQL: Для более поздних `order by id`, для более ранних `order by id desc`,)*  
 
 #### Отправить сообщение:
 #####URL:[`/chat/publish`](http://funstream.tv/api/chat/publish)  
 ```js
 {
-    channel: <string> channel id
+    channel: <string> имя канала.
     from: <obj> {
-        id: <int> user id, requires additional priveleges,
-        name: <string> user name
+        id: <int> идентификатор пользователя, требует дополнительных привилегий. ,
+        name: <string> имя пользователя.
     }
     to: <obj|null> {
-        id: <int> user id,
-        name: <string> user name
+        id: <int>  идентификатор пользователя. ,
+        name: <string> имя пользователя.
     }
-    text: <string> message text   
+    text: <string> текст сообщения.   
 }
 ```
-сработает только после `/chat/login`
+Будет работать только после `/chat/login`  
 
 #### Выполнить команду:  
 #####URL:[`/chat/command`](http://funstream.tv/api/chat/command)  
 ```js
 {
-    command: <string> command name,
-    params: <obj> command parameters
+    command: <string> имя команды.,
+    params: <obj> параметры команды.
 }
 ```
  
@@ -150,12 +150,12 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 #####URL:[`/chat/message`](http://funstream.tv/api/chat/message)  
 ```js
 {
-    id: <int> id of message,
+    id: <int> идентификатор сообщения,
     from: <obj> {
-        id: <int> user id
-        name: <string> user name
+        id: <int> идентификатор пользователя.
+        name: <string> имя пользователя.
     },
-    to: <obj|null> user object, same as from,
+    to: <obj|null> user object, тоже самое что и from,
     channel: <int> channel id,
     text: <string> message text
     time: <datetime> date and time of message
