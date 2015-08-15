@@ -63,7 +63,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
  
 ## События для сервера:
 
-#### Подписатся  
+#### Подписатся:  
 #####URL:[`/chat/login`](http://funstream.tv/api/chat/login)  
 ```js
 {
@@ -74,11 +74,11 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 
 подписывает на события, относящиеся к пользователю
  
-#### Отписатся  
+#### Отписатся:  
 #####URL:[`/chat/logout`](http://funstream.tv/api/)  
 отписывает от событий, относящихся к пользователю.  
 
-#### Присоединится к каналу  
+#### Присоединится к каналу:  
 #####URL:[`/chat/join`](http://funstream.tv/api/chat/join)  
 ```js
 {
@@ -90,7 +90,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 }
 присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему.
 
-#### Покинуть канал    
+#### Покинуть канал:    
 #####URL:[`/chat/leave`](http://funstream.tv/api/chat/leave)  
 ```js
 {
@@ -99,7 +99,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 отсоединяет от событий выбранного канала.
 
-#### История   
+#### История:   
 #####URL:[`/chat/history`](http://funstream.tv/api/chat/history)  
 ```js
 {
@@ -116,7 +116,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 поздние, если вверх - более ранние.
 (для более поздних в sql order by id, для более ранних order by id desc, чтобы было более понятно)
 
-#### Отправить сообщение
+#### Отправить сообщение:
 #####URL:[`/chat/publish`](http://funstream.tv/api/chat/publish)  
 ```js
 {
@@ -134,7 +134,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 сработает только после `/chat/login`
 
-#### Команда  
+#### Команда:  
 #####URL:[`/chat/command`](http://funstream.tv/api/chat/command)  
 ```js
 {
@@ -143,9 +143,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 }
 ```
  
-## События для клиента
+## События для клиента:
 
-#### Сообщение  
+#### Сообщение:  
 #####URL:[`/chat/message`](http://funstream.tv/api/chat/message)  
 ```js
 {
@@ -162,7 +162,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 Приходит для всех сообщений в текущий канал пользователя. Если пользователь авторизован, то и для всех сообщений, адресованных текущему пользователю, для любого канала.
 
-#### Удалить  
+#### Удалить:  
 #####URL:[`/chat/message/remove`](http://funstream.tv/api/chat/message/remove)  
 ```js
 { 
@@ -172,14 +172,14 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 Приходит для сообщений, которые должны быть удалены из чата.
 
-#### Присоединение  
+#### Присоединение:  
 #####URL:[`/chat/user/join`](http://funstream.tv/api/chat/user/join)  
 ```js
 {...data from /user/current api request...}
 ```
 приходит для всех пользователей, подключившихся к чату, после /chat/join приходит полный список пользователей текущего канала, используя это событие
 
-#### Отсоединение  
+#### Отсоединение:  
 #####URL:[`/chat/user/leave`](http://funstream.tv/api/chat/user/leave)  
 ```
 {
@@ -188,7 +188,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 Приходит для всех пользователей данного канала, покинувших его.
 
-## Каналы чата, текущие и запланированные
+## Каналы чата, текущие и запланированные:
 
 ```main``` - главный чат списка стримов
 ```admin``` - чат хелпдеска и модераторов
