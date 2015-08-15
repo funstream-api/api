@@ -4,18 +4,18 @@ API Чата:
   - [Пример на `Node.js`](#Примеры-использования-на-nodejs)
   - [Пример на `C#`](#Примеры-использования-на-c)
 2. [**События для сервера:**](#События-для-сервера)  
-  - [/chat/login.](#Логин)
-  - [/chat/logout.](#Логаут)
-  - [/chat/join.](#Присоединение)
-  - [/chat/leave.](#Отсоединение)
-  - [/chat/history.](#История)
-  - [/chat/publish.](#Публикация)
-  - [/chat/command.](#Команда)
+  - [Логин.](#Логин)
+  - [Логаут.](#Логаут)
+  - [Присоединение.](#Присоединение)
+  - [Отсоединение.](#Отсоединение)
+  - [История.](#История)
+  - [Публикация.](#Публикация)
+  - [Команда.](#Команда)
 3. [**События для клиента:**](#События-для-клиента)
-  - [/chat/message.](#Сообщение) 
-  - [/chat/message/remove.](#Удалить)
-  - [/chat/user/join.](#Присоединение)  
-  - [/chat/user/leave.](#Отсоединение)
+  - [Сообщение.](#Сообщение) 
+  - [Удалить.](#Удалить)
+  - [Присоединение.](#Присоединение)  
+  - [Отсоединение.](#Отсоединение)
 4. [**Каналы чата, текущие и запланированные.**](#Каналы-чата-текущие-и-запланированные)
   
 ## Протокол взаимодействия:
@@ -61,11 +61,11 @@ socket.On(Socket.EVENT_CONNECT, (a) =>
 socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
  
-## События для сервера
+## События для сервера:
 
-#### /chat/login
-
-```
+#### Логин  
+#####URL:[`/chat/login`]  
+```js
 {
     token: <string>, jwt token
 }
@@ -73,11 +73,13 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 
 подписывает на события, относящиеся к пользователю
  
-#### /chat/logout
-отписывает от событий, относящихся к пользователю
+#### Логаут  
+#####URL:[`/chat/logout`]  
+отписывает от событий, относящихся к пользователю  
 
-#### /chat/join
-```
+#### Присоединится  
+#####URL:[`/chat/join`]  
+```js
 {
     channel: <string|null> id of channel, null for defult
 }
@@ -87,16 +89,18 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 }
 присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему
 
-#### /chat/leave
-```
+#### Покинуть  
+#####URL:[`/chat/leave']  
+```js
 {
     channel: <string|null> id of channel
 }
 ```
 отсоединяет от событий выбранного канала
 
-#### /chat/history
-```
+#### История   
+#####URL:[`/chat/history`]  
+```js
 {
     channel: <string|null> channel id or null for default
     id: <int|null> id of starting message, last if not set
@@ -111,8 +115,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 поздние, если вверх - более ранние.
 (для более поздних в sql order by id, для более ранних order by id desc, чтобы было более понятно)
 
-#### /chat/publish
-```
+#### Опубликовать  
+#####URL:[`/chat/publish`]  
+```js
 {
     channel: <string> channel id
     from: <obj> {
@@ -128,8 +133,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 сработает только после /chat/login
 
-#### /chat/command
-```
+#### Команда  
+#####URL:[`/chat/command`]  
+```js
 {
     command: <string> command name,
     params: <obj> command parameters
@@ -138,8 +144,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
  
 ## События для клиента
 
-#### /chat/message
-```
+#### Сообщение  
+#####URL:[`/chat/message`]  
+```js
 {
     id: <int> id of message,
     from: <obj> {
@@ -154,8 +161,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 Приходит для всех сообщений в текущий канал пользователя. Если пользователь авторизован, то и для всех сообщений, адресованных текущему пользователю, для любого канала.
 
-#### /chat/message/remove
-```
+#### Удалить  
+#####URL:[`/chat/message/remove`]  
+```js
 { 
     id: <int> id of message
     channel: <string> channel of message
@@ -163,13 +171,15 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
 Приходит для сообщений, которые должны быть удалены из чата.
 
-#### /chat/user/join
-```
+#### Присоединится  
+#####URL:[`/chat/user/join`]  
+```js
 {...data from /user/current api request...}
 ```
 приходит для всех пользователей, подключившихся к чату, после /chat/join приходит полный список пользователей текущего канала, используя это событие
 
-####/chat/user/leave
+#### Покинуть  
+#####URL:[`/chat/user/leave`]  
 ```
 {
     id: <int> id of user, that had left this channel
