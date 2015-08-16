@@ -1,17 +1,15 @@
-#### /api/oauth/exchange
-
-запрос
-```
+#### Запросить разрешение: 
+#####URL:[`/api/oauth/exchange`](http://funstream.tv/api/oauth/exchange)  
+**запрос:**
+```js
 {
-    code: <string> oauth access code
+    code: <string> //"Код доступа OAuth."
 }
 ```
-
-ответ 
-```
+**ответ:**
+```js
 {
-    token: <string> api access token
+    token: <string> //"Токен доступа API."
 }
 ```
-
-вернет ошибку если код не найден, либо если код не подтвержден пользователем
+Вернет ошибку если код не найден, либо если код не подтвержден пользователем.
