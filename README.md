@@ -34,7 +34,7 @@ API:
       - [Присоединение к каналу.](chat/user/join/README.md#Присоединение-к-каналу)  
       - [Отсоединение от канала.](chat/user/leave/README.md#Отсоединение-от-канала)
     - [**Каналы чата, текущие и запланированные.**](chat/channels.md) 
-  4.[**OAuth API:**](oauth/README.md)
+  4. [**OAuth API:**](oauth/README.md)
     - [Запросить разрешение.](oauth/README.md#Запросить-разрешение)
     - [Получить токен.](oauth/README.md#Получить-токен)
     - [Проверка.](oauth/README.md#Проверка)
