@@ -8,7 +8,7 @@ F.A.Q:
 API:
 ------------------
   1. [**API Модерации:**](moderation/README.md)  
-    - [`/api/moderation/check` Проверить забанен ли пользователь.](moderation/check/README.md#Проверить-забанен-ли-пользователь) 
+    - [`/api/moderation/check` Проверить забанен ли пользователь](moderation/check/README.md#Проверить-забанен-ли-пользователь) 
     - [`/api/moderation/accuse` Забанить пользователя](moderation/accuse/README.md#Забанить-пользователя)  
     - [`/api/moderation/reasons` Получить причину бана](moderation/reasons/README.md#Получить-причину-бана)  
     - [`/api/moderation/list` Получить список банов](moderation/list/README.md#Получить-список-банов)  
