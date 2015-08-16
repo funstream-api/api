@@ -7,7 +7,7 @@ F.A.Q:
 
 API:
 ------------------
-  1. [**API Модерации:**](moderation/REAMDE.md)  
+  1. [**API Модерации:**](/moderation/README.md)  
     - [Проверить забанен ли пользователь.](moderation/check/REAMDE.md#Проверить-забанен-ли-пользователь)  
     - [Забанить пользователя.](moderation/accuse/REAMDE.md#Забанить-пользователя)  
     - [Получить причину бана.](moderation/reasons/REAMDE.md#Получить-причину-бана)  
