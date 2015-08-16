@@ -1,16 +1,15 @@
-#### /api/oauth/check
-
-запрос
-```
+#### Проверка: 
+#####URL:[`/api/oauth/check`](http://funstream.tv/api/oauth/check)  
+**запрос:**
+```js
 {
-    code: <string> oauth access code
+    code: <string> //"Код доступа OAuth"
 }
 ```
-
-ответ
-```
+**ответ:**
+```js
 {
-    id: <int> id of access code
-    text: <string> text passed with access code
+    id: <int>, //"Идентификатор кода доступа."
+    text: <string>, //"Текст переданный с кодом доступа."
 }
 ```
