@@ -1,19 +1,42 @@
-## Протокол взаимодействия
+API Чата:
+------------------
+1. [**Протокол взаимодействия:**](#Протокол-взаимодействия)  
+  - [Пример на `Node.js`](#Примеры-использования-на-nodejs)
+  - [Пример на `C#`](#Примеры-использования-на-c)
+2. [**Оповещение сервера:**](#Оповещение-сервера)  
+  - [Подписаться на события пользователя.](#Подписаться-на-события-пользователя)
+  - [Отписаться от событий пользователя.](#Отписаться-от-событий-пользователя)
+  - [Присоединится к каналу.](#Присоединится-к-каналу)
+  - [Покинуть канал.](#Покинуть-канал)
+  - [История канала.](#История-канала)
+  - [Отправить сообщение.](#Отправить-сообщение)
+  - [Выполнить команду.](#Выполнить-команду)
+3. [**Оповещение клиента:**](#Оповещение-клиента)
+  - [Сообщение.](#Сообщение) 
+  - [Удаление.](#Удаление)
+  - [Присоединение к каналу.](#Присоединение-к-каналу)  
+  - [Отсоединение от канала.](#Отсоединение-от-канала)
+4. [**Каналы чата, текущие и запланированные.**](#Каналы-чата-текущие-и-запланированные)
+  
+## Протокол взаимодействия:
 
-Клиент и сервер обмениваются событиями через socket.io. 
-Опция 'transports' при соединении только 'websocket'. 
-Все события для сервера получают ответ через коллбек. Формат ответа
-```
+Клиент и сервер обмениваются событиями через [`socket.io`](http://socket.io/). 
+При соединении значении опции `transports` может быть только 'websocket'.
+Все события для сервера получают ответ через коллбек.
+
+**Формат ответа:**
+```js
 {
-    status: <string> "ok" on success, "error" on failure
+    status: <string>, //""ok" on success, "error" on failure"
     result: <array|obj|null>
 }
 ```
-в случае ошибки result обязательно присутствует и содержит поле message
-Примеры взаимодействия клиента можно посмотреть на сайте socket.io. Примеры использования:
+в случае ошибки `result` обязательно присутствует и содержит поле `message`.
+Примеры взаимодействия клиента можно посмотреть на сайте [`socket.io`](http://socket.io/). 
 
-```
-nodejs
+####Примеры использования на `Node.js`:
+
+```js
 var io = require('socket.io-client');
  
 var socket = io.connect('http://funstream.tv:3811', {transports: ['websocket']});
@@ -25,8 +48,8 @@ socket.emit('/chat/login', {token: null}, function (data) {console.log("login: "
 socket.emit('/chat/join', {channel: "main"}, function (data) {console.log("chat: ", data)});
 ```
 
-```
-c#
+####Примеры использования на `C#`:
+```C#
 socket = IO.Socket("http://funstream.tv:3811", new IO.Options { Transports = ImmutableList.Create("websocket") });
  
 socket.On(Socket.EVENT_CONNECT, (a) =>
@@ -38,123 +61,136 @@ socket.On(Socket.EVENT_CONNECT, (a) =>
 socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```
  
-## События для сервера
+## Оповещение сервера:
 
-#### /chat/login
-
-```
+#### Подписаться на события пользователя:  
+#####URL:[`/chat/login`](http://funstream.tv/api/chat/login)  
+```js
 {
-    token: <string>, jwt token
+    token: <string>, jwt токен*
 }
 ```
+*[`jwt.io`](http://jwt.io/)   
 
-подписывает на события, относящиеся к пользователю
+Подписывает на события, относящиеся к пользователю.
  
-#### /chat/logout
-отписывает от событий, относящихся к пользователю
+#### Отписаться от событий пользователя:  
+#####URL:[`/chat/logout`](http://funstream.tv/api/)  
 
-#### /chat/join
-```
-{
-    channel: <string|null> id of channel, null for defult
-}
-``` 
-{
-    status: 'ok',
-}
-присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему
+Отписывает от событий, относящихся к пользователю.  
 
-#### /chat/leave
-```
+#### Присоединится к каналу:  
+#####URL:[`/chat/join`](http://funstream.tv/api/chat/join)  
+```js
 {
-    channel: <string|null> id of channel
+    channel: <string|null>  //"Идентификатор канала, null  по умолчанию."
 }
 ```
-отсоединяет от событий выбранного канала
 
-#### /chat/history
-```
+Присоединяет к событиям выбранного канала, если канал не указан - присоединяет к общему.
+
+#### Покинуть канал:    
+#####URL:[`/chat/leave`](http://funstream.tv/api/chat/leave)  
+```js
 {
-    channel: <string|null> channel id or null for default
-    id: <int|null> id of starting message, last if not set
-    amount: <int> amount of messages to select
-    direction: <string> "up" or "down", the direction of message selection
+    channel: <string|null> //"имя канала."
+}
+```
+Отсоединяет от событий выбранного канала.
+
+#### История канала:   
+#####URL:[`/chat/history`](http://funstream.tv/api/chat/history)  
+```js
+{
+    channel: <string|null>, //"имя канала, канал по умолчанию если null"
+    id: <int|null>, //"идентификатор начального сообщения, последнее если null"
+    amount: <int>, //"необходимое количество сообщений для выборки."
+    direction: <string>, //"'up' и 'down', направление выборки."
     options: <obj|null> {
-        addressed: <int|null> put user id here to receive only addressed+user messages or all messages
+        addressed: <int|null> //"указать идентификатор пользователя 
+          если нужны только адресованные сообщения "+user", все сообщения если null."
     }
 }
 ```
-возвращает amount сообщений в указанном направлении от текущего. Если направление вниз - то вернет более 
-поздние, если вверх - более ранние.
-(для более поздних в sql order by id, для более ранних order by id desc, чтобы было более понятно)
+Возвращает `amount` сообщений в указанном направлении от текущего. Если направление вниз - то вернет более поздние, если вверх - более ранние.  
+*(На примере SQL: Для более поздних `order by id`, для более ранних `order by id desc`,)*  
 
-#### /chat/publish
-```
+#### Отправить сообщение:
+#####URL:[`/chat/publish`](http://funstream.tv/api/chat/publish)  
+```js
 {
-    channel: <string> channel id
+    channel: <string>, //"имя канала."
     from: <obj> {
-        id: <int> user id, requires additional priveleges,
-        name: <string> user name
+        id: <int>, //"идентификатор пользователя, требует дополнительных привилегий."
+        name: <string> //"имя пользователя."
     }
     to: <obj|null> {
-        id: <int> user id,
-        name: <string> user name
+        id: <int>, //"идентификатор пользователя."
+        name: <string> //"имя пользователя."
     }
-    text: <string> message text   
+    text: <string> //"текст сообщения."  
 }
 ```
-сработает только после /chat/login
+Будет работать только после `/chat/login`  
 
-#### /chat/command
-```
+#### Выполнить команду:  
+#####URL:[`/chat/command`](http://funstream.tv/api/chat/command)  
+```js
 {
-    command: <string> command name,
-    params: <obj> command parameters
+    command: <string>, //"имя команды."
+    params: <obj> //"параметры команды."
 }
 ```
  
-## События для клиента
+## Оповещение клиента:
 
-#### /chat/message
-```
+#### Сообщение:  
+#####URL:[`/chat/message`](http://funstream.tv/api/chat/message)  
+```js
 {
-    id: <int> id of message,
+    id: <int>, //"идентификатор сообщения."
     from: <obj> {
-        id: <int> user id
-        name: <string> user name
+        id: <int>, //"идентификатор пользователя."
+        name: <string> //"имя пользователя."
     },
-    to: <obj|null> user object, same as from,
-    channel: <int> channel id,
-    text: <string> message text
-    time: <datetime> date and time of message
+    to: <obj|null>, //"user object, тоже самое что и from."
+    channel: <int>, //"идентификатор канала."
+    text: <string>, //"текст сообщения."
+    time: <datetime> //"дата и время сообщения."
 }
 ```
 Приходит для всех сообщений в текущий канал пользователя. Если пользователь авторизован, то и для всех сообщений, адресованных текущему пользователю, для любого канала.
 
-#### /chat/message/remove
-```
+#### Удаление:  
+#####URL:[`/chat/message/remove`](http://funstream.tv/api/chat/message/remove)  
+```js
 { 
-    id: <int> id of message
-    channel: <string> channel of message
+    id: <int>, //"идентификатор сообщения."
+    channel: <string> "канал сообщения."
 }
 ```
 Приходит для сообщений, которые должны быть удалены из чата.
 
-#### /chat/user/join
-```
-{...data from /user/current api request...}
-```
-приходит для всех пользователей, подключившихся к чату, после /chat/join приходит полный список пользователей текущего канала, используя это событие
-
-####/chat/user/leave
-```
+#### Присоединение к каналу:  
+#####URL:[`/chat/user/join`](http://funstream.tv/api/chat/user/join)  
+```js
 {
-    id: <int> id of user, that had left this channel
+//...данные из /user/current API запроса..
+}
+```
+Приходит для всех пользователей, подключившихся к чату, после` /chat/join`. Приходит полный список пользователей текущего канала, используя это событие.
+
+#### Отсоединение от канала:  
+#####URL:[`/chat/user/leave`](http://funstream.tv/api/chat/user/leave)  
+```js
+{
+    id: <int> //"Идентификатор отсоединившегося пользователя."
 }
 ```
 Приходит для всех пользователей данного канала, покинувших его.
 
-## Каналы чата, текущие и запланированные
+## Каналы чата, текущие и запланированные:
+<<<<<<< HEAD
 
 ```main``` - главный чат списка стримов
 ```admin``` - чат хелпдеска и модераторов
@@ -164,3 +200,13 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```support/<id>``` - вопрос к хелпдеску
 ```private/<from_id>/<to_id>``` - личные сообщения
 ```notifications/<user_id>``` - системные уведомления для пользователя
+=======
+  1. `main` -Гглавный чат списка стримов.
+  2. `admin` - Чат хелпдеска и модераторов.
+  3. `stream/<streamer id>` - Стрим.
+  4. `goodgame.ru/<streamer id>` - Сообщения с гудгейма, если у стримера активен этот плеер.
+  5. `twitch.tv/<streamer id>` - Сообщения с твича, если у стримера активен этот плеер.
+  6. `support/<id>` - Вопрос к хелпдеску.
+  7. `private/<from_id>/<to_id>` - Личные сообщения.
+  8. `notifications/<user_id>` - Системные уведомления для пользователя.
+>>>>>>> 8349a55... Update chat.md
