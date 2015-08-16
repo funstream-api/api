@@ -1,4 +1,4 @@
-#### Запросить разрешение: 
+####Получить токен: 
 #####URL:[`/api/oauth/exchange`](http://funstream.tv/api/oauth/exchange)  
 **запрос:**
 ```js
