@@ -1,4 +1,4 @@
-#### Проверка: 
+﻿#### Проверка прав: 
 #####URL:[`/api/oauth/check`](http://funstream.tv/api/oauth/check)  
 **запрос:**
 ```js
