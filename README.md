@@ -13,7 +13,7 @@ API:
     - [Получить причину бана.](/moderation/reasons/REAMDE.md#Получить-причину-бана)  
     - [Получить список банов.](/moderation/list/REAMDE.md#Получить-список-банов)  
     - [Отменить бан.](/moderation/undo/REAMDE.md#Отменить-бан)  
-  2. [**API Поддержки:**](/support/moderation/REAMDE.md)  
+  2. [**API Поддержки:**](/support/REAMDE.md)  
     - [Получить список вопросов.](/support/list/README.md#Получить-список-вопросов)  
     - [Задать вопрос.](/support/ask/README.md#Задать-вопрос)  
   3. **Чат:**
