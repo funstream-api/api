@@ -1,4 +1,4 @@
-Работа с [OAuth](http://oauth.net/)
+Работа с [OAuth](http://oauth.net/).
 ==================
 
 #### термины:
