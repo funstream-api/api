@@ -8,12 +8,12 @@ F.A.Q:
 API:
 ------------------
   1. [**API Модерации:**](/moderation/README.md)  
-    - [Проверить забанен ли пользователь.](/moderation/check/REAMDE.md#Проверить-забанен-ли-пользователь)  
-    - [Забанить пользователя.](/moderation/accuse/REAMDE.md#Забанить-пользователя)  
-    - [Получить причину бана.](/moderation/reasons/REAMDE.md#Получить-причину-бана)  
-    - [Получить список банов.](/moderation/list/REAMDE.md#Получить-список-банов)  
-    - [Отменить бан.](/moderation/undo/REAMDE.md#Отменить-бан)  
-  2. [**API Поддержки:**](/support/REAMDE.md)  
+    - [Проверить забанен ли пользователь.](/moderation/check/README.md#Проверить-забанен-ли-пользователь)  
+    - [Забанить пользователя.](/moderation/accuse/README.md#Забанить-пользователя)  
+    - [Получить причину бана.](/moderation/reasons/README.md#Получить-причину-бана)  
+    - [Получить список банов.](/moderation/list/README.md#Получить-список-банов)  
+    - [Отменить бан.](/moderation/undo/README.md#Отменить-бан)  
+  2. [**API Поддержки:**](/support/README.md)  
     - [Получить список вопросов.](/support/list/README.md#Получить-список-вопросов)  
     - [Задать вопрос.](/support/ask/README.md#Задать-вопрос)  
   3. **Чат:**
