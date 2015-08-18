@@ -154,7 +154,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
         name: <string> //"имя пользователя."		
     },		
     to: <obj|null>, //"user object, тоже самое что и from."		
-    channel: <string|null>  //"Идентификатор канала, null  по умолчанию."		
+    channel: <int>, //"идентификатор канала."		
     text: <string>, //"текст сообщения."		
     time: <datetime> //"дата и время сообщения."		
 }		
