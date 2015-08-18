@@ -1,132 +1,144 @@
-## Поддержка
-
-Роли получаются вызовом /api/user/current, некоторые вызовы требуют наличие определенной роли.
-Если в вызове не написано какую роль он требует, значит может быть вызван пользователем с любой ролью.
-
-#### /api/support/list
-запрос
-```
-{
-    category: <int|null> id of category,
-    from: <int|null> starting date of search (unix timestamp)
-    onlyActive: <bool|null> return only active questions (unanswered), true by default
-}
-```
-ответ
-```
-[
-    ...,
-    {... /support/ask request ...},
-    ...
-]
-```
-вернет ошибку если нет прав или неверная категория, требует наличия роли support
-
-#### /api/support/ask
-запрос
-```
-{
-    category: <int> id of category,
-    question: <string> text of question
-}
-```
-ответ
-```
-{
-    id: <int> id of question,
-    time: <string> datetime of question (unix timestamp),
-    category: <obj> {... same data as /stream/category api request, no options...},
-    question: <string> text of question,
-    active: <bool> true if no answer
-}
-```
-
-вернет ошибку если пользователь неавторизован, или указана неверная категория
-
-## Модерация
-
-#### /api/moderation/check
-запрос
-```
-{
-    userId: <int> id of user to check
-}
-```
-ответ
-```
-{
-    banned: <bool> true if banned, false if not or if user is not exist
-    expire: <int> ban expire timestamp, or 0 if not banned
-}
-```
-Если банов несколько, то вернет тот, который заканчивается позднее всего. Вернёт ошибку на пустой или 
-несуществующий userId
-
-#### /api/moderation/accuse
-запрос
-```
-{
-    userId: <int> id of user for ban attempt
-    reasonId: <int> id of reason
-    data: <object|null> any custom data to store
-}
-```
-ответ пустой, вернет ошибку если пользователь или причина не существует, 
-либо если пользователь не авторизован
-
-#### /api/moderation/reasons
-запрос
-```
-{
-    content: <string> content of the ban reason, "chat" by default
-}
-```
- 
-ответ
-```
-[
-    ...,
-    {
-        id: <int> id of reason,
-        name: <string> name of reason,
-        content: <string> content of reason
-    }
-    ...,
-]
-```
-
-#### /api/moderation/list
-запрос
-```
-{
-    from: <int|null> from timestamp,
-    to: <int|null> to timestamp,
-    reason: <int|null> filter by given reason,
-}
-```
-ответ
-```
-[
-    ...,
-    {
-        id: <int> id of ban,
-        start: <int> start time of ban, timestamp,
-        end: <int> end time of ban, timestamp,
-        reason: <obj> same as /api/moderation/reasons object
-    }
-    ...,
-]
-```
-вернет ошибку если польователь неавторизован, у него недостаточно прав, либо передано неверное id причины
-Требует роль moderation
- 
-#### /api/moderation/undo
-запрос
-```
-{
-    ban: <int> id of ban
-}
-```
-ответ пустой
-Отменяет выбранный бан, при этом выдавая бан всем пользователям, которые его ставили. 
-Даст ошибку если пользователь не авторизован или у него недостаточно прав. Требует роль moderation.
+﻿API Администрирования 
+=====================	
+		
+1. [**Поддержка:**](#Поддержка)
+  - [Получить список вопросов](#Получить-список-вопросов)
+  - [Задать вопрос](#Задать-вопрос)
+2. [**Модерация:**](#Модерация) 
+  - [Проверить забанен ли пользователь](#Проверить-забанен-ли-пользователь)
+  - [Забанить пользователя](#Забанить-пользователя)
+  - [Получить причину бана](#Получить-причину-бана)
+  - [Получить список банов](#Получить-список-банов)
+  - [Отменить бан](#Отменить-бан)
+		
+## Поддержка		
+		
+#### Получить список вопросов:		
+#####URL:[`/api/support/list`](http://funstream.tv/api/support/list)  		
+**запрос:**		
+```js		
+{		
+    category: <int|null>, //"Идентификатор категории."		
+    from: <int|null>, //"Дата начала поиска (Юникс формат)."		
+    onlyActive: <bool|null> //"Вернуть только активные вопросы(без ответов), true по умолчанию."		
+}		
+```		
+**ответ<sup>1</sup>:**		
+```		
+[		
+    ...,		
+    {... /support/ask request ...},		
+    ...		
+]		
+```		
+<sup>1</sup>вернет ошибку если нет прав или неверная категория.		
+		
+#### Задать вопрос:  		
+#####URL:[`/api/support/ask`](http://funstream.tv/api/support/ask)  		
+**запрос:**		
+```js		
+{		
+    category: <int>, //"Идентификатор категории."		
+    question: <string> //"Текст вопроса."		
+}		
+```		
+**ответ:**		
+```js		
+{		
+    id: <int>, //"Идентификатор вопроса."		
+    time: <string>, //"Дата и время вопроса(Юникс формат)."		
+    category: <obj> {/*"... Те же данные, что и  /stream/category API запрос, без опций..."*/},		
+    question: <string>, //"Текст вопроса."		
+    active: <bool> //"true если нет ответа."		
+}		
+```		
+		
+## Модерация		
+		
+####  Проверить забанен ли пользователь:  		
+#####URL:[`/api/moderation/check`](http://funstream.tv/api/moderation/check)  		
+**запрос:**		
+```js		
+{		
+    userId: <int> //"Идентификатор пользователя, которого нужно проверить."		
+}		
+```		
+**ответ:**		
+```js		
+{		
+    banned: <bool>, //"true если забанен, false если не забанен или пользователь не существует."		
+    expire: <int> //"Время истечения бана или 0 если не забанен."		
+}		
+```		
+*Если банов несколько, то вернет тот, который заканчивается позднее всего. Вернёт ошибку на пустой или 		
+несуществующий `userId`.*		
+		
+#### Забанить пользователя:  		
+#####URL:[`/api/moderation/accuse`](http://funstream.tv/api/moderation/accuse)  		
+**запрос:**		
+```js		
+{		
+    userId: <int>, //"Идентификатор пользователя, которого нужно попытаться забанить."		
+    reasonId: <int>, //"Идентификатор причины бана."		
+    data: <object|null> //"Дополнительная информация."		
+}		
+```		
+*Ответ пустой, вернет ошибку если пользователь или причина не существует, либо если пользователь не залогинен.*		
+		
+#### Получить причину бана:		
+#####URL:[`/api/moderation/reasons`](http://funstream.tv/api/moderation/reasons)		
+**запрос:**		
+```js		
+{		
+    content: <string> //"Содержание причины запрета, 'chat' по умолчанию."		
+}		
+```		
+ 		
+**ответ:**		
+```js		
+[		
+    ...,		
+    {		
+        id: <int>, //"Идентификатор причины."		
+        name: <string>, //"имя причины."		
+        content: <string> //"Содержание причины."		
+    }		
+    ...,		
+]		
+```		
+		
+#### Получить список банов:		
+#####URL:[`/api/moderation/list`](http://funstream.tv/api/moderation/list)		
+**запрос:**		
+```js		
+{		
+    from: <int|null>, //"От временной метки."		
+    to: <int|null>, //"До временной метки."		
+    reason: <int|null> //"Фильтр по указанной причине."		
+}		
+```		
+**ответ:**		
+```js		
+[		
+    ...,		
+    {		
+        id: <int>, //"Идентификатор бана."		
+        start: <int>, //"Время начала бана, временная метка."		
+        end: <int>, //"Время истечения бана, временная метка."		
+        reason: <obj> //"То же самое, что и /api/moderation/reasons объект"		
+    }		
+    ...,		
+]		
+```		
+ 		
+#### Отменить бан:		
+#####URL:[`/api/moderation/undo`](http://funstream.tv/api/moderation/undo)		
+**запрос:**		
+```js		
+{		
+    ban: <int> //"Идентификатор бана"		
+}		
+```		
+*Ответ пустой.*		
+*Отменяет выбранный бан, при этом выдавая бан всем пользователям, которые его ставили.*		
+*Ответ ошибка если пользователь не авторизован или не имеет прав модератора.*
