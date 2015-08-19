@@ -13,17 +13,17 @@
   5. [**Стрим**](#Стрим)
     - [`POST` `P` `/api/stream` Данные стрима](#Данные-стрима)
   6. [**Чат**](#Чат)
-    - [`POST` `P` `/api/channel/data` Данные-стрима каналов](#Данные-стрима-каналов)
+    - [`POST` `P` `/api/channel/data` Данные каналов](#Данные-каналов)
     - [`POST` `P` `/api/smile` Доступные смайлы канала](#Доступные-смайлы-канала)
   7. [**Фильтр**](#Фильтр)
     - [`POST` `A/P` `/api/content` Список элементов контента](#Список-элементов-контента)
-    - [`POST` `P` `/api/content/top` Топ N элементов контента](#Топ-N-элементов-контента)
+    - [`POST` `P` `/api/content/top` Топ N элементов контента](#Топ-n-элементов-контента)
   8. [**Подписки**](#Подписки)
     - [`POST` `A` `/api/subscribe/add` Подписаться](#Подписаться)
     - [`POST` `A` `/api/subscribe/amount` Колличество подписок онлайн](#Колличество-подписок-онлайн)
     - [`POST` `A` `/api/subscribe/check` Проверить подписку](#Проверить-подписку)
     - [`POST` `A` `/api/subscribe/list` Получить список подписок](#Получить-список-подписок)
-    - [`POST` `A` `/api/subscribe/remove` Отписаться](#Отписатся)
+    - [`POST` `A` `/api/subscribe/remove` Отписаться](#Отписаться)
     - [`POST` `A` `/api/subscribe/subscribers` Список подписчиков пользователя](#Список-подписчиков-пользователя)
   9. [**Игноры**](#Игноры)
     - [`POST` `A` `/api/ignore/add` Добавить в список игнорируемых](#Добавить-в-список-игнорируемых)
@@ -259,7 +259,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 
 ## Чат
 
-#### Данные каналов:
+#### Данные каналов
 #####[`POST` `P` `/api/channel/data`](http://funstream.tv/api/channel/data)
 **запрос**
 ```js
@@ -284,7 +284,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 *некорректный - вернет ошибку*
 *если token отсутствует или неверный - вернет ошибку*
 
-#### Доступные смайлы канала:
+#### Доступные смайлы канала
 #####[`POST` `P` `/api/smile`](http://funstream.tv/api/smile)
 **запрос**
 ````js
@@ -314,7 +314,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 
 ## Фильтр
 
-#### Список элементов контента:
+#### Список элементов контента
 #####[`POST` `A/P` `/api/content`](http://funstream.tv/api/content)
 **запрос**
 ```js
@@ -350,7 +350,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 *вернет ошибку если установлена опция `save=true`, и при этом токен авторизации не передан или ошибочный*
 *вернет ошибку, если `type=my`, и при этом токен авторизации не передан или ошибочный*
 
-#### Топ N элементов контента:
+#### Топ N элементов контента
 #####[`POST` `P` `/api/content/top`](http://funstream.tv/api/content/top)
 **запрос**
 ```js
@@ -380,7 +380,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 
 ## Подписки
 
-#### Подписаться:
+#### Подписаться
 #####[`POST` `A` `/api/subscribe/add`](http://funstream.tv/api/subscribe/add)
 **запрос**
 ```js
@@ -391,7 +391,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 *Ответ пустой. Вернет ошибку если неверно указан контент, `id` не существует, не авторизован или неверный `token`.*
 
-#### Колличество подписок онлайн:
+#### Колличество подписок онлайн
 #####[`POST` `A` `/api/subscribe/amount`](http://funstream.tv/api/subscribe/amount)
 *Считает количество активных элементов в подписках у пользователя.*
 **запрос**
@@ -407,7 +407,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 }
 ```
 
-#### Проверить подписку:
+#### Проверить подписку
 #####[`POST` `A` `/api/subscribe/check`](http://funstream.tv/api/subscribe/check)
 **запрос**
 ```js
@@ -425,7 +425,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 *Вернет ошибку если неверно указан контент, `id` не существует, не авторизован или неверный `token`.*
 
 
-#### Получить список подписок:
+#### Получить список подписок
 #####[`POST` `A` `/api/subscribe/list`](http://funstream.tv/api/subscribe/list)
 **запрос**
 ```js
@@ -443,7 +443,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 *Вернет ошибку если пользователь не авторизован, либо передан неверный контент.*
 
-#### Отписаться:
+#### Отписаться
 #####[`POST` `A` `/api/subscribe/remove`](http://funstream.tv/api/subscribe/remove)
 **запрос**
 ```js
@@ -455,7 +455,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 *Ответ пустой. Вернет ошибку если неверно указан контент, `id` не существует, не авторизован или неверный `token`.*
 
 
-#### Список подписчиков пользователя:
+#### Список подписчиков пользователя
 #####[`POST` `A` `/api/subscribe/subscribers`](http://funstream.tv/api/subscribe/subscribers)
 *Если пользователь стример, то вернет всех подписанных на него пользователей.*
 **запрос**
@@ -477,7 +477,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 
 ## Игноры
 
-#### Добавить в список игнорируемых:
+#### Добавить в список игнорируемых
 #####[`POST` `A` `/api/ignore/add`](http://funstream.tv/api/ignore/add)
 **запрос**
 ```js
@@ -488,7 +488,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 **ответ пустой**, *даст ошибку если пользователь неавторизован*
 
-#### Проверить на игнор:
+#### Проверить на игнор
 #####[`POST` `A` `/api/ignore/check`](http://funstream.tv/api/ignore/check)
 **запрос**
 ```js
@@ -505,7 +505,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 *вернет ошибку если пользователь неавторизован*
 
-#### Список игнорируемого:
+#### Список игнорируемого
 #####[`POST` `A` `/api/ignore/list`](http://funstream.tv/api/ignore/list)
 **запрос**
 ```js
@@ -526,7 +526,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 *вернет ошибку если пользователь неавторизован*
 
-#### Удалить из списка игнорируемого:
+#### Удалить из списка игнорируемого
 #####[`POST` `A` `/api/ignore/remove`](http://funstream.tv/api/ignore/remove)
 **запрос**
 ```js
@@ -539,7 +539,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 
 ## Дополнительные вызовы
 
-#### Получить список последних поддержавших для данного стримера за 5 минут:
+#### Получить список последних поддержавших для данного стримера за 5 минут
 #####[`POST` `P` `/api/support?name=<streamer_name>`](http://funstream.tv/api/support?name=<streamer_name>)(заменить на json?)
 *Получить список последних поддержавших для данного стримера за 5 минут.*
 
