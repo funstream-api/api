@@ -85,7 +85,7 @@ API
     - [`POST` `A` `/api/sc2tv/authUrl` Получить урл авторизации](sc2tv.md#Получить-урл-авторизации)
     - [`POST` `A` `/api/sc2tv/check` Проверить права](sc2tv.md#Проверить-права)
   - [**Донат**](sc2tv.md#Донат)
-    - [`POST` `A` `/api/sc2tv/donate` Донат](sc2tv.md#Донат)
+    - [`POST` `A` `/api/sc2tv/donate` Донат произвольной суммы](sc2tv.md#Донат-произвольной-суммы)
     - [`POST` `A` `/api/sc2tv/donate/fast` Микродонат](sc2tv.md#Микродонат)
 
 Спасибо @JAremko за оформление документации
