@@ -104,7 +104,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 **запрос**
 ```js
 {
-    channel: <string|null>  // Имя канала
+    channel: <string|null>  // Идентификатор канала
 }
 ```
 **ответ**
@@ -119,7 +119,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 **запрос**
 ```js
 {
-    channel: <string|null> // Имя канала
+    channel: <string|null> // Идентификатор канала
 }
 ```
 **ответ**
@@ -134,7 +134,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 **запрос**
 ```js
 {
-    channel: <string|null>, // Имя канала
+    channel: <string|null>, // Идентификатор канала
     id: <int|null>, // Идентификатор начального сообщения, последнее если null
     amount: <int>, // Необходимое количество сообщений для выборки
     direction: <string>, // 'up' и 'down', направление выборки
@@ -159,7 +159,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 **запрос**
 ```js
 {
-    channel: <string>, // имя канала
+    channel: <string>, // Идентификатор канала
     from: <obj> {
         id: <int>, // Идентификатор пользователя
         name: <string> // Имя пользователя
@@ -201,7 +201,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```js
 {
     id: <int>,  // Идентификатор сообщения
-    channel: <string>, // Имя канала
+    channel: <string>, // Идентификатор канала
     from: {
         id: <int>, // Идентификатор пользователя
         name: <string>, // Имя пользователя
@@ -221,7 +221,7 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 ```js
 {
     id: <int>, // Идентификатор сообщения
-    channel: <string> // Имя канала
+    channel: <string> // Идентификатор канала
 }
 ```
 Приходит для сообщений, которые должны быть удалены из чата.
