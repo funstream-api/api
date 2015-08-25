@@ -5,6 +5,42 @@ F.A.Q
 ------
 - Почему документация API именно на [Github.com](https://github.com/)?
   - Потому что будут еще и утилиты
+  
+Общее
+-----
+
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате.
+Авторизация происходит через токен в `header`. Например
+```
+POST /user/current HTTP/1.1
+Token: Bearer <your-token-here>
+```
+
+Успешный ответ приходит со статусом `200`.  
+При ошибке ответ приходит со статусом `500`. Формат ответа ошибки
+```js
+{
+    message: <string> // error message
+}
+```
+
+Параметры, значение которых должно быть установлено в `null`, могут не передаваться.  
+Где написано ``объект из ответа ...``, если не указано иного, подразумевает ответ указанного запроса без необязательных параметров/опций.
+
+Версия API передается через `Accept`. Например,
+```
+GET /user/current HTTP/1.1
+Accept: application/json; version=1.0
+```
+*В данный момент передавать версию не обязательно*
+
+Запросы передаются на сайт [`http://funstream.tv`](http://funstream.tv) для общего API и на [`http://funstream.tv:3811`](http://funstream.tv:3811) для чата.
+
+Примеры запросов на `curl`
+```sh
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
+```
 
 
 API
@@ -40,7 +76,6 @@ API
     - [`WS` `P` `/chat/user/leave` Отсоединение от канала](chat.md#Отсоединение-от-канала)
   - [**Каналы чата, текущие и запланированные**](chat.md#Каналы-чата-текущие-и-запланированные)
 3. [**Общее**](common.md)
-  - [**Общие положения**](common.md#Общие-положения)
   - [**Пользователь**](common.md#Пользователь)
     - [`POST` `P` `/api/user` Найти пользователя](common.md#Найти-пользователя)
     - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
@@ -60,9 +95,9 @@ API
     - [`POST` `P` `/api/content/top` Топ N элементов контента](common.md#Топ-n-элементов-контента)
   - [**Подписки**](common.md#Подписки)
     - [`POST` `A` `/api/subscribe/add` Подписаться](common.md#Подписаться)
-    - [`POST` `A` `/api/subscribe/amount` Колличество подписок онлайн](common.md#Колличество-подписок-онлайн)
+    - [`POST` `A` `/api/subscribe/amount` Количество активных подписок онлайн](common.md#Количество-активных-подписок)
     - [`POST` `A` `/api/subscribe/check` Проверить подписку](common.md#Проверить-подписку)
-    - [`POST` `A` `/api/subscribe/list` Получить список подписок](common.md#Получить-список-подписок)
+    - [`POST` `A` `/api/subscribe/list` Список подписок](common.md#Список-подписок)
     - [`POST` `A` `/api/subscribe/remove` Отписаться](common.md#Отписаться)
     - [`POST` `A` `/api/subscribe/subscribers` Список подписчиков пользователя](common.md#Список-подписчиков-пользователя)
   - [**Игноры**](common.md#Игноры)
