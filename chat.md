@@ -139,15 +139,22 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 {
     channel: <string|null>, // Идентификатор канала, см. раздел 4
     amount: <int>, // Необходимое количество сообщений для выборки
-    conditions: <array> [ // Условия выборки, см. описание ниже
-        <obj> { // Условие
-            field: <string>, // Имя поля
-            operation: <string>, // Тип сравнения
-            value: <array>, // Массив значений
-            glue: <string>, // Тип соединения в запросе
-        },
-        ...
-    ]
+    query: <obj|null> { // Дополнительные условия выборки, см. описание ниже
+        conditions: <array> [ // Список условий
+            <obj> { // Условие
+                field: <string>, // Имя поля
+                operation: <string>, // Тип сравнения
+                value: <array>, // Массив значений
+                glue: <string>, // Тип соединения в запросе
+            },
+            ...
+        ],
+        groups: <array> [ // Список групп условий, такие же объекты как `query` произвольной вложенности
+            <obj>,
+            ...
+        ],
+        glue: <string> // Тип соединения, для верхнего уровня всегда 'and'
+    }
 }
 ```
 **ответ**
@@ -157,7 +164,9 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
     ...
 ]
 ```
-Параметр запроса `conditions` позволяет уточнить выборку дополнительными условиями по разным полям. Доступные значения полей условия
+Параметр запроса `query` позволяет уточнить выборку дополнительными условиями по разным полям. Формат объектов `groups` совпадает с форматом этого объекта. Для `query` тип соединения всегда `and`.  
+Группы это условия из `conditions` внутри скобок с указанным в `glue` соединителем перед ними. Тип соединения первого элемента в массиве `conditions` игнорируется.  
+Доступные значения полей условия
 - `field` - [id, from, to, type]
   - **id** - идентификатор сообщения
   - **from** - идентификатор автора сообщения
@@ -167,20 +176,63 @@ socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
 - `value` - для одиночного значения указывать внутри массива, например [1]
 - `glue` - [and, or], только в нижнем регистре
 
-Примеры `conditions`
+Примеры `query` и итоговый кусок запроса который они дадут
 - сообщения только указанного пользователя и обращения к нему
 ```
-[
-    {field: 'from', operation: '=', value: [1], glue: 'and'},
-    {field: 'to', operation: '=', value: [1], glue: 'and'}
-]
+{
+    conditions: [],
+    groups: [
+        {
+            conditions: [
+                {field: 'from', operation: '=', value: [1], glue: 'or'},
+                {field: 'to', operation: '=', value: [1], glue: 'or'}
+            ],
+            groups: [],
+            glue: 'and'
+        }
+    ],
+    glue: 'and'
+}
+```
+```sql
+AND ((`from` = 1 OR `to` = 1))
 ```
 - без сообщений указанных пользователей(игнор), включая обращения
 ```
-[
-    {field: 'from', operation: 'not in', value: [1, 2, 3], glue: 'and'},
-    {field: 'to', operation: 'not in', value: [1, 2, 3], glue: 'and'}
-]
+{
+    conditions: [
+        {field: 'from', operation: 'not in', value: [1, 2, 3], glue: 'and'},
+        {field: 'to', operation: 'not in', value: [1, 2, 3], glue: 'and'}
+    ],
+    groups: [],
+    glue: 'and'
+}
+```
+```sql
+AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3))
+```
+- оба случая вместе
+```
+{
+    conditions: [
+        {field: 'from', operation: 'not in', value: [1, 2, 3], glue: 'and'},
+        {field: 'to', operation: 'not in', value: [1, 2, 3], glue: 'and'}
+    ],
+    groups: [
+        {
+            conditions: [
+                {field: 'from', operation: '=', value: [1], glue: 'or'},
+                {field: 'to', operation: '=', value: [1], glue: 'or'}
+            ],
+            groups: [],
+            glue: 'and'
+        }
+    ],
+    glue: 'and'
+}
+```
+```sql
+AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` = 1))
 ```
 
 
