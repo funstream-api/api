@@ -16,4 +16,4 @@ API
   - [`POST` `/ajax/sc2tv_api/fast_donate` Микродонат](donate.md#Микродонат)
   - [`POST` `/ajax/sc2tv_api/get_user_balance` Баланс пользователя](donate.md#Баланс-пользователя)
   - [`POST` `/ajax/sc2tv_api/get_user_balance_transactions` Транзакции пользователя](donate.md#Транзакции-пользователя)
-  - [`POST` `/ajax/sc2tv_api/get_url_for_robo_restore` Пополнение баланса](donate.md#Пополнение баланса)
+  - [`POST` `/ajax/sc2tv_api/get_url_for_robo_restore` Пополнение баланса](donate.md#Пополнение-баланса)
