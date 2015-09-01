@@ -1,9 +1,53 @@
 ﻿*[Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.*
 
+
 F.A.Q
 ------
-  - Почему документация API именно на [Github.com](https://github.com/)?
-    - Потому что будут еще и утилиты
+- Почему документация API именно на [Github.com](https://github.com/)?
+  - Потому что будут еще и утилиты
+
+
+## Текущая версия
+###0.0.2
+[changelog](CHANGELOG.md)
+
+
+Общее
+-----
+
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате.
+Авторизация происходит через токен в `header`. Например
+```
+POST /user/current HTTP/1.1
+Token: Bearer <your-token-here>
+```
+
+Успешный ответ приходит со статусом `200`.  
+При ошибке ответ приходит со статусом `500`. Формат ответа ошибки
+```js
+{
+    message: <string> // error message
+}
+```
+
+Параметры, значение которых должно быть установлено в `null`, могут не передаваться.  
+Где написано ``объект из ответа ...``, если не указано иного, подразумевает ответ указанного запроса без необязательных параметров/опций.
+
+Версия API передается через `Accept`. Например,
+```
+GET /user/current HTTP/1.1
+Accept: application/json; version=1.0
+```
+*В данный момент передавать версию не обязательно*
+
+Запросы передаются на сайт [`http://funstream.tv`](http://funstream.tv) для общего API и на [`http://funstream.tv:3811`](http://funstream.tv:3811) для чата.
+
+Примеры запросов на `curl`
+```sh
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
+```
+
 
 API
 ------
@@ -14,16 +58,11 @@ API
   - **`S`** - Авторизованные саппорты
   - **`C`** - Закрытый, для внутреннего использования
 
-1. [**Админка**](admin.md)
-  - [**Модерация**](admin.md#Модерация)
-    - [`POST` `A` `/api/moderation/accuse` Забанить пользователя](admin.md#Забанить-пользователя)
-    - [`POST` `P` `/api/moderation/check` Проверить забанен ли пользователь](admin.md#Проверить-забанен-ли-пользователь)
-    - [`POST` `M` `/api/moderation/list` Получить список банов](admin.md#Получить-список-банов)
-    - [`POST` `P` `/api/moderation/reasons` Получить список причин бана](admin.md#Получить-список-причин-бана)
-    - [`POST` `M` `/api/moderation/undo` Отменить бан](admin.md#Отменить-бан)
-  - [**Поддержка**](admin.md#Поддержка)
-    - [`POST` `A` `/api/support/ask` Задать вопрос](admin.md#Задать-вопрос)
-    - [`POST` `S` `/api/support/list` Получить список вопросов](admin.md#Получить-список-вопросов)
+1. [**OAuth**](oauth.md)
+  - [`POST` `P` `/api/oauth/check` Проверка статуса кода](oauth.md#Проверка-статуса-кода)
+  - [`POST` `P` `/api/oauth/exchange` Получить токен по коду](oauth.md#Получить-токен-по-коду)
+  - [`POST` `A` `/api/oauth/grant` Предоставить доступ по коду](oauth.md#Предоставить-доступ-по-коду)
+  - [`POST` `P` `/api/oauth/request` Запросить код](oauth.md#Запросить-код)
 2. [**Чат**](chat.md)
   - [**Протокол взаимодействия**](chat.md#Протокол-взаимодействия)
     - [Пример на `Node.js`](chat.md#Примеры-использования-на-nodejs)
@@ -37,18 +76,13 @@ API
     - [`WS` `A` `/chat/publish` Отправить сообщение](chat.md#Отправить-сообщение)
     - [`WS` `P` `/chat/command` Выполнить команду](chat.md#Выполнить-команду)
   - [**Оповещение клиента**](chat.md#Оповещение-клиента)
-    - [`WS` `P` `/chat/message` Новое сообщение](chat.md#Сообщение)
-    - [`WS` `P` `/chat/message/remove` Удаление сообщения](chat.md#Удаление)
+    - [`WS` `P` `/chat/message` Новое сообщение](chat.md#Новое-сообщение)
+    - [`WS` `P` `/chat/message/remove` Удаление сообщения](chat.md#Удаление-сообщения)
     - [`WS` `P` `/chat/user/join` Присоединение к каналу](chat.md#Присоединение-к-каналу)
     - [`WS` `P` `/chat/user/leave` Отсоединение от канала](chat.md#Отсоединение-от-канала)
   - [**Каналы чата, текущие и запланированные**](chat.md#Каналы-чата-текущие-и-запланированные)
-3. [**OAuth**](oauth.md)
-  - [`POST` `P` `/api/oauth/check` Проверка статуса кода](oauth.md#Проверка-статуса-кода)
-  - [`POST` `P` `/api/oauth/exchange` Получить токен по коду](oauth.md#Получить-токен-по-коду)
-  - [`POST` `A` `/api/oauth/grant` Предоставить доступ по коду](oauth.md#Предоставить-доступ-по-коду)
-  - [`POST` `P` `/api/oauth/request` Запросить код](oauth.md#Запросить-код)
-4. [**Общее**](common.md)
-  - [**Общие положения**](common.md#Общие-положения)
+  - [**Типы сообщений**](#Типы-сообщений)
+3. [**Общее**](common.md)
   - [**Пользователь**](common.md#Пользователь)
     - [`POST` `P` `/api/user` Найти пользователя](common.md#Найти-пользователя)
     - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
@@ -68,9 +102,9 @@ API
     - [`POST` `P` `/api/content/top` Топ N элементов контента](common.md#Топ-n-элементов-контента)
   - [**Подписки**](common.md#Подписки)
     - [`POST` `A` `/api/subscribe/add` Подписаться](common.md#Подписаться)
-    - [`POST` `A` `/api/subscribe/amount` Колличество подписок онлайн](common.md#Колличество-подписок-онлайн)
+    - [`POST` `A` `/api/subscribe/amount` Количество активных подписок онлайн](common.md#Количество-активных-подписок)
     - [`POST` `A` `/api/subscribe/check` Проверить подписку](common.md#Проверить-подписку)
-    - [`POST` `A` `/api/subscribe/list` Получить список подписок](common.md#Получить-список-подписок)
+    - [`POST` `A` `/api/subscribe/list` Список подписок](common.md#Список-подписок)
     - [`POST` `A` `/api/subscribe/remove` Отписаться](common.md#Отписаться)
     - [`POST` `A` `/api/subscribe/subscribers` Список подписчиков пользователя](common.md#Список-подписчиков-пользователя)
   - [**Игноры**](common.md#Игноры)
@@ -79,7 +113,25 @@ API
     - [`POST` `A` `/api/ignore/list` Список игнорируемого](common.md#Список-игнорируемого)
     - [`POST` `A` `/api/ignore/remove` Удалить из списка игнорируемого](common.md#Удалить-из-списка-игнорируемого)
   - [**Дополнительные вызовы**](common.md#Дополнительные-вызовы)
+    - [`POST` `P` `/api/bulk` Пакетный запрос](common.md#Пакетный-запрос)
     - [`POST` `P` `/api/support?name=<streamer_name>` Получить список последних поддержавших для данного стримера за 5 минут](common.md#Получить-список-последних-поддержавших-для-данного-стримера-за-5-минут)
+4. [**Админка**](admin.md)
+  - [**Модерация**](admin.md#Модерация)
+    - [`POST` `A` `/api/moderation/accuse` Забанить пользователя](admin.md#Забанить-пользователя)
+    - [`POST` `P` `/api/moderation/check` Проверить забанен ли пользователь](admin.md#Проверить-забанен-ли-пользователь)
+    - [`POST` `M` `/api/moderation/list` Получить список банов](admin.md#Получить-список-банов)
+    - [`POST` `P` `/api/moderation/reasons` Получить список причин бана](admin.md#Получить-список-причин-бана)
+    - [`POST` `M` `/api/moderation/undo` Отменить бан](admin.md#Отменить-бан)
+  - [**Поддержка**](admin.md#Поддержка)
+    - [`POST` `A` `/api/support/ask` Задать вопрос](admin.md#Задать-вопрос)
+    - [`POST` `S` `/api/support/list` Получить список вопросов](admin.md#Получить-список-вопросов)
+5. [**Sc2tv**](sc2tv.md)
+  - [**Авторизация**](sc2tv.md#Авторизация)
+    - [`POST` `A` `/api/sc2tv/authUrl` Получить урл авторизации](sc2tv.md#Получить-урл-авторизации)
+    - [`POST` `A` `/api/sc2tv/check` Проверить права](sc2tv.md#Проверить-права)
+  - [**Донат**](sc2tv.md#Донат)
+    - [`POST` `A` `/api/sc2tv/donate` Донат произвольной суммы](sc2tv.md#Донат-произвольной-суммы)
+    - [`POST` `A` `/api/sc2tv/donate/fast` Микродонат](sc2tv.md#Микродонат)
 
 
-Спасибо @JAremko за оформление документации
+Спасибо @JAremko за помощь в оформлении документации.
