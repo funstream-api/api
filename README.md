@@ -8,7 +8,7 @@ F.A.Q
 
   
 ## Текущая версия
-###0.0.2
+### 0.0.3
 [changelog](CHANGELOG.md)
 
   
