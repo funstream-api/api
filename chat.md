@@ -2,8 +2,6 @@
 ------
 
 1. [**Протокол взаимодействия**](#Протокол-взаимодействия)
-  - [Пример на `Node.js`](#Примеры-использования-на-nodejs)
-  - [Пример на `C#`](#Примеры-использования-на-c)
 2. [**Оповещение сервера**](#Оповещение-сервера)
   - [`WS` `P` `/chat/login` Подписаться на события пользователя](#Подписаться-на-события-пользователя)
   - [`WS` `A` `/chat/logout` Отписаться от событий пользователя](#Отписаться-от-событий-пользователя)
@@ -28,33 +26,7 @@
 Все события для сервера получают ответ через коллбек.  
 Примеры взаимодействия клиента можно посмотреть на сайте [`socket.io`](http://socket.io/).
 
-
-##### Примеры использования на `Node.js`
-
-```js
-var io = require('socket.io-client');
-
-var socket = io.connect('http://funstream.tv:3811', {transports: ['websocket']});
-
-socket.on('connect', function (data) {console.log("connect: ", data)});
-socket.on('/chat/message', function(data) {console.log("message: ", data)});
-
-socket.emit('/chat/login', {token: null}, function (data) {console.log("login: ", data)});
-socket.emit('/chat/join', {channel: "main"}, function (data) {console.log("chat: ", data)});
-```
-
-##### Примеры использования на `C#`
-```C#
-socket = IO.Socket("http://funstream.tv:3811", new IO.Options { Transports = ImmutableList.Create("websocket") });
-
-socket.On(Socket.EVENT_CONNECT, (a) =>
-{
-    socket.Emit("/chat/login", (b) => { }, new JObject {["token"] = token });
-    socket.Emit("/chat/join", (b) => {}, "{ \"channel\": \"stream/" + streamerID + "\"}");
-});
-
-socket.On(Socket.EVENT_CONNECT_ERROR, (b) => {});
-```
+[Примеры взаимодействия для разных языков](chat-client-examples.md)
 
 
 Оповещение сервера
