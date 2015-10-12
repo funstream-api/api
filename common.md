@@ -108,7 +108,7 @@
 
 
 #### Логаут
-##### [`POST` `P` `/api/user/logout`](http://funstream.tv/api/user/logout)
+##### [`POST` `A` `/api/user/logout`](http://funstream.tv/api/user/logout)
 **запрос**
 ```js
 []
@@ -118,6 +118,7 @@
 []
 ```
 *Уничтожает куку, установленную при логине.*
+*Вернёт ошибку если передан неверный токен.*
 
 
 #### Регистрация
