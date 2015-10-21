@@ -173,7 +173,7 @@
 
 
 #### Регистрация через сторонние сервисы
-#####[`POST` `C` `/api/oauth/thirdparty/register`](http://funstream.tv/api/oauth/thirdparty/register)
+##### [`POST` `C` `/api/oauth/thirdparty/register`](http://funstream.tv/api/oauth/thirdparty/register)
 **запрос**
 ```js
 {

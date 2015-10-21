@@ -46,7 +46,7 @@
 
 
 #### Подписаться на события пользователя
-#####[`WS` `P` `/chat/login`](http://funstream.tv/chat/login)
+##### [`WS` `P` `/chat/login`](http://funstream.tv/chat/login)
 **запрос**
 ```js
 {
@@ -62,7 +62,7 @@
 
 
 #### Отписаться от событий пользователя
-#####[`WS` `A` `/chat/logout`](http://funstream.tv/chat/logout/)
+##### [`WS` `A` `/chat/logout`](http://funstream.tv/chat/logout/)
 **запрос**
 ```js
 {}
@@ -75,7 +75,7 @@
 
 
 #### Присоединится к каналу
-#####[`WS` `P` `/chat/join`](http://funstream.tv/chat/join)
+##### [`WS` `P` `/chat/join`](http://funstream.tv/chat/join)
 **запрос**
 ```js
 {
@@ -90,7 +90,7 @@
 
 
 #### Покинуть канал
-#####[`WS` `P` `/chat/leave`](http://funstream.tv/chat/leave)
+##### [`WS` `P` `/chat/leave`](http://funstream.tv/chat/leave)
 **запрос**
 ```js
 {
@@ -105,7 +105,7 @@
 
 
 #### История канала
-#####[`WS` `P` `/chat/history`](http://funstream.tv/chat/history)
+##### [`WS` `P` `/chat/history`](http://funstream.tv/chat/history)
 **запрос**
 ```js
 {
@@ -209,7 +209,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Отправить сообщение
-#####[`WS` `A` `/chat/publish`](http://funstream.tv/chat/publish)
+##### [`WS` `A` `/chat/publish`](http://funstream.tv/chat/publish)
 **запрос**
 ```js
 {
@@ -241,7 +241,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Новое сообщение
-#####[`WS` `P` `/chat/message`](http://funstream.tv/chat/message)
+##### [`WS` `P` `/chat/message`](http://funstream.tv/chat/message)
 ```js
 {
     id: <int>,  // Идентификатор сообщения
@@ -263,7 +263,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Удаление сообщения
-#####[`WS` `P` `/chat/message/remove`](http://funstream.tv/chat/message/remove)
+##### [`WS` `P` `/chat/message/remove`](http://funstream.tv/chat/message/remove)
 ```js
 {
     id: <int>, // Идентификатор сообщения
@@ -274,7 +274,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Присоединение к каналу
-#####[`WS` `P` `/chat/user/join`](http://funstream.tv/chat/user/join)
+##### [`WS` `P` `/chat/user/join`](http://funstream.tv/chat/user/join)
 ```js
 {}
 ```
@@ -282,7 +282,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Отсоединение от канала
-#####[`WS` `P` `/chat/user/leave`](http://funstream.tv/chat/user/leave)
+##### [`WS` `P` `/chat/user/leave`](http://funstream.tv/chat/user/leave)
 ```js
 {}
 ```

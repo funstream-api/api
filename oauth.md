@@ -44,7 +44,7 @@ OAuth API
 
 
 #### Получить данные приложения
-#####[`POST` `A` `/api/oauth/app`](http://funstream.tv/api/oauth/app)
+##### [`POST` `A` `/api/oauth/app`](http://funstream.tv/api/oauth/app)
 **запрос**
 ```js
 {}
@@ -62,7 +62,7 @@ OAuth API
 
 
 #### Сохранить данные приложения
-#####[`POST` `A` `/api/oauth/app/set`](http://funstream.tv/api/oauth/app/set)
+##### [`POST` `A` `/api/oauth/app/set`](http://funstream.tv/api/oauth/app/set)
 **запрос**
 ```js
 {
@@ -78,7 +78,7 @@ OAuth API
 
 
 #### Проверка статуса кода
-#####[`POST` `P` `/api/oauth/check`](http://funstream.tv/api/oauth/check)
+##### [`POST` `P` `/api/oauth/check`](http://funstream.tv/api/oauth/check)
 **запрос**
 ```js
 {
@@ -96,7 +96,7 @@ OAuth API
 
 
 #### Получить токен по коду
-#####[`POST` `P` `/api/oauth/exchange`](http://funstream.tv/api/oauth/exchange)
+##### [`POST` `P` `/api/oauth/exchange`](http://funstream.tv/api/oauth/exchange)
 **запрос**
 ```js
 {
@@ -114,7 +114,7 @@ OAuth API
 
 
 #### Предоставить доступ по коду
-#####[`POST` `A` `/api/oauth/grant`](http://funstream.tv/api/oauth/grant)
+##### [`POST` `A` `/api/oauth/grant`](http://funstream.tv/api/oauth/grant)
 **запрос**
 ```js
 {
@@ -130,7 +130,7 @@ OAuth API
 
 
 #### Получить список приложений имеющих доступ
-#####[`POST` `A` `/api/oauth/list`](http://funstream.tv/api/oauth/list)
+##### [`POST` `A` `/api/oauth/list`](http://funstream.tv/api/oauth/list)
 **запрос**
 ```js
 {}
@@ -151,7 +151,7 @@ OAuth API
 
 
 #### Отменить доступ приложения
-#####[`POST` `A` `/api/oauth/reject`](http://funstream.tv/api/oauth/reject)
+##### [`POST` `A` `/api/oauth/reject`](http://funstream.tv/api/oauth/reject)
 **запрос**
 ```js
 {
@@ -167,7 +167,7 @@ OAuth API
 
 
 #### Запросить код
-#####[`POST` `P` `/api/oauth/request`](http://funstream.tv/api/oauth/request)
+##### [`POST` `P` `/api/oauth/request`](http://funstream.tv/api/oauth/request)
 **запрос**
 ```js
 {
