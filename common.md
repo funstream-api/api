@@ -38,7 +38,7 @@
 ## Пользователь
 
 #### Найти пользователя
-##### [`POST` `P` `/api/user`](http://funstream.tv/api/user)
+##### [`POST` `P` `/api/user`](https://funstream.tv/api/user)
 **запрос**
 ```js
 {
@@ -58,7 +58,7 @@
 
 
 #### Данные текущего пользователя
-##### [`POST` `P` `/api/user/current`](http://funstream.tv/api/user/current)
+##### [`POST` `P` `/api/user/current`](https://funstream.tv/api/user/current)
 **запрос**
 ```js
 []
@@ -89,7 +89,7 @@
 
 
 #### Логин
-##### [`POST` `P` `/api/user/login`](http://funstream.tv/api/user/login)
+##### [`POST` `P` `/api/user/login`](https://funstream.tv/api/user/login)
 **запрос**
 ```js
 {
@@ -109,7 +109,7 @@
 
 
 #### Логаут
-##### [`POST` `A` `/api/user/logout`](http://funstream.tv/api/user/logout)
+##### [`POST` `A` `/api/user/logout`](https://funstream.tv/api/user/logout)
 **запрос**
 ```js
 []
@@ -123,7 +123,7 @@
 
 
 #### Регистрация
-##### [`POST` `C` `/api/user/register`](http://funstream.tv/api/user/register)
+##### [`POST` `C` `/api/user/register`](https://funstream.tv/api/user/register)
 **запрос**
 ```js
 {
@@ -146,7 +146,7 @@
 
 
 #### Получить или установить настройки текущего пользователя
-##### [`POST` `A` `/api/user/settings`](http://funstream.tv/api/user/settings)
+##### [`POST` `A` `/api/user/settings`](https://funstream.tv/api/user/settings)
 **запрос и ответ идентичны**
 ```js
 {
@@ -173,7 +173,7 @@
 
 
 #### Регистрация через сторонние сервисы
-##### [`POST` `C` `/api/oauth/thirdparty/register`](http://funstream.tv/api/oauth/thirdparty/register)
+##### [`POST` `C` `/api/oauth/thirdparty/register`](https://funstream.tv/api/oauth/thirdparty/register)
 **запрос**
 ```js
 {
@@ -196,7 +196,7 @@
 ## Категория
 
 #### Категория контента
-##### [`POST` `P` `/api/category`](http://funstream.tv/api/category)
+##### [`POST` `P` `/api/category`](https://funstream.tv/api/category)
 **запрос**
 ```js
 {
@@ -226,7 +226,7 @@
 ## Стрим
 
 #### Данные стрима
-##### [`POST` `P` `/api/stream`](http://funstream.tv/api/stream)
+##### [`POST` `P` `/api/stream`](https://funstream.tv/api/stream)
 **запрос**
 ```js
 {
@@ -266,7 +266,7 @@
 ## Чат
 
 #### Данные каналов
-##### [`POST` `P` `/api/channel/data`](http://funstream.tv/api/channel/data)
+##### [`POST` `P` `/api/channel/data`](https://funstream.tv/api/channel/data)
 **запрос**
 ```js
 {
@@ -291,7 +291,7 @@
 
 
 #### Доступные смайлы канала
-##### [`POST` `P` `/api/smile`](http://funstream.tv/api/smile)
+##### [`POST` `P` `/api/smile`](https://funstream.tv/api/smile)
 **запрос**
 ````js
 {
@@ -322,7 +322,7 @@
 ## Фильтр
 
 #### Список элементов контента
-##### [`POST` `A/P` `/api/content`](http://funstream.tv/api/content)
+##### [`POST` `A/P` `/api/content`](https://funstream.tv/api/content)
 **запрос**
 ```js
 {
@@ -354,7 +354,7 @@
 
 
 #### Топ N элементов контента
-##### [`POST` `P` `/api/content/top`](http://funstream.tv/api/content/top)
+##### [`POST` `P` `/api/content/top`](https://funstream.tv/api/content/top)
 **запрос**
 ```js
 {
@@ -382,7 +382,7 @@
 ## Подписки
 
 #### Подписаться
-##### [`POST` `A` `/api/subscribe/add`](http://funstream.tv/api/subscribe/add)
+##### [`POST` `A` `/api/subscribe/add`](https://funstream.tv/api/subscribe/add)
 **запрос**
 ```js
 {
@@ -398,7 +398,7 @@
 
 
 #### Количество активных подписок
-##### [`POST` `A` `/api/subscribe/amount`](http://funstream.tv/api/subscribe/amount)
+##### [`POST` `A` `/api/subscribe/amount`](https://funstream.tv/api/subscribe/amount)
 **запрос**
 ```js
 {
@@ -416,7 +416,7 @@
 
 
 #### Проверить подписку
-##### [`POST` `A` `/api/subscribe/check`](http://funstream.tv/api/subscribe/check)
+##### [`POST` `A` `/api/subscribe/check`](https://funstream.tv/api/subscribe/check)
 **запрос**
 ```js
 {
@@ -434,7 +434,7 @@
 
 
 #### Список подписок
-##### [`POST` `A` `/api/subscribe/list`](http://funstream.tv/api/subscribe/list)
+##### [`POST` `A` `/api/subscribe/list`](https://funstream.tv/api/subscribe/list)
 **запрос**
 ```js
 {
@@ -453,7 +453,7 @@
 
 
 #### Отписаться
-##### [`POST` `A` `/api/subscribe/remove`](http://funstream.tv/api/subscribe/remove)
+##### [`POST` `A` `/api/subscribe/remove`](https://funstream.tv/api/subscribe/remove)
 **запрос**
 ```js
 {
@@ -469,7 +469,7 @@
 
 
 #### Список подписчиков пользователя
-##### [`POST` `A` `/api/subscribe/subscribers`](http://funstream.tv/api/subscribe/subscribers)
+##### [`POST` `A` `/api/subscribe/subscribers`](https://funstream.tv/api/subscribe/subscribers)
 **запрос**
 ```js
 {
@@ -490,7 +490,7 @@
 ## Игноры
 
 #### Добавить в список игнорируемых
-##### [`POST` `A` `/api/ignore/add`](http://funstream.tv/api/ignore/add)
+##### [`POST` `A` `/api/ignore/add`](https://funstream.tv/api/ignore/add)
 **запрос**
 ```js
 {
@@ -506,7 +506,7 @@
 
 
 #### Проверить на игнор
-##### [`POST` `A` `/api/ignore/check`](http://funstream.tv/api/ignore/check)
+##### [`POST` `A` `/api/ignore/check`](https://funstream.tv/api/ignore/check)
 **запрос**
 ```js
 {
@@ -524,7 +524,7 @@
 
 
 #### Список игнорируемого
-##### [`POST` `A` `/api/ignore/list`](http://funstream.tv/api/ignore/list)
+##### [`POST` `A` `/api/ignore/list`](https://funstream.tv/api/ignore/list)
 **запрос**
 ```js
 {
@@ -545,7 +545,7 @@
 
 
 #### Удалить из списка игнорируемого
-##### [`POST` `A` `/api/ignore/remove`](http://funstream.tv/api/ignore/remove)
+##### [`POST` `A` `/api/ignore/remove`](https://funstream.tv/api/ignore/remove)
 **запрос**
 ```js
 {
@@ -563,7 +563,7 @@
 ## Дополнительные вызовы
 
 #### Пакетный запрос
-##### [`POST` `P` `/api/bulk`](http://funstream.tv/api/bulk)
+##### [`POST` `P` `/api/bulk`](https://funstream.tv/api/bulk)
 **запрос**
 ```js
 {
@@ -594,7 +594,7 @@
 
 
 #### Получить список последних поддержавших для данного стримера за 5 минут
-##### [`POST` `P` `/api/support?name=<streamer_name>`](http://funstream.tv/api/support?name=<streamer_name>)(заменить на json?)
+##### [`POST` `P` `/api/support?name=<streamer_name>`](https://funstream.tv/api/support?name=<streamer_name>)(заменить на json?)
 **запрос**
 ```js
 []

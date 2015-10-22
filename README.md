@@ -1,4 +1,4 @@
-# [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
+# [Funstream.tv](https://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
 ### 0.0.6
@@ -8,7 +8,7 @@
 Общее
 -----
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате.
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTPS**.
 Авторизация происходит через токен в `header`. Например
 ```
 POST /user/current HTTP/1.1
@@ -33,12 +33,12 @@ Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
 
-Запросы передаются на сайт [`http://funstream.tv`](http://funstream.tv) для общего API и на [`http://funstream.tv:3811`](http://funstream.tv:3811) для чата.
+Запросы передаются на сайт [`https://funstream.tv`](https://funstream.tv) для общего API и на [`wss://funstream.tv:443/socket.io/?EIO=3&transport=websocket`](wss://funstream.tv:443/socket.io/?EIO=3&transport=websocket) для чата.
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' https://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' https://funstream.tv/api/subscribe/subscribers
 ```
 
 

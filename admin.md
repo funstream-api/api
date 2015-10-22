@@ -16,7 +16,7 @@
 ## Модерация
 
 #### Забанить пользователя
-##### [`POST` `A` `/api/moderation/accuse`](http://funstream.tv/api/moderation/accuse)
+##### [`POST` `A` `/api/moderation/accuse`](https://funstream.tv/api/moderation/accuse)
 **запрос**
 ```js
 {
@@ -33,7 +33,7 @@
 
 
 ####  Проверить забанен ли пользователь
-##### [`POST` `P` `/api/moderation/check`](http://funstream.tv/api/moderation/check)
+##### [`POST` `P` `/api/moderation/check`](https://funstream.tv/api/moderation/check)
 **запрос**
 ```js
 {
@@ -54,7 +54,7 @@
 
 
 #### Получить список банов
-##### [`POST` `M` `/api/moderation/list`](http://funstream.tv/api/moderation/list)
+##### [`POST` `M` `/api/moderation/list`](https://funstream.tv/api/moderation/list)
 **запрос**
 ```js
 {
@@ -79,7 +79,7 @@
 
 
 #### Получить список причин бана
-##### [`POST` `P` `/api/moderation/reasons`](http://funstream.tv/api/moderation/reasons)
+##### [`POST` `P` `/api/moderation/reasons`](https://funstream.tv/api/moderation/reasons)
 **запрос**
 ```js
 {
@@ -101,7 +101,7 @@
 
 
 #### Отменить бан
-##### [`POST` `M` `/api/moderation/undo`](http://funstream.tv/api/moderation/undo)
+##### [`POST` `M` `/api/moderation/undo`](https://funstream.tv/api/moderation/undo)
 **запрос**
 ```js
 {
@@ -123,7 +123,7 @@
 
 
 #### Задать вопрос
-##### [`POST` `A` `/api/support/ask`](http://funstream.tv/api/support/ask)
+##### [`POST` `A` `/api/support/ask`](https://funstream.tv/api/support/ask)
 **запрос**
 ```js
 {
@@ -145,7 +145,7 @@
 
 
 #### Отключить возможность задавать вопросы
-##### [`POST` `A` `/api/support/ban`](http://funstream.tv/api/support/ban)
+##### [`POST` `A` `/api/support/ban`](https://funstream.tv/api/support/ban)
 **запрос**
 ```js
 {
@@ -161,7 +161,7 @@
 
 
 #### Список последних вопросов
-##### [`POST` `A` `/api/support/channels`](http://funstream.tv/api/support/channels)
+##### [`POST` `A` `/api/support/channels`](https://funstream.tv/api/support/channels)
 **запрос**
 ```js
 {}
@@ -178,7 +178,7 @@
 
 
 #### Получить список вопросов
-##### [`POST` `S` `/api/support/list`](http://funstream.tv/api/support/list)
+##### [`POST` `S` `/api/support/list`](https://funstream.tv/api/support/list)
 **запрос**
 ```js
 {
