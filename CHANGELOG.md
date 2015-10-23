@@ -7,6 +7,9 @@
     - [`/api/support/ask`](admin.md#Задать-вопрос) добавлены варианты ответа с ошибкой
 - **chat**
     - [`/chat/publish`](chat.md#Отправить-сообщение) в ответ добавлено поле `id`
+- **thirdparty**
+    - [`/api/oauth/thirdparty/register`](thirdparty.md#Регистрация-через-сторонние-сервисы) перенесён из [общего](common.md) раздела в [thirdparty](thirdparty.md)
+    - [`/api/oauth/thirdparty/goodgame`](thirdparty.md#Сохранение-данных-авторизации-для-GoodGame) добавлен запрос для сохранения логина/пароля GoodGame
 
 
 # 0.0.5 (2015-10-13)
