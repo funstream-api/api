@@ -14,6 +14,8 @@
 - **billing**
     - **donate**
         - добавлены запросы [`/billing/donate/challenge`](billing/donate.md#Челенджи), [`/billing/donate/`](billing/donate.md#Донат-антидонат-микродонат), [`/billing/donate/subscribe`](billing/donate.md#Подписки-на-мастер-стримеров)
+- **notifier**
+    - [`chatBan`](notifier.md#Бан-в-чате) добавлено уведомление о бане в чате
 
 
 # 0.0.5 (2015-10-13)

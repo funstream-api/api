@@ -129,6 +129,7 @@ API
 - [**Уведомления**](notifier.md)
     - [**Событие уведомления**](notifier.md#Событие-уведомления)
     - [**Типы уведомлений**](notifier.md#Типы-уведомлений)
+        - [`chatBan`](notifier.md#Бан-в-чате)
         - [`thirdpartyLogin`](notifier.md#Логин-через-сторонние-сервисы)
         - [`thirdpartyRegister`](notifier.md#Регистрация-через-сторонние-сервисы)
 - [**Сторонние сервисы**](thirdparty.md)
