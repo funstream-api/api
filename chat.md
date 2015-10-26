@@ -21,7 +21,7 @@
 Протокол взаимодействия
 --------------------------
 
-Клиент и сервер обмениваются событиями через websocket библиотеку [`socket.io`](http://socket.io/). Адрес подключения - [`wss://funstream.tv:443/socket.io/?EIO=3&transport=websocket`](wss://funstream.tv:443/socket.io/?EIO=3&transport=websocket).  
+Клиент и сервер обмениваются событиями через websocket библиотеку [`socket.io`](http://socket.io/). Адрес подключения - [`wss://funstream.tv`](wss://funstream.tv) (в зависимости от используемой библиотеки может понадобится указать боле полный вариант - [`wss://funstream.tv/socket.io/?EIO=3&transport=websocket`](wss://funstream.tv/socket.io/?EIO=3&transport=websocket)).  
 При соединении значении опции `transports` может быть только 'websocket'.  
 Все события для сервера получают ответ через коллбек.  
 Примеры взаимодействия клиента можно посмотреть на сайте [`socket.io`](http://socket.io/).

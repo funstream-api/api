@@ -33,7 +33,7 @@ Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
 
-Запросы передаются на сайт [`https://funstream.tv`](https://funstream.tv) для общего API и на [`wss://funstream.tv:443/socket.io/?EIO=3&transport=websocket`](wss://funstream.tv:443/socket.io/?EIO=3&transport=websocket) для чата.
+Запросы передаются на сайт [`https://funstream.tv`](https://funstream.tv) для общего API и на [`wss://funstream.tv`](wss://funstream.tv) для чата.
 
 Примеры запросов на `curl`
 ```sh
