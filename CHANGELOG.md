@@ -8,6 +8,7 @@
 - **chat**
     - [`/chat/publish`](chat.md#Отправить-сообщение) в ответ добавлено поле `id`
     - [`/chat/message`](chat.md#Отправить-сообщение) поле цвета ника `namecolor` заменено на `color`
+    - канал личных сообщений перенесёт в [реализованные](chat.md#Каналы-чата-текущие-и-запланированные)
 - **thirdparty**
     - [`/api/oauth/thirdparty/register`](thirdparty.md#Регистрация-через-сторонние-сервисы) перенесён из [общего](common.md) раздела в [thirdparty](thirdparty.md)
     - [`/api/oauth/thirdparty/goodgame`](thirdparty.md#Сохранение-данных-авторизации-для-GoodGame) добавлен запрос для сохранения логина/пароля GoodGame
@@ -16,6 +17,8 @@
         - добавлены запросы [`/billing/donate/challenge`](billing/donate.md#Челенджи), [`/billing/donate/`](billing/donate.md#Донат-антидонат-микродонат), [`/billing/donate/subscribe`](billing/donate.md#Подписки-на-мастер-стримеров)
 - **notifier**
     - [`chatBan`](notifier.md#Бан-в-чате) добавлено уведомление о бане в чате
+- **common**
+    - [`/api/channel/private`](common.md#Список-приват-каналов) добавлен запрос на список последних приват каналов пользователя
 
 
 # 0.0.5 (2015-10-13)

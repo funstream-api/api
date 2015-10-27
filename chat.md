@@ -298,8 +298,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `goodgame.ru/<streamer_id>` Сообщения с гудгейма, если у стримера активен этот плеер
 - `twitch.tv/<streamer_id>` Сообщения с твича, если у стримера активен этот плеер
 - `support/<id>` Вопрос к хелпдеску
-- Запланированные
-  - `private/<from_id>/<to_id>` Личные сообщения
+- `private/<from_id>/<to_id>` Личные сообщения, (from_id <= to_id)
 
 
 Типы сообщений

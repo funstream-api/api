@@ -90,6 +90,7 @@ API
         - [`POST` `P` `/api/stream` Данные стрима](common.md#Данные-стрима)
     - [**Чат**](common.md#Чат)
         - [`POST` `P` `/api/channel/data` Данные каналов](common.md#Данные-каналов)
+        - [`POST` `P` `/api/channel/private` Список приват каналов](common.md#Список-приват-каналов)
         - [`POST` `P` `/api/smile` Доступные смайлы канала](common.md#Доступные-смайлы-канала)
     - [**Фильтр**](common.md#Фильтр)
         - [`POST` `A/P` `/api/content` Список элементов контента](common.md#Список-элементов-контента)
