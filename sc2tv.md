@@ -27,7 +27,7 @@ API связи с sc2tv
 
 
 #### Получить урл авторизации
-#####[`POST` `A` `/api/sc2tv/authUrl`](http://funstream.tv/api/sc2tv/authUrl)
+##### [`POST` `A` `/api/sc2tv/authUrl`](https://funstream.tv/api/sc2tv/authUrl)
 **запрос**
 ```js
 {}
@@ -42,7 +42,7 @@ API связи с sc2tv
 
 
 ####  Проверить права
-#####[`POST` `A` `/api/sc2tv/check`](http://funstream.tv/api/sc2tv/check)
+##### [`POST` `A` `/api/sc2tv/check`](https://funstream.tv/api/sc2tv/check)
 **запрос**
 ```js
 {}
@@ -59,7 +59,7 @@ API связи с sc2tv
 ## Донат
 
 #### Донат произвольной суммы
-#####[`POST` `S` `/api/sc2tv/donate`](http://funstream.tv/api/sc2tv/donate)
+##### [`POST` `S` `/api/sc2tv/donate`](https://funstream.tv/api/sc2tv/donate)
 **запрос**
 ```js
 {
@@ -76,7 +76,7 @@ API связи с sc2tv
 
 
 #### Микродонат
-#####[`POST` `A` `/api/sc2tv/donate/fast`](http://funstream.tv/api/sc2tv/donate/fast)
+##### [`POST` `A` `/api/sc2tv/donate/fast`](https://funstream.tv/api/sc2tv/donate/fast)
 
 Значок доллара на сайте. Переводит фиксированную минимально возможную сумму(10 пекоинов).
 

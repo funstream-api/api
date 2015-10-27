@@ -3,21 +3,21 @@
 
 Термины
 ------------------
-- **сервер** - веб-сервер [funstream.tv](http://funstream.tv/)
-- **сайт** - сайт [funstream.tv](http://funstream.tv/)
+- **сервер** - веб-сервер [funstream.tv](https://funstream.tv/)
+- **сайт** - сайт [funstream.tv](https://funstream.tv/)
 - **приложение** - веб-сервер приложения, либо приложение в телефоне
-- **пользователь** - зарегистрированный пользователь на [funstream.tv](http://funstream.tv/)
+- **пользователь** - зарегистрированный пользователь на [funstream.tv](https://funstream.tv/)
 - **браузер** - браузер пользователя
 
 
 Последовательность действий
 ------------------
-1. Приложение регистрируется на сайте из под аккаунта владельца по ссылке [funstream.tv/oauth/app](http://funstream.tv/oauth/app), одно приложение на аккаунт.
+1. Приложение регистрируется на сайте из под аккаунта владельца по ссылке [funstream.tv/oauth/app](https://funstream.tv/oauth/app), одно приложение на аккаунт.
    С этой страницы берётся код приложения
 2. По умолчанию приложение не имеет доступа к дополнительным возоможностям(см. ниже) и для их активации нужно подтверждение приложения администрацией.
    При любых изменениях параметров приложения доступ к дополнительным возможностям сбрасывает и требует повторого подтверждения
 3. Приложение запрашивает код [`/api/oauth/request`](#Запросить-код), передавая ключ приложения
-4. Приложение передает код в браузер, предлагая пользователю перейти по ссылке ```http://funstream.tv/oauth/<code>```
+4. Приложение передает код в браузер, предлагая пользователю перейти по ссылке ```https://funstream.tv/oauth/<code>```
 5. Пользователь переходит по ссылке (открывается в новом окне, `target="_blank"`)
 6. Пользователь подтверждает код для приложения и закрывает окно
 7. Пользователь жмет 'Продолжить' в приложении
@@ -44,7 +44,7 @@ OAuth API
 
 
 #### Получить данные приложения
-#####[`POST` `A` `/api/oauth/app`](http://funstream.tv/api/oauth/app)
+##### [`POST` `A` `/api/oauth/app`](https://funstream.tv/api/oauth/app)
 **запрос**
 ```js
 {}
@@ -62,7 +62,7 @@ OAuth API
 
 
 #### Сохранить данные приложения
-#####[`POST` `A` `/api/oauth/app/set`](http://funstream.tv/api/oauth/app/set)
+##### [`POST` `A` `/api/oauth/app/set`](https://funstream.tv/api/oauth/app/set)
 **запрос**
 ```js
 {
@@ -78,7 +78,7 @@ OAuth API
 
 
 #### Проверка статуса кода
-#####[`POST` `P` `/api/oauth/check`](http://funstream.tv/api/oauth/check)
+##### [`POST` `P` `/api/oauth/check`](https://funstream.tv/api/oauth/check)
 **запрос**
 ```js
 {
@@ -96,7 +96,7 @@ OAuth API
 
 
 #### Получить токен по коду
-#####[`POST` `P` `/api/oauth/exchange`](http://funstream.tv/api/oauth/exchange)
+##### [`POST` `P` `/api/oauth/exchange`](https://funstream.tv/api/oauth/exchange)
 **запрос**
 ```js
 {
@@ -114,7 +114,7 @@ OAuth API
 
 
 #### Предоставить доступ по коду
-#####[`POST` `A` `/api/oauth/grant`](http://funstream.tv/api/oauth/grant)
+##### [`POST` `A` `/api/oauth/grant`](https://funstream.tv/api/oauth/grant)
 **запрос**
 ```js
 {
@@ -130,7 +130,7 @@ OAuth API
 
 
 #### Получить список приложений имеющих доступ
-#####[`POST` `A` `/api/oauth/list`](http://funstream.tv/api/oauth/list)
+##### [`POST` `A` `/api/oauth/list`](https://funstream.tv/api/oauth/list)
 **запрос**
 ```js
 {}
@@ -151,7 +151,7 @@ OAuth API
 
 
 #### Отменить доступ приложения
-#####[`POST` `A` `/api/oauth/reject`](http://funstream.tv/api/oauth/reject)
+##### [`POST` `A` `/api/oauth/reject`](https://funstream.tv/api/oauth/reject)
 **запрос**
 ```js
 {
@@ -167,7 +167,7 @@ OAuth API
 
 
 #### Запросить код
-#####[`POST` `P` `/api/oauth/request`](http://funstream.tv/api/oauth/request)
+##### [`POST` `P` `/api/oauth/request`](https://funstream.tv/api/oauth/request)
 **запрос**
 ```js
 {

@@ -13,7 +13,7 @@
 
 <script type='text/javascript'>
 
-    var socket = io('http://funstream.tv:3811', {
+    var socket = io('wss://funstream.tv', {
         transports: ['websocket'],
         'reconnect': true,
         'reconnectionDelay': 500,
@@ -59,7 +59,7 @@
 ```js
 var io = require('socket.io-client');
 
-var socket = io.connect('http://funstream.tv:3811', {transports: ['websocket']});
+var socket = io.connect('wss://funstream.tv', {transports: ['websocket']});
 
 socket.on('connect', function (data) {console.log('connect: ', data)});
 socket.on('/chat/message', function(data) {console.log('message: ', data)});
@@ -72,7 +72,7 @@ socket.emit('/chat/join', {channel: 'main'}, function (data) {console.log('chat:
 ##### C\# 
 
 ```C#
-socket = IO.Socket("http://funstream.tv:3811", new IO.Options { Transports = ImmutableList.Create("websocket") });
+socket = IO.Socket("wss://funstream.tv", new IO.Options { Transports = ImmutableList.Create("websocket") });
 
 socket.On(Socket.EVENT_CONNECT, (a) =>
 {

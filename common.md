@@ -1,44 +1,43 @@
 Общий API
 ==========
-1. [**Пользователь**](#Пользователь)
+- [**Пользователь**](#Пользователь)
     - [`POST` `P` `/api/user` Найти пользователя](#Найти-пользователя)
     - [`POST` `P` `/api/user/current` Данные текущего пользователя](#Данные-текущего-пользователя)
     - [`POST` `P` `/api/user/login` Логин](#Логин)
     - [`POST` `P` `/api/user/logout` Логаут](#Логаут)
     - [`POST` `C` `/api/user/register` Регистрация](#Регистрация)
     - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](#Получить-или-установить-настройки-текущего-пользователя)
-    - [`POST` `C` `/api/oauth/thirdparty/register` Регистрация через сторонние сервисы](#Регистрация-через-сторонние-сервисы)
-2. [**Категория**](#Категория)
+- [**Категория**](#Категория)
     - [`POST` `P` `/api/category` Категория контента](#Категория-контента)
-3. [**Стрим**](#Стрим)
+- [**Стрим**](#Стрим)
     - [`POST` `P` `/api/stream` Данные стрима](#Данные-стрима)
-4. [**Чат**](#Чат)
+- [**Чат**](#Чат)
     - [`POST` `P` `/api/channel/data` Данные каналов](#Данные-каналов)
+    - [`POST` `P` `/api/channel/private` Список приват каналов](#Список-приват-каналов)
     - [`POST` `P` `/api/smile` Доступные смайлы канала](#Доступные-смайлы-канала)
-5. [**Фильтр**](#Фильтр)
+- [**Фильтр**](#Фильтр)
     - [`POST` `A/P` `/api/content` Список элементов контента](#Список-элементов-контента)
     - [`POST` `P` `/api/content/top` Топ N элементов контента](#Топ-n-элементов-контента)
-6. [**Подписки**](#Подписки)
+- [**Подписки**](#Подписки)
     - [`POST` `A` `/api/subscribe/add` Подписаться](#Подписаться)
     - [`POST` `A` `/api/subscribe/amount` Количество активных подписок](#Количество-активных-подписок)
     - [`POST` `A` `/api/subscribe/check` Проверить подписку](#Проверить-подписку)
     - [`POST` `A` `/api/subscribe/list` Список подписок](#Список-подписок)
     - [`POST` `A` `/api/subscribe/remove` Отписаться](#Отписаться)
     - [`POST` `A` `/api/subscribe/subscribers` Список подписчиков пользователя](#Список-подписчиков-пользователя)
-7. [**Игноры**](#Игноры)
+- [**Игноры**](#Игноры)
     - [`POST` `A` `/api/ignore/add` Добавить в список игнорируемых](#Добавить-в-список-игнорируемых)
     - [`POST` `A` `/api/ignore/check` Проверить на игнор](#Проверить-на-игнор)
     - [`POST` `A` `/api/ignore/list` Список игнорируемого](#Список-игнорируемого)
     - [`POST` `A` `/api/ignore/remove` Удалить из списка игнорируемого](#Удалить-из-списка-игнорируемого)
-8. [**Дополнительные вызовы**](#Дополнительные-вызовы)
+- [**Дополнительные вызовы**](#Дополнительные-вызовы)
     - [`POST` `P` `/api/bulk` Пакетный запрос](#Пакетный-запрос)
-    - [`POST` `P` `/api/support?name=<streamer_name>` Получить список последних поддержавших для данного стримера за 5 минут](#Получить-список-последних-поддержавших-для-данного-стримера-за-5-минут)
     
 
 ## Пользователь
 
 #### Найти пользователя
-##### [`POST` `P` `/api/user`](http://funstream.tv/api/user)
+##### [`POST` `P` `/api/user`](https://funstream.tv/api/user)
 **запрос**
 ```js
 {
@@ -58,7 +57,7 @@
 
 
 #### Данные текущего пользователя
-##### [`POST` `P` `/api/user/current`](http://funstream.tv/api/user/current)
+##### [`POST` `P` `/api/user/current`](https://funstream.tv/api/user/current)
 **запрос**
 ```js
 []
@@ -82,14 +81,15 @@
         support: <bool>, // Сапорт, false по умолчанию
         canUseSupport: <bool>, // Возможность задавать вопрос саппортам и присоединяться к чат каналам вопросов, true по умолчанию
         moderator: <bool>, // Модератор, false по умолчанию
-        citizen: <int> // Сила голоса гражданской модерации, 1 по умолчанию
+        citizen: <int>, // Сила голоса гражданской модерации, 1 по умолчанию,
+        twitch: <bool> // Привязка твитч аккаунта, false по умолчанию
     }
 }
 ```
 
 
 #### Логин
-##### [`POST` `P` `/api/user/login`](http://funstream.tv/api/user/login)
+##### [`POST` `P` `/api/user/login`](https://funstream.tv/api/user/login)
 **запрос**
 ```js
 {
@@ -109,7 +109,7 @@
 
 
 #### Логаут
-##### [`POST` `A` `/api/user/logout`](http://funstream.tv/api/user/logout)
+##### [`POST` `A` `/api/user/logout`](https://funstream.tv/api/user/logout)
 **запрос**
 ```js
 []
@@ -123,7 +123,7 @@
 
 
 #### Регистрация
-##### [`POST` `C` `/api/user/register`](http://funstream.tv/api/user/register)
+##### [`POST` `C` `/api/user/register`](https://funstream.tv/api/user/register)
 **запрос**
 ```js
 {
@@ -146,7 +146,7 @@
 
 
 #### Получить или установить настройки текущего пользователя
-##### [`POST` `A` `/api/user/settings`](http://funstream.tv/api/user/settings)
+##### [`POST` `A` `/api/user/settings`](https://funstream.tv/api/user/settings)
 **запрос и ответ идентичны**
 ```js
 {
@@ -172,31 +172,10 @@
 *Вернёт ошибку если токена авторизации нет, он неверен, или указаны ошибочные настройки.*
 
 
-#### Регистрация через сторонние сервисы
-#####[`POST` `C` `/api/oauth/thirdparty/register`](http://funstream.tv/api/oauth/thirdparty/register)
-**запрос**
-```js
-{
-    name: <string>, // Имя пользователя
-    token: <string> // Токен авторизации, полученный соответствующим уведомлением после авторизации пользователя на стороннем сервисе
-}
-```
-**ответ**
-```js
-{
-    token: <string>, // Токен пользователя
-    current: <obj> // Данные пользователя, объект из ответа /api/user/current
-}
-```
-*Работает только на funstream.tv.*  
-*При успешной регистрации сразу логинит пользователя.*  
-*Вернёт ошибку если токен авторизации не верен, пользователь с таким именем уже существует или имя пользователя недопустимо.*
-
-
 ## Категория
 
 #### Категория контента
-##### [`POST` `P` `/api/category`](http://funstream.tv/api/category)
+##### [`POST` `P` `/api/category`](https://funstream.tv/api/category)
 **запрос**
 ```js
 {
@@ -226,7 +205,7 @@
 ## Стрим
 
 #### Данные стрима
-##### [`POST` `P` `/api/stream`](http://funstream.tv/api/stream)
+##### [`POST` `P` `/api/stream`](https://funstream.tv/api/stream)
 **запрос**
 ```js
 {
@@ -266,7 +245,7 @@
 ## Чат
 
 #### Данные каналов
-##### [`POST` `P` `/api/channel/data`](http://funstream.tv/api/channel/data)
+##### [`POST` `P` `/api/channel/data`](https://funstream.tv/api/channel/data)
 **запрос**
 ```js
 {
@@ -290,8 +269,25 @@
 *Вернёт ошибку если хотя бы один из переданных идентификаторов неверен.*
 
 
+#### Список приват каналов
+##### [`POST` `A` `/api/channel/private`](https://funstream.tv/api/channel/private)
+**запрос**
+```js
+{}
+```
+**ответ**
+```js
+[
+    <string>, // Идентификатор канала
+    ...
+]
+```
+*Возвращает последние 30 приват каналов пользователя. Сортировка по последнему сообщению. На данный момент не фильтрует приваты с заигноренными пользователями, необходимо делать это вручную.*  
+*Вернёт ошибку если пользователь не залогинен или передан неверный токен.*
+
+
 #### Доступные смайлы канала
-##### [`POST` `P` `/api/smile`](http://funstream.tv/api/smile)
+##### [`POST` `P` `/api/smile`](https://funstream.tv/api/smile)
 **запрос**
 ````js
 {
@@ -322,7 +318,7 @@
 ## Фильтр
 
 #### Список элементов контента
-##### [`POST` `A/P` `/api/content`](http://funstream.tv/api/content)
+##### [`POST` `A/P` `/api/content`](https://funstream.tv/api/content)
 **запрос**
 ```js
 {
@@ -354,7 +350,7 @@
 
 
 #### Топ N элементов контента
-##### [`POST` `P` `/api/content/top`](http://funstream.tv/api/content/top)
+##### [`POST` `P` `/api/content/top`](https://funstream.tv/api/content/top)
 **запрос**
 ```js
 {
@@ -382,7 +378,7 @@
 ## Подписки
 
 #### Подписаться
-##### [`POST` `A` `/api/subscribe/add`](http://funstream.tv/api/subscribe/add)
+##### [`POST` `A` `/api/subscribe/add`](https://funstream.tv/api/subscribe/add)
 **запрос**
 ```js
 {
@@ -398,7 +394,7 @@
 
 
 #### Количество активных подписок
-##### [`POST` `A` `/api/subscribe/amount`](http://funstream.tv/api/subscribe/amount)
+##### [`POST` `A` `/api/subscribe/amount`](https://funstream.tv/api/subscribe/amount)
 **запрос**
 ```js
 {
@@ -416,7 +412,7 @@
 
 
 #### Проверить подписку
-##### [`POST` `A` `/api/subscribe/check`](http://funstream.tv/api/subscribe/check)
+##### [`POST` `A` `/api/subscribe/check`](https://funstream.tv/api/subscribe/check)
 **запрос**
 ```js
 {
@@ -434,7 +430,7 @@
 
 
 #### Список подписок
-##### [`POST` `A` `/api/subscribe/list`](http://funstream.tv/api/subscribe/list)
+##### [`POST` `A` `/api/subscribe/list`](https://funstream.tv/api/subscribe/list)
 **запрос**
 ```js
 {
@@ -453,7 +449,7 @@
 
 
 #### Отписаться
-##### [`POST` `A` `/api/subscribe/remove`](http://funstream.tv/api/subscribe/remove)
+##### [`POST` `A` `/api/subscribe/remove`](https://funstream.tv/api/subscribe/remove)
 **запрос**
 ```js
 {
@@ -469,7 +465,7 @@
 
 
 #### Список подписчиков пользователя
-##### [`POST` `A` `/api/subscribe/subscribers`](http://funstream.tv/api/subscribe/subscribers)
+##### [`POST` `A` `/api/subscribe/subscribers`](https://funstream.tv/api/subscribe/subscribers)
 **запрос**
 ```js
 {
@@ -490,7 +486,7 @@
 ## Игноры
 
 #### Добавить в список игнорируемых
-##### [`POST` `A` `/api/ignore/add`](http://funstream.tv/api/ignore/add)
+##### [`POST` `A` `/api/ignore/add`](https://funstream.tv/api/ignore/add)
 **запрос**
 ```js
 {
@@ -506,7 +502,7 @@
 
 
 #### Проверить на игнор
-##### [`POST` `A` `/api/ignore/check`](http://funstream.tv/api/ignore/check)
+##### [`POST` `A` `/api/ignore/check`](https://funstream.tv/api/ignore/check)
 **запрос**
 ```js
 {
@@ -524,7 +520,7 @@
 
 
 #### Список игнорируемого
-##### [`POST` `A` `/api/ignore/list`](http://funstream.tv/api/ignore/list)
+##### [`POST` `A` `/api/ignore/list`](https://funstream.tv/api/ignore/list)
 **запрос**
 ```js
 {
@@ -545,7 +541,7 @@
 
 
 #### Удалить из списка игнорируемого
-##### [`POST` `A` `/api/ignore/remove`](http://funstream.tv/api/ignore/remove)
+##### [`POST` `A` `/api/ignore/remove`](https://funstream.tv/api/ignore/remove)
 **запрос**
 ```js
 {
@@ -563,7 +559,7 @@
 ## Дополнительные вызовы
 
 #### Пакетный запрос
-##### [`POST` `P` `/api/bulk`](http://funstream.tv/api/bulk)
+##### [`POST` `P` `/api/bulk`](https://funstream.tv/api/bulk)
 **запрос**
 ```js
 {
@@ -591,24 +587,3 @@
 *Позволяет получить результаты нескольких запросов за один.*  
 *Для каждого запроса возвращает массив с его данными, статусом выполнения и результатом. Индекс ответа соответствует индексу в массиве запросов.*  
 *Если запрос дал ошибку, то в ответе на этот запрос будет объект ошибки и статус false.*
-
-
-#### Получить список последних поддержавших для данного стримера за 5 минут
-##### [`POST` `P` `/api/support?name=<streamer_name>`](http://funstream.tv/api/support?name=<streamer_name>)(заменить на json?)
-**запрос**
-```js
-[]
-```
-**ответ**
-```js
-[
-    {
-        date: <float>, // Когда поддержал(формат Юникс)
-        support: <string>, // Имя поддержавшего
-        amount: <float>, // Сумма поддержки
-        msg: <string> // Сообщение
-    },
-    ...
-]
-```
-*Вернёт список поддержавших данного стримера за последние 5 минут.*

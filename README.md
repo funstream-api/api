@@ -1,14 +1,14 @@
-# [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
+# [Funstream.tv](https://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
-### 0.0.5
+### 0.0.6
 ###### [История изменений](CHANGELOG.md)
 
 
 Общее
 -----
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате.
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTPS**.
 Авторизация происходит через токен в `header`. Например
 ```
 POST /user/current HTTP/1.1
@@ -33,12 +33,12 @@ Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
 
-Запросы передаются на сайт [`http://funstream.tv`](http://funstream.tv) для общего API и на [`http://funstream.tv:3811`](http://funstream.tv:3811) для чата.
+Запросы передаются на сайт [`https://funstream.tv`](https://funstream.tv) для общего API и на [`wss://funstream.tv`](wss://funstream.tv) для чата.
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' https://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' https://funstream.tv/api/subscribe/subscribers
 ```
 
 
@@ -51,14 +51,15 @@ API
 - **`S`** Авторизованные саппорты
 - **`C`** Закрытый, для внутреннего использования
 
-1. [**OAuth**](oauth.md)  
+
+- [**OAuth**](oauth.md)  
     - [`POST` `A` `/api/oauth/app` Получить данные приложения](oauth.md#Получить-данные-приложения)
     - [`POST` `A` `/api/oauth/app/set` Сохранить данные приложения](oauth.md#Сохранить-данные-приложения)
     - [`POST` `P` `/api/oauth/check` Проверка статуса кода](oauth.md#Проверка-статуса-кода)
     - [`POST` `P` `/api/oauth/exchange` Получить токен по коду](oauth.md#Получить-токен-по-коду)
     - [`POST` `A` `/api/oauth/grant` Предоставить доступ по коду](oauth.md#Предоставить-доступ-по-коду)
     - [`POST` `P` `/api/oauth/request` Запросить код](oauth.md#Запросить-код)
-2. [**Чат**](chat.md)
+- [**Чат**](chat.md)
     - [**Протокол взаимодействия**](chat.md#Протокол-взаимодействия)
         - [Примеры взаимодействия для разных языков](chat-client-examples.md)
     - [**Оповещение сервера**](chat.md#Оповещение-сервера)
@@ -75,7 +76,7 @@ API
         - [`WS` `P` `/chat/user/leave` Отсоединение от канала](chat.md#Отсоединение-от-канала)
     - [**Каналы чата, текущие и запланированные**](chat.md#Каналы-чата-текущие-и-запланированные)
     - [**Типы сообщений**](chat.md#Типы-сообщений)
-3. [**Общее**](common.md)
+- [**Общее**](common.md)
     - [**Пользователь**](common.md#Пользователь)
         - [`POST` `P` `/api/user` Найти пользователя](common.md#Найти-пользователя)
         - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
@@ -83,13 +84,13 @@ API
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
         - [`POST` `C` `/api/user/register` Регистрация](common.md#Регистрация)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
-        - [`POST` `C` `/api/oauth/thirdparty/register` Регистрация через сторонние сервисы](common.md#Регистрация-через-сторонние-сервисы)
     - [**Категория**](common.md#Категория)
         - [`POST` `P` `/api/category` Категория контента](common.md#Категория-контента)
     - [**Стрим**](common.md#Стрим)
         - [`POST` `P` `/api/stream` Данные стрима](common.md#Данные-стрима)
     - [**Чат**](common.md#Чат)
         - [`POST` `P` `/api/channel/data` Данные каналов](common.md#Данные-каналов)
+        - [`POST` `P` `/api/channel/private` Список приват каналов](common.md#Список-приват-каналов)
         - [`POST` `P` `/api/smile` Доступные смайлы канала](common.md#Доступные-смайлы-канала)
     - [**Фильтр**](common.md#Фильтр)
         - [`POST` `A/P` `/api/content` Список элементов контента](common.md#Список-элементов-контента)
@@ -108,8 +109,13 @@ API
         - [`POST` `A` `/api/ignore/remove` Удалить из списка игнорируемого](common.md#Удалить-из-списка-игнорируемого)
     - [**Дополнительные вызовы**](common.md#Дополнительные-вызовы)
         - [`POST` `P` `/api/bulk` Пакетный запрос](common.md#Пакетный-запрос)
-        - [`POST` `P` `/api/support?name=<streamer_name>` Получить список последних поддержавших для данного стримера за 5 минут](common.md#Получить-список-последних-поддержавших-для-данного-стримера-за-5-минут)
-4. [**Админка**](admin.md)
+- [**Биллинг**](billing/README.md)
+    - [**Донат**](billing/donate.md)
+        - [**Информация о последних событиях**](billing/donate.md#Информация-о-последних-событиях)
+            - [`GET` `P` `/billing/donate/challenge` Челенджи](billing/donate.md#Челенджи)
+            - [`GET` `P` `/billing/donate/` Донат, антидонат, микродонат](billing/donate.md#Донат-антидонат-микродонат)
+            - [`GET` `P` `/billing/donate/subscribe` Подписки на мастер стримеров](billing/donate.md#Подписки-на-мастер-стримеров)
+- [**Админка**](admin.md)
     - [**Модерация**](admin.md#Модерация)
         - [`POST` `A` `/api/moderation/accuse` Забанить пользователя](admin.md#Забанить-пользователя)
         - [`POST` `P` `/api/moderation/check` Проверить забанен ли пользователь](admin.md#Проверить-забанен-ли-пользователь)
@@ -118,13 +124,19 @@ API
         - [`POST` `M` `/api/moderation/undo` Отменить бан](admin.md#Отменить-бан)
     - [**Поддержка**](admin.md#Поддержка)
         - [`POST` `A` `/api/support/ask` Задать вопрос](admin.md#Задать-вопрос)
+        - [`POST` `A` `/api/support/ban` Отключить возможность задавать вопросы](admin.md#Отключить-возможность-задавать-вопросы)
+        - [`POST` `A` `/api/support/channels` Список последних вопросов](admin.md#Список-последних-вопросов)
         - [`POST` `S` `/api/support/list` Получить список вопросов](admin.md#Получить-список-вопросов)
-5. [**Уведомления**](notifier.md)
+- [**Уведомления**](notifier.md)
     - [**Событие уведомления**](notifier.md#Событие-уведомления)
     - [**Типы уведомлений**](notifier.md#Типы-уведомлений)
+        - [`chatBan`](notifier.md#Бан-в-чате)
         - [`thirdpartyLogin`](notifier.md#Логин-через-сторонние-сервисы)
         - [`thirdpartyRegister`](notifier.md#Регистрация-через-сторонние-сервисы)
-6. [**Sc2tv**](sc2tv.md)
+- [**Сторонние сервисы**](thirdparty.md)
+    - [`POST` `A` `/api/oauth/thirdparty/goodgame` Сохранение данных авторизации для GoodGame](thirdparty.md#Сохранение-данных-авторизации-для-goodgame)
+    - [`POST` `C` `/api/oauth/thirdparty/register` Регистрация через сторонние сервисы](thirdparty.md#Регистрация-через-сторонние-сервисы)
+- [**Sc2tv**](sc2tv.md)
     - [**Авторизация**](sc2tv.md#Авторизация)
         - [`POST` `A` `/api/sc2tv/authUrl` Получить урл авторизации](sc2tv.md#Получить-урл-авторизации)
         - [`POST` `A` `/api/sc2tv/check` Проверить права](sc2tv.md#Проверить-права)

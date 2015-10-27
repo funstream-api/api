@@ -21,10 +21,8 @@
 Протокол взаимодействия
 --------------------------
 
-Клиент и сервер обмениваются событиями через [`socket.io`](http://socket.io/).  
-При соединении значении опции `transports` может быть только 'websocket'.  
-Все события для сервера получают ответ через коллбек.  
-Примеры взаимодействия клиента можно посмотреть на сайте [`socket.io`](http://socket.io/).
+Клиент и сервер обмениваются событиями через websocket библиотеку [`socket.io`](http://socket.io/). Адрес подключения - [`wss://funstream.tv`](wss://funstream.tv) (в зависимости от используемой библиотеки может понадобится указать боле полный вариант - [`wss://funstream.tv/socket.io/?EIO=3&transport=websocket`](wss://funstream.tv/socket.io/?EIO=3&transport=websocket)). Поддерживается только 13 версия протокола websocket.  
+При соединении значении опции `transports` может быть только 'websocket'. Все события для сервера получают ответ через коллбек.  
 
 [Примеры взаимодействия для разных языков](chat-client-examples.md)
 
@@ -46,7 +44,7 @@
 
 
 #### Подписаться на события пользователя
-#####[`WS` `P` `/chat/login`](http://funstream.tv/chat/login)
+##### `WS` `P` `/chat/login`
 **запрос**
 ```js
 {
@@ -62,7 +60,7 @@
 
 
 #### Отписаться от событий пользователя
-#####[`WS` `A` `/chat/logout`](http://funstream.tv/chat/logout/)
+##### `WS` `A` `/chat/logout`
 **запрос**
 ```js
 {}
@@ -75,7 +73,7 @@
 
 
 #### Присоединится к каналу
-#####[`WS` `P` `/chat/join`](http://funstream.tv/chat/join)
+##### `WS` `P` `/chat/join`
 **запрос**
 ```js
 {
@@ -90,7 +88,7 @@
 
 
 #### Покинуть канал
-#####[`WS` `P` `/chat/leave`](http://funstream.tv/chat/leave)
+##### `WS` `P` `/chat/leave`
 **запрос**
 ```js
 {
@@ -105,7 +103,7 @@
 
 
 #### История канала
-#####[`WS` `P` `/chat/history`](http://funstream.tv/chat/history)
+##### `WS` `P` `/chat/history`
 **запрос**
 ```js
 {
@@ -209,7 +207,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Отправить сообщение
-#####[`WS` `A` `/chat/publish`](http://funstream.tv/chat/publish)
+##### `WS` `A` `/chat/publish`
 **запрос**
 ```js
 {
@@ -227,7 +225,9 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 ```
 **ответ**
 ```js
-{}
+{
+  id: <int> // Идентификатор добавленного сообщения
+}
 ```
 Будет работать только после `/chat/login`
 
@@ -241,17 +241,17 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Новое сообщение
-#####[`WS` `P` `/chat/message`](http://funstream.tv/chat/message)
+##### `WS` `P` `/chat/message`
 ```js
 {
     id: <int>,  // Идентификатор сообщения
     channel: <string>, // Идентификатор канала, см. раздел 4
-    from: {
+    from: { // Объект пользователя отправителя сообщения
         id: <int>, // Идентификатор пользователя
         name: <string>, // Имя пользователя
-        namecolor: <int> // Идентификатор цвета имени пользователя
+        color: <int> // Идентификатор цвета имени пользователя
     },
-    to: <obj|null>, // Идентификатор и имя пользователя к которому обращаются
+    to: <obj|null>, // Объект пользователя к которому обращаются, аналогично from
     text: <string>, // Текст сообщения
     time: <string>, // Дата-время сообщения (временно, потом будет временная метка)
     type: <string> // Тип сообщения, см. раздел 5
@@ -263,7 +263,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Удаление сообщения
-#####[`WS` `P` `/chat/message/remove`](http://funstream.tv/chat/message/remove)
+##### `WS` `P` `/chat/message/remove`
 ```js
 {
     id: <int>, // Идентификатор сообщения
@@ -274,7 +274,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Присоединение к каналу
-#####[`WS` `P` `/chat/user/join`](http://funstream.tv/chat/user/join)
+##### `WS` `P` `/chat/user/join`
 ```js
 {}
 ```
@@ -282,7 +282,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 
 
 #### Отсоединение от канала
-#####[`WS` `P` `/chat/user/leave`](http://funstream.tv/chat/user/leave)
+##### `WS` `P` `/chat/user/leave`
 ```js
 {}
 ```
@@ -298,9 +298,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `goodgame.ru/<streamer_id>` Сообщения с гудгейма, если у стримера активен этот плеер
 - `twitch.tv/<streamer_id>` Сообщения с твича, если у стримера активен этот плеер
 - `support/<id>` Вопрос к хелпдеску
-- Запланированные
-  - `private/<from_id>/<to_id>` Личные сообщения
-  - `notifications/<user_id>` Системные уведомления для пользователя
+- `private/<from_id>/<to_id>` Личные сообщения, (from_id <= to_id)
 
 
 Типы сообщений
