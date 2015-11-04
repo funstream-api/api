@@ -83,7 +83,7 @@
 **запрос**
 ```js
 {
-    content: <string> // Тип контента, [chat]
+    content: <string> // Тип контента, [chat, moderation]
 }
 ```
 **ответ**

@@ -1,3 +1,12 @@
+# 0.0.7 (2015-10-XX)
+
+### Funstream
+- **billing**
+    - **donate**
+        - [`/billing/donate/`](billing/donate.md#Донат-антидонат-микродонат)  в ответ добавлен тип 'directdonate' для прямых переводов
+
+
+
 # 0.0.6 (2015-10-27)
 
 ### Funstream
