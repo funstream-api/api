@@ -134,6 +134,7 @@ API
         - [`chatBanUndo`](notifier.md#Отмена-бана-в-чате)
         - [`thirdpartyLogin`](notifier.md#Логин-через-сторонние-сервисы)
         - [`thirdpartyRegister`](notifier.md#Регистрация-через-сторонние-сервисы)
+        - [`thirdPartyMessageError`](notifier.md#Ошибка-отправки-сообщения-в-чат-сервис)
 - [**Сторонние сервисы**](thirdparty.md)
     - [`POST` `A` `/api/oauth/thirdparty/goodgame` Сохранение данных авторизации для GoodGame](thirdparty.md#Сохранение-данных-авторизации-для-goodgame)
     - [`POST` `C` `/api/oauth/thirdparty/register` Регистрация через сторонние сервисы](thirdparty.md#Регистрация-через-сторонние-сервисы)
