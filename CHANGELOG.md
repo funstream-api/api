@@ -4,6 +4,8 @@
 - **billing**
     - **donate**
         - [`/billing/donate/`](billing/donate.md#Донат-антидонат-микродонат)  в ответ добавлен тип 'directdonate' для прямых переводов
+- **notifier**
+    - [`chatBanUndo`](notifier.md#Отмена-бана-в-чате) добавлено уведомление о отмене бана в чате
 
 
 
