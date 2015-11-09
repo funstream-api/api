@@ -42,6 +42,9 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 
 
+##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](https://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(требуется логин пользователя), категория 'Технические вопросы'.
+
+
 API
 ------
 ###### Права доступа
@@ -121,7 +124,7 @@ API
         - [`POST` `A` `/api/moderation/accuse` Забанить пользователя](admin.md#Забанить-пользователя)
         - [`POST` `B` `/api/moderation/block` Заблокировать/разблокировать пользователя](admin.md#Заблокировать-разблокировать-пользователя)
         - [`POST` `P` `/api/moderation/check` Проверить забанен ли пользователь](admin.md#Проверить-забанен-ли-пользователь)
-        - [`POST` `M` `/api/moderation/list` Получить список банов](admin.md#Получить-список-банов)
+        - [`POST` `A` `/api/moderation/list` Получить список банов](admin.md#Получить-список-банов)
         - [`POST` `P` `/api/moderation/reasons` Получить список причин бана](admin.md#Получить-список-причин-бана)
         - [`POST` `M` `/api/moderation/undo` Отменить бан](admin.md#Отменить-бан)
     - [**Поддержка**](admin.md#Поддержка)
