@@ -42,7 +42,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 
 
-##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](https://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(требуется логин пользователя), категория 'Технические вопросы'.
+##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](https://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(необходимо залогиниться), категория 'Технические вопросы'.
 
 
 API
