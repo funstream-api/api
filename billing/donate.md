@@ -57,7 +57,7 @@ API доната
         streamer: <string>, // Имя стримера получателя
         amount: <int>, // Сумма перевода(отрицательное число для антидоната)
         msg: <string>, // Сообщение к переводу, если есть
-        type: <string> // Тип события [donate|antidonate|fastdonate]
+        type: <string> // Тип события [donate|antidonate|fastdonate|directdonate]
     },
     ...
 }

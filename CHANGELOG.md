@@ -1,3 +1,22 @@
+# 0.0.7 (2015-11-10)
+
+### Funstream
+- **billing**
+    - **donate**
+        - [`/billing/donate/`](billing/donate.md#Донат-антидонат-микродонат)  в ответ добавлен тип 'directdonate' для прямых переводов
+- **notifier**
+    - [`chatBanAttempt`](notifier.md#Отметка-о-нарушении-в-чате) добавлено уведомление о отметке нарушения в чате
+    - [`chatBanUndo`](notifier.md#Отмена-бана-в-чате) добавлено уведомление о отмене бана в чате
+    - [`chatThirdpartySendMessageError`](notifier.md#Ошибка-отправки-сообщения-в-чат-сервис) добавлено уведомление о ошибке отправки сообщения чат сервису
+- **admin**
+    - [`/api/moderation/accuse`](admin.md#Забанить-пользователя) добавлены варианты ответа с ошибкой
+    - [`/api/moderation/block`](admin.md#Заблокировать-разблокировать-пользователя) добавлен запрос блокировки/разблокировки пользователя
+    - [`/api/moderation/list`](admin.md#Получить-список-банов) список банов доступен всем залогиненным пользователям, добавлен параметр запроса `banId`, добавлены парметры ответа `active` и `data`
+- **chat**
+    - [`/chat/message/remove`](chat.md#Удаление-сообщения) добавлены поля `reason` и `data`, добавлена причина удаления 'ban'
+
+
+
 # 0.0.6 (2015-10-27)
 
 ### Funstream
@@ -8,11 +27,11 @@
     - [`/api/support/ask`](admin.md#Задать-вопрос) добавлены варианты ответа с ошибкой
 - **chat**
     - [`/chat/publish`](chat.md#Отправить-сообщение) в ответ добавлено поле `id`
-    - [`/chat/message`](chat.md#Отправить-сообщение) поле цвета ника `namecolor` заменено на `color`
+    - [`/chat/message`](chat.md#Новое-сообщение) поле цвета ника `namecolor` заменено на `color`
     - канал личных сообщений перенесён в [реализованные](chat.md#Каналы-чата-текущие-и-запланированные)
 - **thirdparty**
     - [`/api/oauth/thirdparty/register`](thirdparty.md#Регистрация-через-сторонние-сервисы) перенесён из [общего](common.md) раздела в [thirdparty](thirdparty.md)
-    - [`/api/oauth/thirdparty/goodgame`](thirdparty.md#Сохранение-данных-авторизации-для-GoodGame) добавлен запрос для сохранения логина/пароля GoodGame
+    - [`/api/oauth/thirdparty/goodgame`](thirdparty.md#Сохранение-данных-авторизации-для-goodgame) добавлен запрос для сохранения логина/пароля GoodGame
 - **billing**
     - **donate**
         - добавлены запросы [`/billing/donate/challenge`](billing/donate.md#Челенджи), [`/billing/donate/`](billing/donate.md#Донат-антидонат-микродонат), [`/billing/donate/subscribe`](billing/donate.md#Подписки-на-мастер-стримеров)
@@ -20,6 +39,7 @@
     - [`chatBan`](notifier.md#Бан-в-чате) добавлено уведомление о бане в чате
 - **common**
     - [`/api/channel/private`](common.md#Список-приват-каналов) добавлен запрос на список последних приват каналов пользователя
+
 
 
 # 0.0.5 (2015-10-13)
