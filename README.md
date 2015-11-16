@@ -1,7 +1,7 @@
 # [Funstream.tv](https://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
-### 0.0.8
+### 0.0.9
 ###### [История изменений](CHANGELOG.md)
 
   
@@ -86,7 +86,7 @@ API
         - [`POST` `P` `/api/user` Данные пользователя](common.md#Данные-пользователя)
         - [`POST` `P` `/api/user/list` Данные списка пользователей](common.md#Данные-списка-пользователей)
         - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
-        - [`POST` `P` `/api/user/login` Логин](common.md#Логин)
+        - [`POST` `C` `/api/user/login` Логин](common.md#Логин)
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
         - [`POST` `C` `/api/user/register` Регистрация](common.md#Регистрация)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
