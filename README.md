@@ -88,7 +88,6 @@ API
         - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
         - [`POST` `C` `/api/user/login` Логин](common.md#Логин)
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
-        - [`POST` `C` `/api/user/register` Регистрация](common.md#Регистрация)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
     - [**Категория**](common.md#Категория)
         - [`POST` `P` `/api/category` Категория контента](common.md#Категория-контента)
