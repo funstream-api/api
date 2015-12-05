@@ -2,8 +2,9 @@
 
 ### Funstream
 - **chat**
-    - в сообщениях чата могут встречаться bbcode теги
-    
+    - в сообщениях [чата](chat.md) могут встречаться bbcode теги
+- **common**
+    - [`/api/user/settings`](common.md#Получить-или-установить-настройки-текущего-пользователя) добавлены забытые настройки чата `favoritesmiles`, `thirdpartydontmask`, `imagesgif`, `submode`, `totalignore`
 
 
 # 0.0.9 (2015-11-25)
