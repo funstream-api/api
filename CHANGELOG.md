@@ -5,6 +5,7 @@
     - в сообщениях [чата](chat.md) могут встречаться bbcode теги
 - **common**
     - [`/api/user/settings`](common.md#Получить-или-установить-настройки-текущего-пользователя) добавлены забытые настройки чата `favoritesmiles`, `thirdpartydontmask`, `imagesgif`, `submode`, `totalignore`
+    - [`/api/user/forgot`](common.md#Запрос-на-сброс-пароля), [`/api/user/restore`](common.md#Установка-пароля) добавлены запросы на сборс и установку нового пароля
 
 
 # 0.0.9 (2015-11-25)

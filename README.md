@@ -91,6 +91,8 @@ API
         - [`POST` `C` `/api/user/login` Логин](common.md#Логин)
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
+        - [`POST` `P` `/api/user/forgot` Запрос на сброс пароля](common.md#Запрос-на-сброс-пароля)
+        - [`POST` `P` `/api/user/restore` Установка пароля](common.md#Установка-пароля)
     - [**Категория**](common.md#Категория)
         - [`POST` `P` `/api/category` Категория контента](common.md#Категория-контента)
     - [**Стрим**](common.md#Стрим)
