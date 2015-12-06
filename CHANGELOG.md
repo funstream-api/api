@@ -6,6 +6,7 @@
 - **common**
     - [`/api/user/settings`](common.md#Получить-или-установить-настройки-текущего-пользователя) добавлены забытые настройки чата `favoritesmiles`, `thirdpartydontmask`, `imagesgif`, `submode`, `totalignore`
     - [`/api/user/forgot`](common.md#Запрос-на-сброс-пароля), [`/api/user/restore`](common.md#Установка-пароля) добавлены запросы на сборс и установку нового пароля
+    - [`/api/masterstreamer/list`](common.md#Список-иконок-и-смайлов-мастерстримеров), [`/api/masterstreamer/icon/list`](common.md#Список-выбранных-пользователями-иконок) добавлены запросы связанные с мастерстримерами
 - **notifier**
     - [`chatChannelDonateLevel`](notifier.md#Изменение-донат-уровня-канала-чата) добавлено уведомление о изменении донат уровня канала чата
 
