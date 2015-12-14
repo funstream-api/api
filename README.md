@@ -1,7 +1,7 @@
 # [Funstream.tv](https://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
-### 0.0.9
+### 0.0.10
 ###### [История изменений](CHANGELOG.md)
 
 
@@ -55,6 +55,7 @@ API
 - **`B`** Наличие роли blocker
 - **`Sm`** Наличие роли smiler
 - **`MS`** Мастерстримеры
+- **`RA`** Администратор ролей
 - **`C`** Закрытый, для внутреннего использования
 
 
@@ -88,9 +89,14 @@ API
         - [`POST` `P` `/api/user` Данные пользователя](common.md#Данные-пользователя)
         - [`POST` `P` `/api/user/list` Данные списка пользователей](common.md#Данные-списка-пользователей)
         - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
+        - [`POST` `RA` `/api/user/full` Полные данные пользователя](common.md#Полные-данные-пользователя)
         - [`POST` `C` `/api/user/login` Логин](common.md#Логин)
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
+        - [`POST` `P` `/api/user/forgot` Запрос на сброс пароля](common.md#Запрос-на-сброс-пароля)
+        - [`POST` `P` `/api/user/restore` Установка пароля](common.md#Установка-пароля)
+        - [`POST` `RA` `/api/user/roles/list` Список пользователей с ролью](common.md#Список-пользователей-с-ролью)
+        - [`POST` `RA` `/api/user/roles/set` Изменить роль пользователя](common.md#Изменить-роль-пользователя)
     - [**Категория**](common.md#Категория)
         - [`POST` `P` `/api/category` Категория контента](common.md#Категория-контента)
     - [**Стрим**](common.md#Стрим)
@@ -113,6 +119,13 @@ API
         - [`POST` `A` `/api/ignore/check` Проверить на игнор](common.md#Проверить-на-игнор)
         - [`POST` `A` `/api/ignore/list` Список игнорируемого](common.md#Список-игнорируемого)
         - [`POST` `A` `/api/ignore/remove` Удалить из списка игнорируемого](common.md#Удалить-из-списка-игнорируемого)
+    - [**Мастерстримеры**](common.md#Мастерстримеры)
+        - [`POST` `P` `/api/masterstreamer/list` Список иконок и смайлов мастерстримеров](common.md#Список-иконок-и-смайлов-мастерстримеров)
+        - [`POST` `P` `/api/masterstreamer/icon/list` Список выбранных пользователями иконок](common.md#Список-выбранных-пользователями-иконок)
+    - [**Иконки**](common.md#Иконки)
+        - [`POST` `Ms` `/api/icon/add` Добавление иконки](common.md#Добавление-иконки)
+        - [`POST` `Ms` `/api/icon/list` Список иконок](common.md#Список-иконок)
+        - [`POST` `Ms` `/api/icon/remove` Удаление иконок](common.md#Удаление-иконок)
     - [**Дополнительные вызовы**](common.md#Дополнительные-вызовы)
         - [`POST` `P` `/api/bulk` Пакетный запрос](common.md#Пакетный-запрос)
 - [**Смайлы**](smile.md)
@@ -150,12 +163,13 @@ API
 - [**Уведомления**](notifier.md)
     - [**Событие уведомления**](notifier.md#Событие-уведомления)
     - [**Типы уведомлений**](notifier.md#Типы-уведомлений)
-        - [`chatBan`](notifier.md#Бан-в-чате)
-        - [`chatBanAttempt`](notifier.md#Отметка-о-нарушении-в-чате)
-        - [`chatBanUndo`](notifier.md#Отмена-бана-в-чате)
-        - [`chatThirdpartySendMessageError`](notifier.md#Ошибка-отправки-сообщения-в-чат-сервис)
-        - [`thirdpartyLogin`](notifier.md#Логин-через-сторонние-сервисы)
-        - [`thirdpartyRegister`](notifier.md#Регистрация-через-сторонние-сервисы)
+        - [`chatBan` Бан в чате](notifier.md#Бан-в-чате)
+        - [`chatBanAttempt` Отметка о нарушении в чате](notifier.md#Отметка-о-нарушении-в-чате)
+        - [`chatBanUndo` Отмена бана в чате](notifier.md#Отмена-бана-в-чате)
+        - [`chatChannelDonateLevel` Изменение донат уровня канала чата](notifier.md#Изменение-донат-уровня-канала-чата)
+        - [`chatThirdpartySendMessageError` Ошибка отправки сообщения в чат сервис](notifier.md#Ошибка-отправки-сообщения-в-чат-сервис)
+        - [`thirdpartyLogin` Логин через сторонние сервисы](notifier.md#Логин-через-сторонние-сервисы)
+        - [`thirdpartyRegister` Регистрация через сторонние сервисы](notifier.md#Регистрация-через-сторонние-сервисы)
 - [**Сторонние сервисы**](thirdparty.md)
     - [`POST` `A` `/api/oauth/thirdparty/goodgame` Сохранение данных авторизации для GoodGame](thirdparty.md#Сохранение-данных-авторизации-для-goodgame)
     - [`POST` `C` `/api/oauth/thirdparty/register` Регистрация через сторонние сервисы](thirdparty.md#Регистрация-через-сторонние-сервисы)
