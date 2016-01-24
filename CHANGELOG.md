@@ -2,7 +2,13 @@
 
 ### Funstream
 - **common**
-- [`/api/user`](common.md#Данные-пользователя), [`/api/user/current`](common.md#Данные-текущего-пользователя), [`/api/user/full`](common.md#Полные-данные-пользователя) добавлен статус блокировки пользователя `block`. Так же во все запросы где используется ответы этих методов
+    - [`/api/user`](common.md#Данные-пользователя), [`/api/user/current`](common.md#Данные-текущего-пользователя), [`/api/user/full`](common.md#Полные-данные-пользователя) добавлен статус блокировки пользователя `block`. Так же во все запросы где используется ответы этих методов
+- **smile**
+    - [`/api/smile`](smile.md#Доступные-смайлы) добавлены поля `masterStreamerLevel` и `siteLevel`
+    
+
+#### DEPRECATED
+- [`/api/smile`](smile.md#Доступные-смайлы) в следующей версии будет удалён параметр `level`, используйте `masterStreamerLevel` и `siteLevel`
 
 
 # 0.0.10 (2015-12-14)
@@ -36,7 +42,7 @@
 - **chat**
     - [`/chat/message`](chat.md#Новое-сообщение) поправлено поле `time` на тип `<int>` со значением в unixtime
 
-#### Breaking Changes
+#### BREAKING CHANGES
 - [`/api/smile`](smile.md#Доступные-смайлы) изменён формат ответа
 
 
