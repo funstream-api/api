@@ -336,7 +336,7 @@
 ```js
 {
     id: <int>, // Идентификатор стрима
-    streamer: <obj>, // Данные стримера, объект из ответа /api/user
+    owner: <obj>, // Данные стримера, объект из ответа /api/user
     name: <string>, // Заголовок стрима
     description: <string>, // Описание стрима
     category: <obj>, // Категория стрима, объект из ответа /api/category
