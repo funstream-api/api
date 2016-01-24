@@ -79,8 +79,8 @@
 **запрос**
 ```js
 {
-    from: <int|null>, // От временной метки
-    to: <int|null>, // До временной метки
+    from: <int|null>, // От, unixtime
+    to: <int|null>, // До, unixtime
     reason: <int|null>, // Фильтр по указанной причине
     banId: <int|null> // Конкретный номер бана
 }

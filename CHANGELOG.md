@@ -6,6 +6,8 @@
     - [`/api/stream`](smile.md#Данные-стрима) поле данных о стримере изменено с `streamer` на `owner`
 - **smile**
     - [`/api/smile`](smile.md#Доступные-смайлы) добавлены поля `masterStreamerLevel` и `siteLevel`
+- **room**
+    - добавлено [апи комнат](room.md)
 
 #### BREAKING CHANGES
 - [`/api/stream`](smile.md#Данные-стрима) поле данных о стримере изменено с `streamer` на `owner`
