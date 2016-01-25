@@ -4,6 +4,7 @@
 - **common**
     - [`/api/user`](common.md#Данные-пользователя), [`/api/user/current`](common.md#Данные-текущего-пользователя), [`/api/user/full`](common.md#Полные-данные-пользователя) добавлен статус блокировки пользователя `block`. Так же во все запросы где используется ответы этих методов
     - [`/api/stream`](smile.md#Данные-стрима) поле данных о стримере изменено с `streamer` на `owner`
+    - API иконок перенесено к [API смайлов](smile.md)
 - **smile**
     - [`/api/smile`](smile.md#Доступные-смайлы) добавлены поля `masterStreamerLevel` и `siteLevel`
 - **room**
