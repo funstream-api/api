@@ -102,6 +102,7 @@ API
         - [`POST` `P` `/api/category` Категория контента](common.md#Категория-контента)
     - [**Стрим**](common.md#Стрим)
         - [`POST` `P` `/api/stream` Данные стрима](common.md#Данные-стрима)
+        - [`POST` `P` `/api/stream/preview` Ссылка на видео превью стрима](common.md#Ссылка-на-видео-превью-стрима)
     - [**Чат**](common.md#Чат)
         - [`POST` `P` `/api/channel/data` Данные каналов](common.md#Данные-каналов)
         - [`POST` `P` `/api/channel/private` Список приват каналов](common.md#Список-приват-каналов)

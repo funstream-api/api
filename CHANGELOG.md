@@ -6,6 +6,7 @@
     - [`/api/stream`](common.md#Данные-стрима) поле данных о стримере изменено с `streamer` на `owner`
     - API иконок перенесено к [API смайлов](smile.md)
     - добалены запросы [расписания](common.md#Расписание), добавлена роль `schedule` `Sc` для изменения своего расписания
+    - [`/api/stream/preview`](common.md#Ссылка-на-видео-превью-стрима) добавлен запрос на видео превью стрима
 - **smile**
     - [`/api/smile`](smile.md#Доступные-смайлы) добавлены поля `masterStreamerLevel` и `siteLevel`
 - **room**
