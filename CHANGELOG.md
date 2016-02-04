@@ -1,3 +1,9 @@
+# 0.0.12 (2016-02-04)
+
+#### BREAKING CHANGES
+- [`/api/stream`](common.md#Данные-стрима) поле запроса `streamer` заменено на `owner`
+
+
 # 0.0.11 (2016-02-04)
 
 ### Funstream
