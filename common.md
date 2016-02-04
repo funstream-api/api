@@ -338,7 +338,7 @@
 ```js
 {
     id: <int|null>, // Идентификатор стрима
-    streamer: <string|null>, // Имя стримера
+    owner: <string|null>, // Имя стримера
     options: <obj|null> {
         players: <bool|null> // Вернуть плееры стрима, false по умолчанию
     }
