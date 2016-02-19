@@ -1,3 +1,8 @@
+# 0.0.13 (2016-02-19)
+- **notifier**
+    - [`roomModify`](notifier.md#Данные-комнаты-изменены) добавлено уведомление о изменении данных комнаты
+
+
 # 0.0.12 (2016-02-04)
 
 #### BREAKING CHANGES
@@ -28,7 +33,7 @@
 - [`/api/stream`](common.md#Данные-стрима) поле данных о стримере изменено с `streamer` на `owner`
 
 #### DEPRECATED
-- [`/api/smile`](smile.md#Доступные-смайлы) в следующей версии будет удалён параметр `level`, используйте `masterStreamerLevel` и `siteLevel`
+- [`/api/smile`](smile.md#Доступные-смайлы) в дальнейшем будет удалён параметр `level`, используйте `masterStreamerLevel` и `siteLevel`
 
 
 # 0.0.10 (2015-12-14)
