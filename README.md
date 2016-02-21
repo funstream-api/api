@@ -154,7 +154,7 @@ API
         - [`POST` `MS` `/api/smile/ms/prepare` Откатить изменения в смайлах](smile.md#Откатить-изменения-в-смайлах)
     - [**Иконки**](smile.md#Иконки)
         - [`POST` `Ms` `/api/icon/add` Добавление иконки](smile.md#Добавление-иконки)
-        - [`POST` `Ms` `/api/icon/list` Список иконок](smile.md#Список-иконок)
+        - [`POST` `P` `/api/icon/list` Список иконок](smile.md#Список-иконок)
         - [`POST` `Ms` `/api/icon/remove` Удаление иконок](smile.md#Удаление-иконок)
 - [**Комнаты**](room.md)
     - [**Основное**](room.md#Основное)

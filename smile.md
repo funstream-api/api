@@ -13,7 +13,7 @@ API Смайлов
     - [`POST` `MS` `/api/smile/ms/prepare` Откатить изменения в смайлах](#Откатить-изменения-в-смайлах)
 - [**Иконки**](#Иконки)
     - [`POST` `Ms` `/api/icon/add` Добавление иконки](#Добавление-иконки)
-    - [`POST` `Ms` `/api/icon/list` Список иконок](#Список-иконок)
+    - [`POST` `P` `/api/icon/list` Список иконок](#Список-иконок)
     - [`POST` `Ms` `/api/icon/remove` Удаление иконок](#Удаление-иконок)
 
 
@@ -216,7 +216,7 @@ API Смайлов
 
 
 #### Список иконок
-##### [`POST` `Ms` `/api/icon/list`](https://funstream.tv/api/icon/list)
+##### [`POST` `P` `/api/icon/list`](https://funstream.tv/api/icon/list)
 **запрос**
 ```js
 {}
