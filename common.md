@@ -222,7 +222,8 @@
         thirdpartydontmask: <bool>, // Не затемнять сообщения с других сервисов, false по умолчанию
         imagesgif: <bool>, // Отображать анимированные картинки, true по умолчанию
         submode: <string>, // Сабмод режим чата своего стрима, [none | level], none по умолчанию
-        totalignore: <bool> // Режим полного игнора, false по умолчанию
+        totalignore: <bool>, // Режим полного игнора, false по умолчанию
+        thirdpartysmiles: <bool> // Отображать смайлы Твитча, true по умолчанию
     }
 }
 ```
