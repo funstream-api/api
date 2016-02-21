@@ -1,4 +1,6 @@
 # 0.0.13 (2016-02-19)
+- **common**
+    - [`/api/schedule/get`](common.md#Список-расписания), [`/api/season/top`](common.md#Топ-сезона) добавлено поле `online`
 - **notifier**
     - [`roomModify`](notifier.md#Данные-комнаты-изменены) добавлено уведомление о изменении данных комнаты
 
