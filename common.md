@@ -563,7 +563,7 @@
 **запрос**
 ```js
 {
-    content: <string>, // Тип контента, [stream]
+    content: <string>, // Тип контента, [stream, room]
     id: <int> // Идентификатор элемента контента
 }
 ```
