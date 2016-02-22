@@ -14,6 +14,7 @@
     - [`/api/room`](room.md#Данные-комнаты) добавлены в ответ поля `image` и `thumbnail`
     - [`/api/room/preview`](room.md#Изменить-превью-комнаты) добавлен запрос на изменение превью картинки комнаты
     - запрос `/api/room/modify` переименован в [`/api/room/settings` Настройки комнаты](room.md#Настройки-комнаты)
+    - [`/api/room/playlist`](room.md#Плейлист-комнаты), [`/api/room/playlist/set`](room.md#Изменить-плейлист-комнаты) добавлено поле `persistent`
 
 
 # 0.0.12 (2016-02-04)
