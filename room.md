@@ -4,9 +4,10 @@ API комнат
     - [`POST` `P` `/api/room` Данные комнаты](#Данные-комнаты)
     - [`POST` `A` `/api/room/create` Создать комнату](#Создать-комнату)
     - [`POST` `P` `/api/room/getCurrentVideo` Текущая трансляция комнаты](#Текущая-трансляция-комнаты)
-    - [`POST` `A` `/api/room/modify` Редактировать комнату](#Редактировать-комнату)
     - [`POST` `P` `/api/room/my` Список комнат пользователя](#Список-комнат-пользователя)
     - [`POST` `A` `/api/room/periscopeRandom` Ссылка на случайный стрим с перископа](#Ссылка-на-случайный-стрим-с-перископа)
+    - [`POST` `A` `/api/room/preview` Изменить превью комнаты](#Изменить-превью-комнаты)
+    - [`POST` `A` `/api/room/settings` Настройки комнаты](#Настройки-комнаты)
 - [**Плейлист**](#Плейлист)
     - [`POST` `P/A` `/api/room/playlist` Плейлист комнаты](#Плейлист-комнаты)
     - [`POST` `P/A` `/api/room/playlist/history` История воспроизведения комнаты](#История-воспроизведения-комнаты)
@@ -21,7 +22,7 @@ API комнат
 ## Основное
 
 #### Данные комнаты
-##### [`POST` `P` `/api/room`](https://funstream.tv/api/room)
+##### [`POST` `P` `/api/room`](http://funstream.tv/api/room)
 **запрос**
 ```js
 {
@@ -37,7 +38,9 @@ API комнат
     category: <obj>, // Категория комнаты, объект из ответа /api/category
     mode: <string>, // Режим комнаты, [public | private]
     hidden: <bool>, // Флаг скрытия комнаты в фильтре
-    rating: <int> // Рейтинг комнаты
+    rating: <int>, // Рейтинг комнаты
+    image: <string>, // Полная ссылка на превью картинку комнаты
+    thumbnail: <string> // Полная ссылка на тамб картинку комнаты, совпадает с превью
 }
 ```
 *[`/api/user`](common.md#Данные-пользователя), [`/api/category`](common.md#Категория-контента)*  
@@ -45,7 +48,7 @@ API комнат
 
 
 #### Создать комнату
-##### [`POST` `A` `/api/room/create`](https://funstream.tv/api/room/create)
+##### [`POST` `A` `/api/room/create`](http://funstream.tv/api/room/create)
 **запрос**
 ```js
 {
@@ -66,7 +69,7 @@ API комнат
 
 
 #### Текущая трансляция комнаты
-##### [`POST` `P` `/api/room/getCurrentVideo`](https://funstream.tv/api/room/getCurrentVideo)
+##### [`POST` `P` `/api/room/getCurrentVideo`](http://funstream.tv/api/room/getCurrentVideo)
 **запрос**
 ```js
 {
@@ -88,27 +91,8 @@ API комнат
 *Вернёт ошибку если комната приватная и текущий пользователь не имеет в неё доступа.*
 
 
-#### Редактировать комнату
-##### [`POST` `A` `/api/room/modify`](https://funstream.tv/api/room/modify)
-**запрос**
-```js
-{
-    roomId: <int>, // Идентификатор комнаты
-    ... // Поля из запроса /api/room/create
-}
-```
-**ответ**
-```js
-{
-    // Данные комнаты, объект из ответа /api/room
-}
-```
-*[`/api/room/create`](#Создать-комнату), [`/api/room`](#Данные-комнаты)*  
-*Вернёт ошибкку если передан неверный идентификатор комнаты неверный идентификатор категории или неверный режим.*
-
-
 #### Список комнат пользователя
-##### [`POST` `A` `/api/room/my`](https://funstream.tv/api/room/my)
+##### [`POST` `A` `/api/room/my`](http://funstream.tv/api/room/my)
 **запрос**
 ```js
 {}
@@ -128,7 +112,7 @@ API комнат
 
 
 #### Ссылка на случайный стрим с перископа
-##### [`POST` `A` `/api/room/periscopeRandom`](https://funstream.tv/api/room/periscopeRandom)
+##### [`POST` `A` `/api/room/periscopeRandom`](http://funstream.tv/api/room/periscopeRandom)
 **запрос**
 ```js
 {}
@@ -141,10 +125,45 @@ API комнат
 ```
 
 
+#### Изменить превью комнаты
+##### [`POST` `A` `/api/room/preview`](http://funstream.tv/api/room/preview)
+**запрос**
+```js
+{
+    roomId: <int> // Идентификатор комнаты
+}
+```
+**ответ**
+```js
+{}
+```
+*Принимает одиночный файл, Content-Type: multipart/form-data.*  
+*Вернёт ошибку если пользователь не имеет прав администратора комнаты, файл не передан, формат файла не png, размер картинки не 534х300px.*
+
+
+#### Настройки комнаты
+##### [`POST` `A` `/api/room/settings`](http://funstream.tv/api/room/settings)
+**запрос**
+```js
+{
+    roomId: <int>, // Идентификатор комнаты
+    ... // Поля из запроса /api/room/create
+}
+```
+**ответ**
+```js
+{
+    // Данные комнаты, объект из ответа /api/room
+}
+```
+*[`/api/room/create`](#Создать-комнату), [`/api/room`](#Данные-комнаты)*  
+*Вернёт ошибкку если пользователь не имеет прав администратора комнаты, передан неверный идентификатор комнаты, неверный идентификатор категории или неверный режим.*
+
+
 ## Плейлист
 
 #### Плейлист комнаты
-##### [`POST` `P/A` `/api/room/playlist`](https://funstream.tv/api/room/playlist)
+##### [`POST` `P/A` `/api/room/playlist`](http://funstream.tv/api/room/playlist)
 **запрос**
 ```js
 {
@@ -155,11 +174,12 @@ API комнат
 ```js
 [
     {
-      id: <int>, // Идентификатор записи в плейлисте
+      id: <int>, // Идентификатор трансляции в плейлисте
       position: <int>, // Позиция в плейлисте
-      url: <string>, // Ссылка на стрим/видео
+      url: <string>, // Ссылка на трансляцию
       start: <int>, // Время начала воспроизведения, unixtime
-      main: <bool> // Флаг основного стрима
+      main: <bool>, // Флаг основной трансляции
+      persistent: <bool> // Флаг постоянной трансляции
     },
     ...
 ]
@@ -169,7 +189,7 @@ API комнат
 
 
 #### История воспроизведения комнаты
-##### [`POST` `P/A` `/api/room/playlist/history`](https://funstream.tv/api/room/playlist/history)
+##### [`POST` `P/A` `/api/room/playlist/history`](http://funstream.tv/api/room/playlist/history)
 **запрос**
 ```js
 {
@@ -180,7 +200,7 @@ API комнат
 ```js
 [
     {
-        url: <string>, // Ссылка на стрим/видео
+        url: <string>, // Ссылка на трансляцию
         start: <int>, // Время начала воспроизведения, unixtime
         end: <int>, // Время окончания воспроизведения, unixtime
     },
@@ -191,7 +211,7 @@ API комнат
 
 
 #### Изменить плейлист комнаты
-##### [`POST` `A` `/api/room/playlist/set`](https://funstream.tv/api/room/playlist/set)
+##### [`POST` `A` `/api/room/playlist/set`](http://funstream.tv/api/room/playlist/set)
 **запрос**
 ```js
 {
@@ -199,9 +219,10 @@ API комнат
     playlist: [ // Новый плейлист
         {
             position: <int>, // Позиция в плейлисте
-            url: <string>, // Ссылка на стрим/видео
+            url: <string>, // Ссылка на трансляцию
             start: <int>, // Время начала воспроизведения, unixtime
-            main: <bool> // Флаг основного стрима
+            main: <bool>, // Флаг основного трансляции
+            persistent: <bool> // Флаг постоянной трансляции
         },
         ...
     ]
@@ -211,13 +232,13 @@ API комнат
 ```js
 {}
 ```
-*Вернёт ошибку если указан неверный идентификатор комнаты, текущий пользователь не имеет прав администратора указаннойкомнаты, для любого элемента плейлиста не указано любое из полей, указано более одного основного стрима.*
+*Вернёт ошибку если указан неверный идентификатор комнаты, текущий пользователь не имеет прав администратора указаннойкомнаты, для любого элемента плейлиста не указано любое из полей, указано более одной основной трансляции.*
 
 
 ## Пользователи
 
 #### Статус администратора комнаты
-##### [`POST` `P` `/api/room/user/admin`](https://funstream.tv/api/room/user/admin)
+##### [`POST` `P` `/api/room/user/admin`](http://funstream.tv/api/room/user/admin)
 **запрос**
 ```js
 {
@@ -234,7 +255,7 @@ API комнат
 
 
 #### Список имеющих доступ в комнату
-##### [`POST` `A` `/api/room/user/list`](https://funstream.tv/api/room/user/list)
+##### [`POST` `A` `/api/room/user/list`](http://funstream.tv/api/room/user/list)
 **запрос**
 ```js
 {
@@ -256,7 +277,7 @@ API комнат
 
 
 #### Лишить пользователя доступа в комнату
-##### [`POST` `A` `/api/room/user/remove`](https://funstream.tv/api/room/user/remove)
+##### [`POST` `A` `/api/room/user/remove`](http://funstream.tv/api/room/user/remove)
 **запрос**
 ```js
 {
@@ -268,11 +289,11 @@ API комнат
 ```js
 {}
 ```
-*Вернёт ошибку если указан неверный идентификатор комнаты или текущий пользователь не имеет прав администратора комнаты.*
+*Вернёт ошибку если указан неверный идентификатор комнаты, указанный пользователь является создателем комнаты или текущий пользователь не имеет прав администратора комнаты.*
 
 
 #### Изменить права доступа пользователя в комнату
-##### [`POST` `A` `/api/room/user/set`](https://funstream.tv/api/room/user/set)
+##### [`POST` `A` `/api/room/user/set`](http://funstream.tv/api/room/user/set)
 **запрос**
 ```js
 {

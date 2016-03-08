@@ -9,7 +9,7 @@ API взаимодействия со сторонними сервисами
 
 
 #### Сохранение данных авторизации для GoodGame
-##### [`POST` `A` `/api/oauth/thirdparty/goodgame`](https://funstream.tv/api/oauth/thirdparty/goodgame)
+##### [`POST` `A` `/api/oauth/thirdparty/goodgame`](http://funstream.tv/api/oauth/thirdparty/goodgame)
 **запрос**
 ```js
 {
@@ -28,7 +28,7 @@ API взаимодействия со сторонними сервисами
 
 
 #### Регистрация через сторонние сервисы
-##### [`POST` `C` `/api/oauth/thirdparty/register`](https://funstream.tv/api/oauth/thirdparty/register)
+##### [`POST` `C` `/api/oauth/thirdparty/register`](http://funstream.tv/api/oauth/thirdparty/register)
 **запрос**
 ```js
 {

@@ -9,16 +9,17 @@
 ##### JavaScript
 
 ```js
-<script src='https://cdn.socket.io/socket.io-1.3.5.js'></script>
+<script src='http://cdn.socket.io/socket.io-1.3.5.js'></script>
 
 <script type='text/javascript'>
 
-    var socket = io('wss://funstream.tv', {
+    var socket = io('wss://chat.funstream.tv', {
         transports: ['websocket'],
-        'reconnect': true,
-        'reconnectionDelay': 500,
-        'reconnectionDelayMax': 2000,
-        'reconnectionAttempts': Infinity
+        path: '/',
+        reconnect: true,
+        reconnectionDelay: 500,
+        reconnectionDelayMax: 2000,
+        reconnectionAttempts: Infinity
     });
 
     // listen new messages
@@ -59,7 +60,7 @@
 ```js
 var io = require('socket.io-client');
 
-var socket = io.connect('wss://funstream.tv', {transports: ['websocket']});
+var socket = io.connect('wss://chat.funstream.tv', {transports: ['websocket']});
 
 socket.on('connect', function (data) {console.log('connect: ', data)});
 socket.on('/chat/message', function(data) {console.log('message: ', data)});
@@ -69,10 +70,10 @@ socket.emit('/chat/join', {channel: 'main'}, function (data) {console.log('chat:
 ```
 
 
-##### C\# 
+##### C\#
 
 ```C#
-socket = IO.Socket("wss://funstream.tv", new IO.Options { Transports = ImmutableList.Create("websocket") });
+socket = IO.Socket("wss://chat.funstream.tv", new IO.Options { Transports = ImmutableList.Create("websocket") });
 
 socket.On(Socket.EVENT_CONNECT, (a) =>
 {

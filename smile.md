@@ -13,14 +13,14 @@ API Смайлов
     - [`POST` `MS` `/api/smile/ms/prepare` Откатить изменения в смайлах](#Откатить-изменения-в-смайлах)
 - [**Иконки**](#Иконки)
     - [`POST` `Ms` `/api/icon/add` Добавление иконки](#Добавление-иконки)
-    - [`POST` `Ms` `/api/icon/list` Список иконок](#Список-иконок)
+    - [`POST` `P` `/api/icon/list` Список иконок](#Список-иконок)
     - [`POST` `Ms` `/api/icon/remove` Удаление иконок](#Удаление-иконок)
 
 
 ## Смайлы
 
 #### Доступные смайлы
-##### [`POST` `P` `/api/smile`](https://funstream.tv/api/smile)
+##### [`POST` `P` `/api/smile`](http://funstream.tv/api/smile)
 **запрос**
 ```js
 {}
@@ -52,7 +52,7 @@ API Смайлов
 
 
 #### Добавить смайл
-##### [`POST` `MS/Sm` `/api/smile/add`](https://funstream.tv/api/smile/add)
+##### [`POST` `MS/Sm` `/api/smile/add`](http://funstream.tv/api/smile/add)
 **запрос**
 ```js
 {}
@@ -67,7 +67,7 @@ API Смайлов
 
 
 #### Утвердить изменения в смайлах мастерстримера
-##### [`POST` `P` `/api/smile/approve`](https://funstream.tv/api/smile/approve)
+##### [`POST` `P` `/api/smile/approve`](http://funstream.tv/api/smile/approve)
 **запрос**
 ```js
 {
@@ -83,7 +83,7 @@ API Смайлов
 
 
 #### Список изменений в смайлах мастерстримеров на утверждение
-##### [`POST` `Sm` `/api/smile/pending`](https://funstream.tv/api/smile/pending)
+##### [`POST` `Sm` `/api/smile/pending`](http://funstream.tv/api/smile/pending)
 **запрос**
 ```js
 {}
@@ -100,7 +100,7 @@ API Смайлов
 
 
 #### Отклонить изменения в смайлах мастерстримера
-##### [`POST` `Sm` `/api/smile/reject`](https://funstream.tv/api/smile/reject)
+##### [`POST` `Sm` `/api/smile/reject`](http://funstream.tv/api/smile/reject)
 **запрос**
 ```js
 {
@@ -116,7 +116,7 @@ API Смайлов
 
 
 #### Удалить смайлы
-##### [`POST` `MS/Sm` `/api/smile/remove`](https://funstream.tv/api/smile/remove)
+##### [`POST` `MS/Sm` `/api/smile/remove`](http://funstream.tv/api/smile/remove)
 **запрос**
 ```js
 [
@@ -133,7 +133,7 @@ API Смайлов
 
 
 #### Обновить смайлы
-##### [`POST` `MS/Sm` `/api/smile/update`](https://funstream.tv/api/smile/update)
+##### [`POST` `MS/Sm` `/api/smile/update`](http://funstream.tv/api/smile/update)
 **запрос**
 ```js
 [
@@ -155,7 +155,7 @@ API Смайлов
 
 
 #### Наличие смайлов в ожидании утверждения
-##### [`POST` `MS` `/api/smile/ms/pending`](https://funstream.tv/api/smile/ms/pending)
+##### [`POST` `MS` `/api/smile/ms/pending`](http://funstream.tv/api/smile/ms/pending)
 **запрос**
 ```js
 {}
@@ -170,7 +170,7 @@ API Смайлов
 
 
 #### Отправить текущие изменения в смайлах на утверждение
-##### [`POST` `MS` `/api/smile/ms/prepare`](https://funstream.tv/api/smile/ms/prepare)
+##### [`POST` `MS` `/api/smile/ms/prepare`](http://funstream.tv/api/smile/ms/prepare)
 **запрос**
 ```js
 {}
@@ -183,7 +183,7 @@ API Смайлов
 
 
 #### Откатить изменения в смайлах
-##### [`POST` `MS` `/api/smile/ms/revert`](https://funstream.tv/api/smile/ms/revert)
+##### [`POST` `MS` `/api/smile/ms/revert`](http://funstream.tv/api/smile/ms/revert)
 **запрос**
 ```js
 {}
@@ -201,7 +201,7 @@ API Смайлов
 Работа с иконками аналогична смайлам и запросы ниже являются заглушками к соответствующим запросам смайлов.
 
 #### Добавление иконки
-##### [`POST` `Ms` `/api/icon/add`](https://funstream.tv/api/icon/add)
+##### [`POST` `Ms` `/api/icon/add`](http://funstream.tv/api/icon/add)
 **запрос**
 ```js
 {}
@@ -216,7 +216,7 @@ API Смайлов
 
 
 #### Список иконок
-##### [`POST` `Ms` `/api/icon/list`](https://funstream.tv/api/icon/list)
+##### [`POST` `P` `/api/icon/list`](http://funstream.tv/api/icon/list)
 **запрос**
 ```js
 {}
@@ -233,7 +233,7 @@ API Смайлов
 
 
 #### Удаление иконок
-##### [`POST` `Ms` `/api/icon/remove`](https://funstream.tv/api/icon/remove)
+##### [`POST` `Ms` `/api/icon/remove`](http://funstream.tv/api/icon/remove)
 **запрос**
 ```js
 [

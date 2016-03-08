@@ -1,14 +1,14 @@
-# [Funstream.tv](https://funstream.tv) API и утилиты для помощи с интеграцией.
+# [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
-### 0.0.11
+### 0.0.13
 ###### [История изменений](CHANGELOG.md)
 
 
 Общее
 -----
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTPS**.
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.
 Авторизация происходит через токен в `header`. Например
 ```
 POST /user/current HTTP/1.1
@@ -33,16 +33,16 @@ Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
 
-Запросы передаются на сайт [`https://funstream.tv`](https://funstream.tv) для общего API и на [`wss://funstream.tv`](wss://funstream.tv) для чата.
+Запросы передаются на сайт [`http://funstream.tv`](http://funstream.tv) для общего API и на [`wss://chat.funstream.tv`](wss://chat.funstream.tv) для чата.
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' https://funstream.tv/api/user/login
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' https://funstream.tv/api/subscribe/subscribers
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
 
-##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](https://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(необходимо залогиниться), категория 'Технические вопросы'.
+##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](http://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(необходимо залогиниться), категория 'Технические вопросы'.
 
 
 API
@@ -84,7 +84,7 @@ API
         - [`WS` `P` `/chat/message/remove` Удаление сообщения](chat.md#Удаление-сообщения)
         - [`WS` `P` `/chat/user/join` Присоединение к каналу](chat.md#Присоединение-к-каналу)
         - [`WS` `P` `/chat/user/leave` Отсоединение от канала](chat.md#Отсоединение-от-канала)
-    - [**Каналы чата, текущие и запланированные**](chat.md#Каналы-чата-текущие-и-запланированные)
+    - [**Каналы чата**](chat.md#Каналы-чата)
     - [**Типы сообщений**](chat.md#Типы-сообщений)
 - [**Общее**](common.md)
     - [**Пользователь**](common.md#Пользователь)
@@ -138,6 +138,9 @@ API
         - [`POST` `Se` `/api/season/start` Старт сезона](common.md#Старт-сезона)
         - [`POST` `Se` `/api/season/stop` Завершение сезона](common.md#Завершение-сезона)
         - [`POST` `P` `/api/season/top` Топ сезона](common.md#Топ-сезона)
+    - [**Уровни**](common.md#Уровни)
+        - [`POST` `A` `/api/level/my` Мои уровни](common.md#Мои-уровни)
+        - [`POST` `A` `/api/level/premiumUsers` Уровни моих премиум юзеров](common.md#Уровни-моих-премиум-юзеров)
     - [**Дополнительные вызовы**](common.md#Дополнительные-вызовы)
         - [`POST` `P` `/api/bulk` Пакетный запрос](common.md#Пакетный-запрос)
 - [**Смайлы**](smile.md)
@@ -154,16 +157,17 @@ API
         - [`POST` `MS` `/api/smile/ms/prepare` Откатить изменения в смайлах](smile.md#Откатить-изменения-в-смайлах)
     - [**Иконки**](smile.md#Иконки)
         - [`POST` `Ms` `/api/icon/add` Добавление иконки](smile.md#Добавление-иконки)
-        - [`POST` `Ms` `/api/icon/list` Список иконок](smile.md#Список-иконок)
+        - [`POST` `P` `/api/icon/list` Список иконок](smile.md#Список-иконок)
         - [`POST` `Ms` `/api/icon/remove` Удаление иконок](smile.md#Удаление-иконок)
 - [**Комнаты**](room.md)
     - [**Основное**](room.md#Основное)
         - [`POST` `P` `/api/room` Данные комнаты](room.md#Данные-комнаты)
         - [`POST` `A` `/api/room/create` Создать комнату](room.md#Создать-комнату)
         - [`POST` `P` `/api/room/getCurrentVideo` Текущая трансляция комнаты](room.md#Текущая-трансляция-комнаты)
-        - [`POST` `A` `/api/room/modify` Редактировать комнату](room.md#Редактировать-комнату)
         - [`POST` `P` `/api/room/my` Список комнат пользователя](room.md#Список-комнат-пользователя)
         - [`POST` `A` `/api/room/periscopeRandom` Ссылка на случайный стрим с перископа](room.md#Ссылка-на-случайный-стрим-с-перископа)
+        - [`POST` `A` `/api/room/preview` Изменить превью комнаты](room.md#Изменить-превью-комнаты)
+        - [`POST` `A` `/api/room/settings` Настройки комнаты](room.md#Настройки-комнаты)
     - [**Плейлист**](room.md#Плейлист)
         - [`POST` `P/A` `/api/room/playlist` Плейлист комнаты](room.md#Плейлист-комнаты)
         - [`POST` `P/A` `/api/room/playlist/history` История воспроизведения комнаты](room.md#История-воспроизведения-комнаты)
@@ -178,7 +182,6 @@ API
         - [**Информация о последних событиях**](billing/donate.md#Информация-о-последних-событиях)
             - [`GET` `P` `/billing/donate/challenge` Челенджи](billing/donate.md#Челенджи)
             - [`GET` `P` `/billing/donate/` Донат, антидонат, микродонат](billing/donate.md#Донат-антидонат-микродонат)
-            - [`GET` `P` `/billing/donate/subscribe` Подписки на мастер стримеров](billing/donate.md#Подписки-на-мастер-стримеров)
 - [**Админка**](admin.md)
     - [**Модерация**](admin.md#Модерация)
         - [`POST` `A` `/api/moderation/accuse` Забанить пользователя](admin.md#Забанить-пользователя)
@@ -206,6 +209,7 @@ API
         - [**Сторонние сервисы в чате**](notifier.md#Сторонние-сервисы-в-чате)
             - [`chatThirdpartySendMessageError` Ошибка отправки сообщения в чат сервис](notifier.md#Ошибка-отправки-сообщения-в-чат-сервис)
         - [**Комнаты**](notifier.md#Комнаты)
+            - [`roomModify` Данные комнаты изменены](notifier.md#Данные-комнаты-изменены)
             - [`roomVideo` Новая трансляция в комнате](notifier.md#Новая-трансляция-в-комнате)
             - [`roomUserRemoved` Пользователь лишён доступа в комнату](notifier.md#Пользователь-лишён-доступа-в-комнату)
             - [`roomUserSet` Изменены права доступа пользователя в комнату](notifier.md#Изменены-права-доступа-пользователя-в-комнату)

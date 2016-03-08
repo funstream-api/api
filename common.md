@@ -51,6 +51,9 @@
     - [`POST` `Se` `/api/season/start` Старт сезона](#Старт-сезона)
     - [`POST` `Se` `/api/season/stop` Завершение сезона](#Завершение-сезона)
     - [`POST` `P` `/api/season/top` Топ сезона](#Топ-сезона)
+- [**Уровни**](#Уровни)
+    - [`POST` `A` `/api/level/my` Мои уровни](#Мои-уровни)
+    - [`POST` `A` `/api/level/premiumUsers` Уровни моих премиум юзеров](#Уровни-моих-премиум-юзеров)
 - [**Дополнительные вызовы**](#Дополнительные-вызовы)
     - [`POST` `P` `/api/bulk` Пакетный запрос](#Пакетный-запрос)
 
@@ -58,7 +61,7 @@
 ## Пользователь
 
 #### Данные пользователя
-##### [`POST` `P` `/api/user`](https://funstream.tv/api/user)
+##### [`POST` `P` `/api/user`](http://funstream.tv/api/user)
 **запрос**
 ```js
 {
@@ -79,7 +82,7 @@
 
 
 #### Данные списка пользователей
-##### [`POST` `P` `/api/user/list`](https://funstream.tv/api/user/list)
+##### [`POST` `P` `/api/user/list`](http://funstream.tv/api/user/list)
 **запрос**
 ```js
 {
@@ -101,7 +104,7 @@
 
 
 #### Данные текущего пользователя
-##### [`POST` `P` `/api/user/current`](https://funstream.tv/api/user/current)
+##### [`POST` `P` `/api/user/current`](http://funstream.tv/api/user/current)
 **запрос**
 ```js
 {}
@@ -140,7 +143,7 @@
 
 
 #### Полные данные пользователя
-##### [`POST` `RA` `/api/user/full`](https://funstream.tv/api/user/full)
+##### [`POST` `RA` `/api/user/full`](http://funstream.tv/api/user/full)
 **запрос**
 ```js
 {
@@ -180,13 +183,13 @@
     current: <obj> // Данные пользователя, объект из ответа /api/user/current
 }
 ```
-*Работает только на funstream.tv из-за использования Рекапчи.*  
+*Работает только на funstream.tv из-за использования Рекапчи, использует HTTPS протокол.*  
 *При успешном логине высталяется http-only кука, необходимая для прелоада funstream.tv.*  
 *Вернёт ошибку если пользователь с таким именем и паролем не найден или капча не верна.*
 
 
 #### Логаут
-##### [`POST` `A` `/api/user/logout`](https://funstream.tv/api/user/logout)
+##### [`POST` `A` `/api/user/logout`](http://funstream.tv/api/user/logout)
 **запрос**
 ```js
 {}
@@ -200,14 +203,15 @@
 
 
 #### Получить или установить настройки текущего пользователя
-##### [`POST` `A` `/api/user/settings`](https://funstream.tv/api/user/settings)
+##### [`POST` `A` `/api/user/settings`](http://funstream.tv/api/user/settings)
 **запрос и ответ идентичны**
 ```js
 {
     stream: <obj> {
         autostart: <bool>, // Автостарт плеера стрима, true по умолчанию,
         player: <string>, // Предпочитаемый плеер, по умолчанию пусто, приоретный плеер twitch.tv
-        skipmain: <bool> // Пропускать главную страницу при прямом открытии ссылки funstream.tv, false по умолчанию
+        skipmain: <bool>, // Пропускать главную страницу при прямом открытии ссылки funstream.tv, false по умолчанию
+        videopreview: <bool> // Показываеть видео превью стрима при наведении в списке, true по умолчанию
     },
     chat: <obj> {
         smiles: <bool>, // Показывать смайлы, true по умолчанию"
@@ -222,7 +226,8 @@
         thirdpartydontmask: <bool>, // Не затемнять сообщения с других сервисов, false по умолчанию
         imagesgif: <bool>, // Отображать анимированные картинки, true по умолчанию
         submode: <string>, // Сабмод режим чата своего стрима, [none | level], none по умолчанию
-        totalignore: <bool> // Режим полного игнора, false по умолчанию
+        totalignore: <bool>, // Режим полного игнора, false по умолчанию
+        thirdpartysmiles: <bool> // Отображать смайлы Твитча, true по умолчанию
     }
 }
 ```
@@ -232,7 +237,7 @@
 
 
 #### Запрос на сброс пароля
-##### [`POST` `P` `/api/user/forgot`](https://funstream.tv/api/user/forgot)
+##### [`POST` `P` `/api/user/forgot`](http://funstream.tv/api/user/forgot)
 **запрос**
 ```js
 {
@@ -247,7 +252,7 @@
 
 
 #### Установка пароля
-##### [`POST` `P` `/api/user/restore`](https://funstream.tv/api/user/restore)
+##### [`POST` `P` `/api/user/restore`](http://funstream.tv/api/user/restore)
 **запрос**
 ```js
 {
@@ -265,7 +270,7 @@
 
 
 #### Список пользователей с ролью
-##### [`POST` `RA` `/api/user/roles/list`](https://funstream.tv/api/user/roles/list)
+##### [`POST` `RA` `/api/user/roles/list`](http://funstream.tv/api/user/roles/list)
 **запрос**
 ```js
 {
@@ -284,7 +289,7 @@
 
 
 #### Изменить роль пользователя
-##### [`POST` `RA` `/api/user/roles/set`](https://funstream.tv/api/user/roles/set)
+##### [`POST` `RA` `/api/user/roles/set`](http://funstream.tv/api/user/roles/set)
 **запрос**
 ```js
 {
@@ -303,7 +308,7 @@
 ## Категория
 
 #### Категория контента
-##### [`POST` `P` `/api/category`](https://funstream.tv/api/category)
+##### [`POST` `P` `/api/category`](http://funstream.tv/api/category)
 **запрос**
 ```js
 {
@@ -333,7 +338,7 @@
 ## Стрим
 
 #### Данные стрима
-##### [`POST` `P` `/api/stream`](https://funstream.tv/api/stream)
+##### [`POST` `P` `/api/stream`](http://funstream.tv/api/stream)
 **запрос**
 ```js
 {
@@ -371,7 +376,7 @@
 
 
 #### Ссылка на видео превью стрима
-##### [`POST` `P` `/api/stream/preview`](https://funstream.tv/api/stream/preview)
+##### [`POST` `P` `/api/stream/preview`](http://funstream.tv/api/stream/preview)
 **запрос**
 ```js
 {
@@ -390,7 +395,7 @@
 ## Чат
 
 #### Данные каналов
-##### [`POST` `P` `/api/channel/data`](https://funstream.tv/api/channel/data)
+##### [`POST` `P` `/api/channel/data`](http://funstream.tv/api/channel/data)
 **запрос**
 ```js
 {
@@ -415,7 +420,7 @@
 
 
 #### Список приват каналов
-##### [`POST` `A` `/api/channel/private`](https://funstream.tv/api/channel/private)
+##### [`POST` `A` `/api/channel/private`](http://funstream.tv/api/channel/private)
 **запрос**
 ```js
 {}
@@ -435,7 +440,7 @@
 ## Фильтр
 
 #### Список элементов контента
-##### [`POST` `A/P` `/api/content`](https://funstream.tv/api/content)
+##### [`POST` `A/P` `/api/content`](http://funstream.tv/api/content)
 **запрос**
 ```js
 {
@@ -467,7 +472,7 @@
 
 
 #### Топ N элементов контента
-##### [`POST` `P` `/api/content/top`](https://funstream.tv/api/content/top)
+##### [`POST` `P` `/api/content/top`](http://funstream.tv/api/content/top)
 **запрос**
 ```js
 {
@@ -523,7 +528,7 @@
 ## Подписки
 
 #### Подписаться
-##### [`POST` `A` `/api/subscribe/add`](https://funstream.tv/api/subscribe/add)
+##### [`POST` `A` `/api/subscribe/add`](http://funstream.tv/api/subscribe/add)
 **запрос**
 ```js
 {
@@ -539,7 +544,7 @@
 
 
 #### Количество активных подписок
-##### [`POST` `A` `/api/subscribe/amount`](https://funstream.tv/api/subscribe/amount)
+##### [`POST` `A` `/api/subscribe/amount`](http://funstream.tv/api/subscribe/amount)
 **запрос**
 ```js
 {
@@ -557,11 +562,11 @@
 
 
 #### Проверить подписку
-##### [`POST` `A` `/api/subscribe/check`](https://funstream.tv/api/subscribe/check)
+##### [`POST` `A` `/api/subscribe/check`](http://funstream.tv/api/subscribe/check)
 **запрос**
 ```js
 {
-    content: <string>, // Тип контента, [stream]
+    content: <string>, // Тип контента, [stream, room]
     id: <int> // Идентификатор элемента контента
 }
 ```
@@ -575,7 +580,7 @@
 
 
 #### Список подписок
-##### [`POST` `A` `/api/subscribe/list`](https://funstream.tv/api/subscribe/list)
+##### [`POST` `A` `/api/subscribe/list`](http://funstream.tv/api/subscribe/list)
 **запрос**
 ```js
 {
@@ -594,7 +599,7 @@
 
 
 #### Отписаться
-##### [`POST` `A` `/api/subscribe/remove`](https://funstream.tv/api/subscribe/remove)
+##### [`POST` `A` `/api/subscribe/remove`](http://funstream.tv/api/subscribe/remove)
 **запрос**
 ```js
 {
@@ -610,7 +615,7 @@
 
 
 #### Список подписчиков пользователя
-##### [`POST` `A` `/api/subscribe/subscribers`](https://funstream.tv/api/subscribe/subscribers)
+##### [`POST` `A` `/api/subscribe/subscribers`](http://funstream.tv/api/subscribe/subscribers)
 **запрос**
 ```js
 {
@@ -631,7 +636,7 @@
 ## Игноры
 
 #### Добавить в список игнорируемых
-##### [`POST` `A` `/api/ignore/add`](https://funstream.tv/api/ignore/add)
+##### [`POST` `A` `/api/ignore/add`](http://funstream.tv/api/ignore/add)
 **запрос**
 ```js
 {
@@ -647,7 +652,7 @@
 
 
 #### Проверить на игнор
-##### [`POST` `A` `/api/ignore/check`](https://funstream.tv/api/ignore/check)
+##### [`POST` `A` `/api/ignore/check`](http://funstream.tv/api/ignore/check)
 **запрос**
 ```js
 {
@@ -665,7 +670,7 @@
 
 
 #### Список игнорируемого
-##### [`POST` `A` `/api/ignore/list`](https://funstream.tv/api/ignore/list)
+##### [`POST` `A` `/api/ignore/list`](http://funstream.tv/api/ignore/list)
 **запрос**
 ```js
 {
@@ -686,7 +691,7 @@
 
 
 #### Удалить из списка игнорируемого
-##### [`POST` `A` `/api/ignore/remove`](https://funstream.tv/api/ignore/remove)
+##### [`POST` `A` `/api/ignore/remove`](http://funstream.tv/api/ignore/remove)
 **запрос**
 ```js
 {
@@ -704,7 +709,7 @@
 ## Мастерстримеры
 
 #### Список иконок и смайлов мастерстримеров
-##### [`POST` `P` `/api/masterstreamer/list`](https://funstream.tv/api/masterstreamer/list)
+##### [`POST` `P` `/api/masterstreamer/list`](http://funstream.tv/api/masterstreamer/list)
 **запрос**
 ```js
 {}
@@ -728,7 +733,7 @@
 
 
 #### Список выбранных пользователями иконок
-##### [`POST` `P` `/api/masterstreamer/icon/list`](https://funstream.tv/api/masterstreamer/icon/list)
+##### [`POST` `P` `/api/masterstreamer/icon/list`](http://funstream.tv/api/masterstreamer/icon/list)
 **запрос**
 ```js
 {}
@@ -750,7 +755,29 @@
 ## Расписание
 
 #### Список расписания
-##### [`POST` `P` `/api/schedule/get`](https://funstream.tv/api/schedule/get)
+##### [`POST` `P` `/api/schedule/get`](http://funstream.tv/api/schedule/get)
+**запрос**
+```js
+{}
+```
+**ответ**
+```js
+[
+    <obj> { // Данные записи в расписании
+        description: <string>, // Описание
+        time: <int>, // Время начала, unixtime
+        online: <bool>, // Онлайн статус стрима
+        nodeId: <int>, // nodeId sc2tv для ссылки на стрим /node/<nodeId>
+        user: <int> // Данные стримера, объект из ответа /api/user
+    ],
+    ...
+]
+```
+*[`/api/user`](#Данные-пользователя)*
+
+
+#### Расписание пользователя
+##### [`POST` `Sc` `/api/schedule/my`](http://funstream.tv/api/schedule/my)
 **запрос**
 ```js
 {}
@@ -766,27 +793,11 @@
     ...
 ]
 ```
-*[`/api/user`](#Данные-пользователя)*
-
-
-#### Расписание пользователя
-##### [`POST` `Sc` `/api/schedule/my`](https://funstream.tv/api/schedule/my)
-**запрос**
-```js
-{}
-```
-**ответ**
-```js
-[
-    // Тот же формат ответа что в запросе /api/schedule/get
-]
-```
-*[`/api/schedule/get`](#Список-расписания)*  
 *Вернёт ошибку если текущий пользователь не имеет роли `schedule`.*
 
 
 #### Изменить расписание пользователя
-##### [`POST` `Sc` `/api/schedule/set`](https://funstream.tv/api/schedule/set)
+##### [`POST` `Sc` `/api/schedule/set`](http://funstream.tv/api/schedule/set)
 **запрос**
 ```js
 {
@@ -809,7 +820,7 @@
 ## Майлстоуны
 
 #### Список майлстоунов
-##### [`POST` `P` `/api/milestone/get`](https://funstream.tv/api/milestone/get)
+##### [`POST` `P` `/api/milestone/get`](http://funstream.tv/api/milestone/get)
 **запрос**
 ```js
 {
@@ -836,7 +847,7 @@
 
 
 #### Майлстоуны пользователя
-##### [`POST` `A` `/api/milestone/my`](https://funstream.tv/api/milestone/my)
+##### [`POST` `A` `/api/milestone/my`](http://funstream.tv/api/milestone/my)
 **запрос**
 ```js
 {}
@@ -855,7 +866,7 @@
 
 
 #### Изменить майлстоуны пользователя
-##### [`POST` `A` `/api/milestone/set`](https://funstream.tv/api/milestone/set)
+##### [`POST` `A` `/api/milestone/set`](http://funstream.tv/api/milestone/set)
 **запрос**
 ```js
 {
@@ -876,7 +887,7 @@
 ## Сезоны соревнования
 
 #### Данные текущего сезона
-##### [`POST` `P` `/api/season/get`](https://funstream.tv/api/season/get)
+##### [`POST` `P` `/api/season/get`](http://funstream.tv/api/season/get)
 **запрос**
 ```js
 {}
@@ -889,11 +900,11 @@
     active: <bool> // Статус сезона
 }
 ```
-*Вернёт ошибку если сейчас нет активного сезона(:wtf:)*
+*Вернёт ошибку если сейчас нет активного сезона*
 
 
 #### Старт сезона
-##### [`POST` `Se` `/api/season/start`](https://funstream.tv/api/season/start)
+##### [`POST` `Se` `/api/season/start`](http://funstream.tv/api/season/start)
 **запрос**
 ```js
 {}
@@ -906,7 +917,7 @@
 
 
 #### Завершение сезона
-##### [`POST` `Se` `/api/season/stop`](https://funstream.tv/api/season/stop)
+##### [`POST` `Se` `/api/season/stop`](http://funstream.tv/api/season/stop)
 **запрос**
 ```js
 {}
@@ -919,7 +930,71 @@
 
 
 #### Топ сезона
-##### [`POST` `P` `/api/season/top`](https://funstream.tv/api/season/top)
+##### [`POST` `P` `/api/season/top`](http://funstream.tv/api/season/top)
+**запрос**
+```js
+{}
+```
+**ответ**
+```js
+{
+    auction: <obj|null> { // Данные аукциона
+        bonusTime: <int>, // Бонусное время, unixtime
+        end: <int>, // Время окончания аукциона, unixtime
+        total: <float>, // Собранная сумма
+        lastDonates: [ // Список последних 5 донатов участникам соревнования
+            <obj> { // Донат участнику соревнования
+                donater: <obj>, // Данные донатера, объект из ответа /api/user
+                streamer: <obj>, // Данные донатера, объект из ответа /api/user
+                amount: <float>, // Сумма доната
+                message: <string>, // Сообщение при донате
+                time: <int> // Время перевода, unixtime
+            },
+            ...
+        ]
+    },
+    top: [ // Топ участников соревнования
+        <obj> { // Участник соревнования
+            user: <obj>, // Данные стримера, объект из ответа /api/user
+            amount: <float>, // Собранная за сезон сумма
+            online: <bool>, // Онлайн статус стрима
+            nodeId: <int> // nodeId sc2tv для ссылки на стрим /node/<nodeId>
+        },
+        ...
+    ]
+}
+```
+*[`/api/user`](#Данные-пользователя)*  
+*Список участников отсортирован по собранной сумме по уменьшению. Данные аукциона доступны только когда он активен.*  
+*Вернёт ошибку если нет активного сезона.*
+
+
+## Уровни
+
+#### Мои уровни
+##### [`POST` `A` `/api/level/my`](http://funstream.tv/api/level/my)
+**запрос**
+```js
+{}
+```
+**ответ**
+```js
+{
+    streamer: [ // Уровни у стримеров
+        {
+            level: <int>, // Уровень
+            until: <int>, // Время окончания, unixtime
+            user: <obj> // Данные стримера, объект из ответа /api/user
+        },
+        ...
+    ]
+}
+```
+*[`/api/user`](#Данные-пользователя)*
+
+
+#### Уровни моих премиум юзеров
+##### [`POST` `A` `/api/level/premiumUsers`](http://funstream.tv/api/level/premiumUsers)
 **запрос**
 ```js
 {}
@@ -927,23 +1002,22 @@
 **ответ**
 ```js
 [
-    <obj> { // Участник соревнования
-        user: <obj>, // Данные стримера, объект из ответа /api/user
-        amount: <float>, // Собранная за сезон сумма
-        nodeId: <int> // nodeId sc2tv для ссылки на стрим /node/<nodeId>
+    {
+        level: <int>, // Уровень
+        until: <int>, // Время окончания, unixtime
+        user: <obj> // Данные пользователя, объект из ответа /api/user
     },
     ...
 ]
 ```
 *[`/api/user`](#Данные-пользователя)*  
-*Список участников отсортирован по собранной сумме по уменьшению.*  
-*Вернёт ошибку если нет активного сезона.*
+*Под преумиум пользователями подразумеваются пользователи имеющие уровень у текущего юзера-стримера.*
 
 
 ## Дополнительные вызовы
 
 #### Пакетный запрос
-##### [`POST` `P` `/api/bulk`](https://funstream.tv/api/bulk)
+##### [`POST` `P` `/api/bulk`](http://funstream.tv/api/bulk)
 **запрос**
 ```js
 {
