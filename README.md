@@ -1,4 +1,4 @@
-# [Funstream.tv](https://funstream.tv) API и утилиты для помощи с интеграцией.
+# [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
 ### 0.0.13
@@ -8,7 +8,7 @@
 Общее
 -----
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTPS**.
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.
 Авторизация происходит через токен в `header`. Например
 ```
 POST /user/current HTTP/1.1
@@ -33,16 +33,16 @@ Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
 
-Запросы передаются на сайт [`https://funstream.tv`](https://funstream.tv) для общего API и на [`wss://chat.funstream.tv`](wss://chat.funstream.tv) для чата.
+Запросы передаются на сайт [`http://funstream.tv`](http://funstream.tv) для общего API и на [`wss://chat.funstream.tv`](wss://chat.funstream.tv) для чата.
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' https://funstream.tv/api/user/login
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' https://funstream.tv/api/subscribe/subscribers
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
 
-##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](https://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(необходимо залогиниться), категория 'Технические вопросы'.
+##### В случае ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](http://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru)(необходимо залогиниться), категория 'Технические вопросы'.
 
 
 API

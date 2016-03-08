@@ -13,7 +13,7 @@ API доната
 
 
 ####  Челенджи
-##### [`GET` `P` `/billing/donate/challenge`](https://funstream.tv/billing/donate/challenge)
+##### [`GET` `P` `/billing/donate/challenge`](http://funstream.tv/billing/donate/challenge)
 **запрос**
 ```js
 {
@@ -39,7 +39,7 @@ API доната
 
 
 ####  Донат, антидонат, микродонат
-##### [`GET` `P` `/billing/donate/`](https://funstream.tv/billing/donate/)
+##### [`GET` `P` `/billing/donate/`](http://funstream.tv/billing/donate/)
 **запрос**
 ```js
 {
