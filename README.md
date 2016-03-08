@@ -182,7 +182,6 @@ API
         - [**Информация о последних событиях**](billing/donate.md#Информация-о-последних-событиях)
             - [`GET` `P` `/billing/donate/challenge` Челенджи](billing/donate.md#Челенджи)
             - [`GET` `P` `/billing/donate/` Донат, антидонат, микродонат](billing/donate.md#Донат-антидонат-микродонат)
-            - [`GET` `P` `/billing/donate/subscribe` Подписки на мастер стримеров](billing/donate.md#Подписки-на-мастер-стримеров)
 - [**Админка**](admin.md)
     - [**Модерация**](admin.md#Модерация)
         - [`POST` `A` `/api/moderation/accuse` Забанить пользователя](admin.md#Забанить-пользователя)
