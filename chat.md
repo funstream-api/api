@@ -336,6 +336,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `all` Общий поток публичных каналов(`main`, `stream/*`)
 - `system` Системные сообщения
 - `stream/<streamer_id>` Стрим
+- `room/<room_id>` Комната
 - `goodgame.ru/<streamer_id>` Сообщения с гудгейма, если у стримера активен этот плеер
 - `twitch.tv/<streamer_id>` Сообщения с твича, если у стримера активен этот плеер
 - `support/<id>` Вопрос к хелпдеску
