@@ -227,7 +227,10 @@
         imagesgif: <bool>, // Отображать анимированные картинки, true по умолчанию
         submode: <string>, // Сабмод режим чата своего стрима, [none | level], none по умолчанию
         totalignore: <bool>, // Режим полного игнора, false по умолчанию
-        thirdpartysmiles: <bool> // Отображать смайлы Твитча, true по умолчанию
+        thirdpartysmiles: <bool>, // Отображать смайлы Твитча, true по умолчанию
+        displayannounce: <bool>, // Отображать анонсы стримов, true по умолчанию
+        forcewss: <bool>, // Использовать WSS соединение в чате, false по умолчанию
+        smilesgif: <bool> // Отображать анимированные смайлы, true по умолчанию
     }
 }
 ```
