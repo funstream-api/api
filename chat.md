@@ -279,7 +279,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
     },
     to: <obj|null>, // Объект пользователя к которому обращаются, аналогично from
     text: <string>, // Текст сообщения
-    time: <int>, // Время сообщения, unixtime
+    time: <unixtime>, // Время сообщения
     type: <string> // Тип сообщения, см. раздел 5
 }
 ```

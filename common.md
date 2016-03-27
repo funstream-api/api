@@ -363,7 +363,7 @@
     image: <string>, // Относительная ссылка на картинку заставки
     thumbnail: <string>, // Относительная ссылка на картинку превью
     adult: <bool>, // Флаг 18+
-    start_at: <int>, // Время начала стрима, unixtime, 0 по умолчанию
+    start_at: <unixtime>, // Время начала стрима, 0 по умолчанию
     rating: <int>, // Текущий рейтинг стрима
     slug: <string>, // Имя стрима в ссылке, /stream/<slug>
     hidden: <boolean>, // Флаг скрытия стрима в списке
@@ -527,7 +527,7 @@
 ```js
 {
     description: <string>,
-    start_at: <int>
+    start_at: <unixtime>
 }
 ```
 *[описание полей стрима](#Данные-стрима)*
@@ -782,7 +782,7 @@
 [
     <obj> { // Данные записи в расписании
         description: <string>, // Описание
-        time: <int>, // Время начала, unixtime
+        time: <unixtime>, // Время начала
         online: <bool>, // Онлайн статус стрима
         nodeId: <int>, // nodeId sc2tv для ссылки на стрим /node/<nodeId>
         user: <int> // Данные стримера, объект из ответа /api/user
@@ -804,7 +804,7 @@
 [
     <obj> { // Данные записи в расписании
         description: <string>, // Описание
-        time: <int>, // Время начала, unixtime
+        time: <unixtime>, // Время начала
         user: <int> // Данные стримера, объект из ответа /api/user
     ],
     ...
@@ -821,7 +821,7 @@
     schedule: [ // Новое расписание
         <obj> { // Данные записи в расписании
             description: <string>, // Описание
-            time: <int> // Время начала, unixtime
+            time: <unixtime> // Время начала
         },
         ...
     ]
@@ -847,7 +847,7 @@
 **ответ**
 ```js
 {
-    startPoint: <int>, // Время отсчёта собираемого доната, unixtime
+    startPoint: <unixtime>, // Время отсчёта собираемого доната
     donatedAmount: <float>, // Собранный донат с указанного времени
     milestones: [ // Список майлстоунов
         <obj> { // Данные майлстоуна
@@ -872,7 +872,7 @@
 **ответ**
 ```js
 {
-    startPoint: <int>, // Время отсчёта собираемого доната, unixtime
+    startPoint: <unixtime>, // Время отсчёта собираемого доната
     milestones: [ // Список майлстоунов
         // Массив milestones из ответа /api/milestone/get
     ]
@@ -887,7 +887,7 @@
 **запрос**
 ```js
 {
-    startPoint: <int>, // Время отсчёта собираемого доната, unixtime
+    startPoint: <unixtime>, // Время отсчёта собираемого доната
     milestones: [ // Список майлстоунов
         // Массив milestones из ответа /api/milestone/get
     ]
@@ -912,8 +912,8 @@
 **ответ**
 ```js
 {
-    start: <int>, // Время начала сезона, unixtime
-    end: <int>, // Время завершения сезона, для активного 0, unixtime
+    start: <unixtime>, // Время начала сезона
+    end: <unixtime>, // Время завершения сезона, для активного 0
     active: <bool> // Статус сезона
 }
 ```
@@ -956,8 +956,8 @@
 ```js
 {
     auction: <obj|null> { // Данные аукциона
-        bonusTime: <int>, // Бонусное время, unixtime
-        end: <int>, // Время окончания аукциона, unixtime
+        bonusTime: <unixtime>, // Бонусное время
+        end: <unixtime>, // Время окончания аукциона
         total: <float>, // Собранная сумма
         lastDonates: [ // Список последних 5 донатов участникам соревнования
             <obj> { // Донат участнику соревнования
@@ -965,7 +965,7 @@
                 streamer: <obj>, // Данные донатера, объект из ответа /api/user
                 amount: <float>, // Сумма доната
                 message: <string>, // Сообщение при донате
-                time: <int> // Время перевода, unixtime
+                time: <unixtime> // Время перевода
             },
             ...
         ]
@@ -1000,7 +1000,7 @@
     streamer: [ // Уровни у стримеров
         {
             level: <int>, // Уровень
-            until: <int>, // Время окончания, unixtime
+            until: <unixtime>, // Время окончания
             user: <obj> // Данные стримера, объект из ответа /api/user
         },
         ...
@@ -1021,7 +1021,7 @@
 [
     {
         level: <int>, // Уровень
-        until: <int>, // Время окончания, unixtime
+        until: <unixtime>, // Время окончания
         user: <obj> // Данные пользователя, объект из ответа /api/user
     },
     ...
