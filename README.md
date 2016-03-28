@@ -1,7 +1,7 @@
 # [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
 
 ## Текущая версия
-### 0.0.13
+### 0.0.14
 ###### [История изменений](CHANGELOG.md)
 
 
@@ -9,7 +9,7 @@
 -----
 
 Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.
-Авторизация происходит через токен в `header`. Например
+Авторизация происходит через токен в `Header`. Например
 ```
 POST /user/current HTTP/1.1
 Token: Bearer <your-token-here>
@@ -28,7 +28,7 @@ Token: Bearer <your-token-here>
 
 Версия API передается через `Accept`. Например,
 ```
-GET /user/current HTTP/1.1
+POST /user/current HTTP/1.1
 Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
@@ -37,7 +37,7 @@ Accept: application/json; version=1.0
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST https://funstream.tv/api/user/current
 curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
@@ -93,6 +93,7 @@ API
         - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
         - [`POST` `RA` `/api/user/full` Полные данные пользователя](common.md#Полные-данные-пользователя)
         - [`POST` `C` `/api/user/login` Логин](common.md#Логин)
+        - [`POST` `P` `/api/user/login/bytoken` Логин по токену](common.md#Логин-по-токену)
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
         - [`POST` `P` `/api/user/forgot` Запрос на сброс пароля](common.md#Запрос-на-сброс-пароля)
@@ -141,6 +142,10 @@ API
     - [**Уровни**](common.md#Уровни)
         - [`POST` `A` `/api/level/my` Мои уровни](common.md#Мои-уровни)
         - [`POST` `A` `/api/level/premiumUsers` Уровни моих премиум юзеров](common.md#Уровни-моих-премиум-юзеров)
+    - [**Аукцион окончания стрима**](common.md#Аукцион-окончания-стрима)
+        - [`POST` `P` `/api/prolonger/active` Активные аукционы окончания стрима](common.md#Активные-аукционы-окончания-стрима)
+        - [`POST` `P` `/api/prolonger/get` Данные аукциона окончания стрима](common.md#Данные-аукциона-окончания-стрима)
+        - [`POST` `A` `/api/prolonger/start` Запустить аукцион окончания стрима](common.md#Запустить-аукцион-окончания-стрима)
     - [**Дополнительные вызовы**](common.md#Дополнительные-вызовы)
         - [`POST` `P` `/api/bulk` Пакетный запрос](common.md#Пакетный-запрос)
 - [**Смайлы**](smile.md)
@@ -154,7 +159,7 @@ API
         - [`POST` `MS/Sm` `/api/smile/update` Обновить смайлы](smile.md#Обновить-смайлы)
         - [`POST` `MS` `/api/smile/ms/pending` Наличие смайлов в ожидании утверждения](smile.md#Наличие-смайлов-в-ожидании-утверждения)
         - [`POST` `MS` `/api/smile/ms/prepare` Отправить текущие изменения в смайлах на утверждение](smile.md#Отправить-текущие-изменения-в-смайлах-на-утверждение)
-        - [`POST` `MS` `/api/smile/ms/prepare` Откатить изменения в смайлах](smile.md#Откатить-изменения-в-смайлах)
+        - [`POST` `MS` `/api/smile/ms/revert` Откатить изменения в смайлах](smile.md#Откатить-изменения-в-смайлах)
     - [**Иконки**](smile.md#Иконки)
         - [`POST` `Ms` `/api/icon/add` Добавление иконки](smile.md#Добавление-иконки)
         - [`POST` `P` `/api/icon/list` Список иконок](smile.md#Список-иконок)
@@ -163,11 +168,13 @@ API
     - [**Основное**](room.md#Основное)
         - [`POST` `P` `/api/room` Данные комнаты](room.md#Данные-комнаты)
         - [`POST` `A` `/api/room/create` Создать комнату](room.md#Создать-комнату)
-        - [`POST` `P` `/api/room/getCurrentVideo` Текущая трансляция комнаты](room.md#Текущая-трансляция-комнаты)
         - [`POST` `P` `/api/room/my` Список комнат пользователя](room.md#Список-комнат-пользователя)
-        - [`POST` `A` `/api/room/periscopeRandom` Ссылка на случайный стрим с перископа](room.md#Ссылка-на-случайный-стрим-с-перископа)
         - [`POST` `A` `/api/room/preview` Изменить превью комнаты](room.md#Изменить-превью-комнаты)
         - [`POST` `A` `/api/room/settings` Настройки комнаты](room.md#Настройки-комнаты)
+    - [**Видео**](room.md#Видео)
+        - [`POST` `P/A` `/api/room/getCurrentVideo` Текущая трансляция комнаты](room.md#Текущая-трансляция-комнаты)
+        - [`POST` `A` `/api/room/periscopeRandom` Ссылка на случайный стрим с перископа](room.md#Ссылка-на-случайный-стрим-с-перископа)
+        - [`POST` `A` `/api/room/setCurrentVideo` Изменить текущую трансляцию комнаты](room.md#Изменить-текущую-трансляцию-комнаты)
     - [**Плейлист**](room.md#Плейлист)
         - [`POST` `P/A` `/api/room/playlist` Плейлист комнаты](room.md#Плейлист-комнаты)
         - [`POST` `P/A` `/api/room/playlist/history` История воспроизведения комнаты](room.md#История-воспроизведения-комнаты)
@@ -177,6 +184,13 @@ API
         - [`POST` `A` `/api/room/user/list` Список имеющих доступ в комнату](room.md#Список-имеющих-доступ-в-комнату)
         - [`POST` `A` `/api/room/user/remove` Лишить пользователя доступа в комнату](room.md#Лишить-пользователя-доступа-в-комнату)
         - [`POST` `A` `/api/room/user/set` Изменить права доступа пользователя в комнату](room.md#Изменить-права-доступа-пользователя-в-комнату)
+    - [**Инвайты**](room.md#Инвайты)
+        - [`POST` `A` `/api/room/invite` Запросить доступ в комнату](room.md#Запросить-доступ-в-комнату)
+        - [`POST` `A` `/api/room/invite/accept` Принять запрос](room.md#Принять-запрос)
+        - [`POST` `A` `/api/room/invite/blacklist` Переместить запрос в чёрный список](room.md#Переместить-запрос-в-чёрный-список)
+        - [`POST` `A` `/api/room/invite/list` Список запросов](room.md#Список-запросов)
+        - [`POST` `A` `/api/room/invite/reject` Отклонить запрос](room.md#Отклонить-запрос)
+        - [`POST` `A` `/api/room/invite/status` Статус запроса](room.md#Статус-запроса)
 - [**Биллинг**](billing/README.md)
     - [**Донат**](billing/donate.md)
         - [**Информация о последних событиях**](billing/donate.md#Информация-о-последних-событиях)

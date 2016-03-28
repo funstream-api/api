@@ -66,7 +66,7 @@
 {
     id: <int>, // Идентификатор бана, 0 для незабаненных
     banned: <bool>, // true если забанен, false если не забанен или пользователь не существует
-    expire: <int>, // Время истечения бана, unixtime, 0 для незабаненных
+    expire: <unixtime>, // Время истечения бана, 0 для незабаненных
     reason: <int> // Идентификатор причины бана, 0 для незабаненных
 }
 ```
@@ -79,8 +79,8 @@
 **запрос**
 ```js
 {
-    from: <int|null>, // От, unixtime
-    to: <int|null>, // До, unixtime
+    from: <unixtime|null>, // От
+    to: <unixtime|null>, // До
     reason: <int|null>, // Фильтр по указанной причине
     banId: <int|null> // Конкретный номер бана
 }
@@ -90,8 +90,8 @@
 [
     {
         id: <int>, // Идентификатор бана
-        start: <int>, // Время начала бана от, unixtime
-        end: <int>, // Время начала бана до, unixtime
+        start: <unixtime>, // Время начала бана от
+        end: <unixtime>, // Время начала бана до
         reason: <obj> // Причина бана, объект из ответа /api/moderation/reasons,
         active: <bool>, // Статус бана, false если отменён
         data: <array> [ // Дополнительные данные бана
@@ -169,7 +169,7 @@
 ```js
 {
     id: <int>, // Идентификатор вопроса
-    time: <string>, // Время вопроса, unixtime
+    time: <unixtime>, // Время вопроса
     category: <obj> // Данные категории, объект из ответа /api/category
     question: <string>, // Текст вопроса
     active: <bool> // Состояние вопроса, true для только созданного
@@ -217,7 +217,7 @@
 ```js
 {
     category: <int|null>, // Идентификатор категории
-    from: <int|null>, // Дата начала поиска, unixtime
+    from: <unixtime|null>, // Дата начала поиска
     onlyActive: <bool|null> // Вернуть только активные вопросы, true по умолчанию
 }
 ```
@@ -246,9 +246,9 @@
 [
     <obj> {
         ip: <string>, // IP адрес с которого логинились
-        accessTime: <int>, // Время логина, unixtime
-        firstAccessTime: <int>, // Время первого логина с этого же IP, unixtime
-        lastAccessTime: <int>, // Время последнего логина с этого же IP, unixtime
+        accessTime: <unixtime>, // Время логина
+        firstAccessTime: <unixtime>, // Время первого логина с этого же IP
+        lastAccessTime: <unixtime>, // Время последнего логина с этого же IP
         userAgent: <string> // UserAgent браузера с которого логинились
     },
     ...

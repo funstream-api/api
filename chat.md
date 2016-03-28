@@ -279,7 +279,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
     },
     to: <obj|null>, // Объект пользователя к которому обращаются, аналогично from
     text: <string>, // Текст сообщения
-    time: <int>, // Время сообщения, unixtime
+    time: <unixtime>, // Время сообщения
     type: <string> // Тип сообщения, см. раздел 5
 }
 ```
@@ -336,6 +336,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `all` Общий поток публичных каналов(`main`, `stream/*`)
 - `system` Системные сообщения
 - `stream/<streamer_id>` Стрим
+- `room/<room_id>` Комната
 - `goodgame.ru/<streamer_id>` Сообщения с гудгейма, если у стримера активен этот плеер
 - `twitch.tv/<streamer_id>` Сообщения с твича, если у стримера активен этот плеер
 - `support/<id>` Вопрос к хелпдеску
@@ -350,5 +351,4 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `system` Системные сообщения
 - `fastdonate` Микродонат
 - `donate` Донат, на данный момент включает в себя и сообщения связанные с челенджами
-- `subscribe` Подписка на мастер стримера
 - `announce` Анонсы стримов
