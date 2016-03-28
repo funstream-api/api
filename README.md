@@ -93,6 +93,7 @@ API
         - [`POST` `P` `/api/user/current` Данные текущего пользователя](common.md#Данные-текущего-пользователя)
         - [`POST` `RA` `/api/user/full` Полные данные пользователя](common.md#Полные-данные-пользователя)
         - [`POST` `C` `/api/user/login` Логин](common.md#Логин)
+        - [`POST` `P` `/api/user/login/bytoken` Логин по токену](common.md#Логин-по-токену)
         - [`POST` `P` `/api/user/logout` Логаут](common.md#Логаут)
         - [`POST` `A` `/api/user/settings` Получить или установить настройки текущего пользователя](common.md#Получить-или-установить-настройки-текущего-пользователя)
         - [`POST` `P` `/api/user/forgot` Запрос на сброс пароля](common.md#Запрос-на-сброс-пароля)
