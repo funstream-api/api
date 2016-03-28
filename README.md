@@ -9,7 +9,7 @@
 -----
 
 Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.
-Авторизация происходит через токен в `header`. Например
+Авторизация происходит через токен в `Header`. Например
 ```
 POST /user/current HTTP/1.1
 Token: Bearer <your-token-here>
@@ -28,7 +28,7 @@ Token: Bearer <your-token-here>
 
 Версия API передается через `Accept`. Например,
 ```
-GET /user/current HTTP/1.1
+POST /user/current HTTP/1.1
 Accept: application/json; version=1.0
 ```
 *В данный момент передавать версию не обязательно*
@@ -37,7 +37,7 @@ Accept: application/json; version=1.0
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST -d '{name: "..", password: ".."}' http://funstream.tv/api/user/login
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST https://funstream.tv/api/user/current
 curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
@@ -142,6 +142,10 @@ API
     - [**Уровни**](common.md#Уровни)
         - [`POST` `A` `/api/level/my` Мои уровни](common.md#Мои-уровни)
         - [`POST` `A` `/api/level/premiumUsers` Уровни моих премиум юзеров](common.md#Уровни-моих-премиум-юзеров)
+    - [**Аукцион окончания стрима**](common.md#Аукцион-окончания-стрима)
+        - [`POST` `P` `/api/prolonger/active` Активные аукционы окончания стрима](common.md#Активные-аукционы-окончания-стрима)
+        - [`POST` `P` `/api/prolonger/get` Данные аукциона окончания стрима](common.md#Данные-аукциона-окончания-стрима)
+        - [`POST` `A` `/api/prolonger/start` Запустить аукцион окончания стрима](common.md#Запустить-аукцион-окончания-стрима)
     - [**Дополнительные вызовы**](common.md#Дополнительные-вызовы)
         - [`POST` `P` `/api/bulk` Пакетный запрос](common.md#Пакетный-запрос)
 - [**Смайлы**](smile.md)
