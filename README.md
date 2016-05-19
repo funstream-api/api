@@ -1,7 +1,7 @@
 # [Funstream.tv](http://funstream.tv) API
 
 ## Текущая версия
-### 0.0.15
+### 0.0.16
 ###### [История изменений](CHANGELOG.md)
 
 
