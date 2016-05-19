@@ -1,25 +1,25 @@
-# [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
+# [Funstream.tv](http://funstream.tv) API
 
 ## Текущая версия
-### 0.0.14
+### 0.0.15
 ###### [История изменений](CHANGELOG.md)
 
 
 Общее
 -----
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.  
 Авторизация происходит через токен в `Header`. Например
 ```
 POST /user/current HTTP/1.1
-Token: Bearer <your-token-here>
+Token: Bearer your-token-here
 ```
 
 Успешный ответ приходит со статусом `200`.  
 При ошибке ответ приходит со статусом `500`. Формат ответа ошибки
-```js
+```ts
 {
-    message: <string> // error message
+    message: string; // error message
 }
 ```
 
@@ -37,7 +37,7 @@ Accept: application/json; version=1.0
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST https://funstream.tv/api/user/current
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST http://funstream.tv/api/user/current
 curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
@@ -191,6 +191,12 @@ API
         - [`POST` `A` `/api/room/invite/list` Список запросов](room.md#Список-запросов)
         - [`POST` `A` `/api/room/invite/reject` Отклонить запрос](room.md#Отклонить-запрос)
         - [`POST` `A` `/api/room/invite/status` Статус запроса](room.md#Статус-запроса)
+- [**Голосование**](poll.md)
+    - [`POST` `P` `/api/poll/info` Данные голосования](poll.md#Данные-голосования)
+    - [`POST` `A` `/api/poll/start` Начать голосование](poll.md#Начать-голосование)
+    - [`POST` `A` `/api/poll/vote` Проголосовать](poll.md#Проголосовать)
+- [**Плеер**](player.md)
+    - [`GET` `P` `/api/player/live` Онлайн статус трансляций](player.md#Онлайн-статус-трансляций)
 - [**Биллинг**](billing/README.md)
     - [**Донат**](billing/donate.md)
         - [**Информация о последних событиях**](billing/donate.md#Информация-о-последних-событиях)

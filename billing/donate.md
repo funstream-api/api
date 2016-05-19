@@ -15,21 +15,21 @@ API доната
 ####  Челенджи
 ##### [`GET` `P` `/billing/donate/challenge`](http://funstream.tv/billing/donate/challenge)
 **запрос**
-```js
+```ts
 {
-    id: <int|null> // Идентификатор стримера
-    name: <string|null> // Имя стримера
+    id: number | null; // Идентификатор стримера
+    name: string | null; // Имя стримера
 }
 ```
 **ответ**
-```js
+```ts
 [
-    <obj> {
-        date: <unixtime>, // Время события
-        amount: <int>, // Сумма поддержки челенджа
-        challenge: <int>, // Имя челенджа
-        support: <int>, // Имя поддержавшего пользователя
-        type: <string>, // Тип события [challengecreate|challengeaccept|challengedone|challengesupport]
+    {
+        date: unixtime; // Время события
+        amount: number; // Сумма поддержки челенджа
+        challenge: number; // Имя челенджа
+        support: number; // Имя поддержавшего пользователя
+        type: string; // Тип события [challengecreate | challengeaccept | challengedone | challengesupport]
     },
     ...
 }
@@ -41,22 +41,22 @@ API доната
 ####  Донат, антидонат, микродонат
 ##### [`GET` `P` `/billing/donate/`](http://funstream.tv/billing/donate/)
 **запрос**
-```js
+```ts
 {
-    id: <int|null> // Идентификатор стримера
-    name: <string|null> // Имя стримера
+    id: number | null; // Идентификатор стримера
+    name: string | null; // Имя стримера
 }
 ```
 **ответ**
-```js
+```ts
 [
-    <obj> {
-        date: <unixtime>, // Время события
-        support: <string>, // Имя пользователя сделавшего перевод
-        streamer: <string>, // Имя стримера получателя
-        amount: <int>, // Сумма перевода(отрицательное число для антидоната)
-        msg: <string>, // Сообщение к переводу, если есть
-        type: <string> // Тип события [donate|antidonate|fastdonate|directdonate]
+    {
+        date: unixtime; // Время события
+        support: string; // Имя пользователя сделавшего перевод
+        streamer: string; // Имя стримера получателя
+        amount: number; // Сумма перевода(отрицательное число для антидоната)
+        msg: string; // Сообщение к переводу, если есть
+        type: string; // Тип события [donate | antidonate | fastdonate | directdonate]
     },
     ...
 }

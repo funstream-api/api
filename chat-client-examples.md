@@ -8,7 +8,7 @@
 
 ##### JavaScript
 
-```js
+```ts
 <script src='http://cdn.socket.io/socket.io-1.3.5.js'></script>
 
 <script type='text/javascript'>
@@ -50,14 +50,13 @@
 
         console.log('socket reconnect');
     });
-
-</script>
+ /script
 ```
 
 
 ##### Node.js
 
-```js
+```ts
 var io = require('socket.io-client');
 
 var socket = io.connect('wss://chat.funstream.tv', {
