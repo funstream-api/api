@@ -8,14 +8,14 @@
 Общее
 -----
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.
+Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.  
 Авторизация происходит через токен в `Header`. Например
 ```
 POST /user/current HTTP/1.1
 Token: Bearer your-token-here
 ```
 
-Успешный ответ приходит со статусом `200`.
+Успешный ответ приходит со статусом `200`.  
 При ошибке ответ приходит со статусом `500`. Формат ответа ошибки
 ```ts
 {
@@ -23,7 +23,7 @@ Token: Bearer your-token-here
 }
 ```
 
-Параметры, значение которых должно быть установлено в `null`, могут не передаваться.
+Параметры, значение которых должно быть установлено в `null`, могут не передаваться.  
 Где написано ``объект из ответа ...``, если не указано иного, подразумевает ответ указанного запроса без необязательных параметров/опций.
 
 Версия API передается через `Accept`. Например,
@@ -37,7 +37,7 @@ Accept: application/json; version=1.0
 
 Примеры запросов на `curl`
 ```sh
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST https://funstream.tv/api/user/current
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST http://funstream.tv/api/user/current
 curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
