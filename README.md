@@ -1,4 +1,4 @@
-# [Funstream.tv](http://funstream.tv) API и утилиты для помощи с интеграцией.
+# [Funstream.tv](http://funstream.tv) API
 
 ## Текущая версия
 ### 0.0.15
@@ -195,6 +195,8 @@ API
     - [`POST` `P` `/api/poll/info` Данные голосования](poll.md#Данные-голосования)
     - [`POST` `A` `/api/poll/start` Начать голосование](poll.md#Начать-голосование)
     - [`POST` `A` `/api/poll/vote` Проголосовать](poll.md#Проголосовать)
+- [**Плеер**](player.md)
+    - [`GET` `P` `/api/player/live` Онлайн статус трансляций](player.md#Онлайн-статус-трансляций)
 - [**Биллинг**](billing/README.md)
     - [**Донат**](billing/donate.md)
         - [**Информация о последних событиях**](billing/donate.md#Информация-о-последних-событиях)
