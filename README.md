@@ -202,6 +202,8 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
     - [`POST` `P` `/api/poll/info` Данные голосования](poll.md#Данные-голосования)
     - [`POST` `A` `/api/poll/start` Начать голосование](poll.md#Начать-голосование)
     - [`POST` `A` `/api/poll/vote` Проголосовать](poll.md#Проголосовать)
+    - [**Уведомления**](poll.md#Уведомления-1)
+        - [`poll/update` Обновлённые данные](poll.md#Обновлённые-данные)
 - [**Плеер**](player.md)
     - [`GET` `P` `/api/player/live` Онлайн статус трансляций](player.md#Онлайн-статус-трансляций)
 - [**Биллинг**](billing/README.md)
