@@ -70,8 +70,8 @@
 **запрос**
 ```ts
 {
-    id: number | null; // Идентификатор пользователя
-    name: string | null; // Имя пользователя
+    id?: number; // Идентификатор пользователя
+    name?: string; // Имя пользователя
 }
 ```
 **ответ**
@@ -151,8 +151,8 @@
 **запрос**
 ```ts
 {
-    id: number | null; // Идентификатор пользователя
-    name: string | null; // Имя пользователя
+    id?: number; // Идентификатор пользователя
+    name?: string; // Имя пользователя
 }
 ```
 **ответ**
@@ -341,11 +341,11 @@
 ```ts
 {
     content: string; // Тип контента, [stream, support]
-    id: number | null; // Идентификатор категории
-    slug: string | null; // Короткое имя категории
-    options: Object | null {
-        subCategories: bool | null; // Включая 1 уровень подкатегорий, false, по умолчанию
-        contentAmount: bool | null; // Включая количество контента, false по умолчанию
+    id?: number; // Идентификатор категории
+    slug?: string; // Короткое имя категории
+    options?: Object {
+        subCategories?: boolean; // Включая 1 уровень подкатегорий, false, по умолчанию
+        contentAmount?: boolean; // Включая количество контента, false по умолчанию
     }
 }
 ```
@@ -370,10 +370,10 @@
 **запрос**
 ```ts
 {
-    id: number | null; // Идентификатор стрима
-    owner: string | null; // Имя стримера
-    options: Object | null {
-        players: bool | null; // Вернуть плееры стрима, false по умолчанию
+    id?: number; // Идентификатор стрима
+    owner?: string; // Имя стримера
+    options?: Object {
+        players?: boolean; // Вернуть плееры стрима, false по умолчанию
     }
 }
 ```
@@ -478,8 +478,8 @@
     content: string; // Тип контента, [stream]
     type: string; // Тип фильтра, [all, my]
     category: { // Категория, любой из параметров
-        id: number | null; // Идентификатор категории
-        slug: string | null; // Короткое имя категории, top для верхней
+        id?: number; // Идентификатор категории
+        slug?: string; // Короткое имя категории, top для верхней
     }
 }
 ```
@@ -511,8 +511,8 @@
 {
     content: string; // Тип контента, [stream]
     category: { // Категория, любой из параметров
-        id: number | null; // Идентификатор категории
-        slug: string | null; // Короткое имя категории, top для верхней
+        id?: number; // Идентификатор категории
+        slug?: string; // Короткое имя категории, top для верхней
     },
     amount: number; // Количество элементов в ответе
 }

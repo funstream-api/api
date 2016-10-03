@@ -26,7 +26,7 @@
 {
     userId: number; // Идентификатор пользователя которого нужно попытаться забанить
     reasonId: number; // Идентификатор причины бана
-    data: Object | null; // Дополнительная информация
+    data?: Object; // Дополнительная информация
 }
 ```
 **ответ**
@@ -79,10 +79,10 @@
 **запрос**
 ```ts
 {
-    from: unixtime | null; // От
-    to: unixtime | null; // До
-    reason: number | null; // Фильтр по указанной причине
-    banId: number | null; // Конкретный номер бана
+    from?: unixtime; // От
+    to?: unixtime; // До
+    reason?: number; // Фильтр по указанной причине
+    banId?: number; // Конкретный номер бана
 }
 ```
 **ответ**
@@ -223,9 +223,9 @@
 **запрос**
 ```ts
 {
-    category: number | null; // Идентификатор категории
-    from: unixtime | null; // Дата начала поиска
-    onlyActive: bool | null; // Вернуть только активные вопросы, true по умолчанию
+    category?: number; // Идентификатор категории
+    from?: unixtime; // Дата начала поиска
+    onlyActive?: boolean; // Вернуть только активные вопросы, true по умолчанию
 }
 ```
 **ответ**
