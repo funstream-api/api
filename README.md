@@ -58,6 +58,8 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 - **`RA`** Администратор ролей, роль `roleAdmin`
 - **`Sc`** Изменение расписания, роль `schedule`
 - **`Se`** Управление сезонами соревнования, роль `seasoner`
+- **`StA`** Администратор магазина, роль `storeAdmin`
+- **`StS`** Поддержка магазина, роль `storeSupport`
 - **`C`** Закрытый, для внутреннего использования
 
 ---
