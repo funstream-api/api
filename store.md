@@ -17,6 +17,13 @@ API Магазина
     - [`POST` `StS` `/api/store/points/get` Баллы пользователя](#Баллы-пользователя)
     - [`POST` `A` `/api/store/points/my` Баллы текущего пользователя](#Баллы-текущего-пользователя)
     - [`POST` `StS` `/api/store/points/set` Изменить баллы пользователя](#Изменить-баллы-пользователя)
+- [**Подписки на стримеров**](#Подписки-на-стримеров)
+    - [`POST` `A` `/api/store/subscription/purchase` Купить подписку на стримера](#Купить-подписку-на-стримера)
+    - [`POST` `StS` `/api/store/subscription/list` Список подписок пользователя](#Список-подписок-пользователя)
+    - [`POST` `A` `/api/store/subscription/my` Список подписок текущего пользователя](#Список-подписок-текущего-пользователя)
+    - [`POST` `StS` `/api/store/subscription/modify` Добавление/изменение подписки пользователя](#Добавлениеизменение-подписки-пользователя)
+    - [`POST` `StS` `/api/store/subscription/remove` Удаление подписки пользователя](#Удаление-подписки-пользователя)
+    - [`POST` `A/StS` `/api/store/subscription/setStatus` Изменение статуса подписки](#Изменение-статуса-подписки)
 
 
 ---
@@ -190,13 +197,13 @@ config: {
 **запрос**
 ```ts
 {
-    ... // Данные бонуса пользователя, объект из ответа /api/store/purchase/list
+    // Данные бонуса пользователя, объект из ответа /api/store/purchase/list
 }
 ```
 **ответ**
 ```ts
 {
-    ... // Обновлённые данные бонуса пользователя, объект из ответа /api/store/purchase/list
+    // Обновлённые данные бонуса пользователя, объект из ответа /api/store/purchase/list
 }
 ```
 *[`/api/store/purchase/list`](#Список-бонусов-пользователя)*  
@@ -214,7 +221,7 @@ config: {
 **ответ**
 ```ts
 {
-    ... // Обновлённые данные бонуса пользователя, объект из ответа /api/store/purchase/list
+    // Обновлённые данные бонуса пользователя, объект из ответа /api/store/purchase/list
 }
 ```
 *[`/api/store/purchase/list`](#Список-бонусов-пользователя)*  
@@ -310,3 +317,113 @@ config: {
 }
 ```
 *[`/api/store/points/get`](#Баллы-пользователя)*  
+
+
+
+## Подписки на стримеров
+
+#### Купить подписку на стримера
+##### [`POST` `A` `/api/store/subscription/purchase`](http://funstream.tv/api/store/subscription/purchase)
+**запрос**
+```ts
+{
+    streamerId: number; // Идентификатор стримера
+}
+```
+**ответ**
+```ts
+{}
+```
+*Вернёт ошибку если на счету пользователя не хватает пекоинов.*  
+
+
+#### Список подписок пользователя
+##### [`POST` `StS` `/api/store/subscription/list`](http://funstream.tv/api/store/subscription/list)
+**запрос**
+```ts
+{
+    userId: number; // Идентификатор пользователя
+}
+```
+**ответ**
+```ts
+[
+    Object, // Подписка пользователя, объект из ответа  /api/store/subscription/modify
+    ...
+]
+```
+*[`/api/store/subscription/modify`](#Добавлениеизменение-подписки-пользователя)*  
+
+
+#### Список подписок текущего пользователя
+##### [`POST` `A` `/api/store/subscription/my`](http://funstream.tv/api/store/subscription/my)
+**запрос**
+```ts
+{}
+```
+**ответ**
+```ts
+[
+    Object, // Подписка пользователя, объект из ответа  /api/store/subscription/modify
+    ...
+]
+```
+*[`/api/store/subscription/modify`](#Добавлениеизменение-подписки-пользователя)*  
+
+
+#### Добавление/изменение подписки пользователя
+##### [`POST` `StS` `/api/store/subscription/modify`](http://funstream.tv/api/store/subscription/modify)
+**запрос**
+```ts
+{
+    id?: number; // Не нужен при добавлении новой подписки
+    userId: number;
+    streamerId: number;
+    expires: unixtime;
+    active: boolean;
+}
+```
+**ответ**
+```ts
+{
+    id: number; // Идентификатор подписки
+    userId: number; // Идентификатор пользователя
+    streamerId: number; // Идентификатор стримера на которого подписка
+    expires: unixtime; // Время окончания подписки, 0 если без времени окончания
+    active: boolean; // Статус подписки (используется только для включения/выключения иконки)
+}
+```
+
+
+#### Удаление подписки пользователя
+##### [`POST` `StS` `/api/store/subscription/remove`](http://funstream.tv/api/store/subscription/remove)
+**запрос**
+```ts
+{
+    id: number; // Идентификатор подписки
+}
+```
+**ответ**
+```ts
+{}
+```
+
+
+#### Изменение статуса подписки
+##### [`POST` `A/StS` `/api/store/subscription/setStatus`](http://funstream.tv/api/store/subscription/setStatus)
+**запрос**
+```ts
+{
+    id: number; // Идентификатор подписки
+    active: boolean; // Статус
+}
+```
+**ответ**
+```ts
+{
+    // Новые данные подписки, объект из ответа /api/store/subscription/modify
+}
+```
+*[`/api/store/subscription/modify`](#Добавлениеизменение-подписки-пользователя)*  
+*Влияет только на активную иконку пользователя*  
+
