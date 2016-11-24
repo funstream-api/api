@@ -86,8 +86,6 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
     - [**Оповещение клиента**](chat.md#Оповещение-клиента)
         - [`WS` `P` `/chat/message` Новое сообщение](chat.md#Новое-сообщение)
         - [`WS` `P` `/chat/message/remove` Удаление сообщения](chat.md#Удаление-сообщения)
-        - [`WS` `P` `/chat/user/join` Присоединение к каналу](chat.md#Присоединение-к-каналу)
-        - [`WS` `P` `/chat/user/leave` Отсоединение от канала](chat.md#Отсоединение-от-канала)
     - [**Каналы чата**](chat.md#Каналы-чата)
     - [**Типы сообщений**](chat.md#Типы-сообщений)
 - [**Общее**](common.md)
