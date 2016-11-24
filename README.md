@@ -1,7 +1,7 @@
-# [Funstream.tv](http://funstream.tv) API
+# [Peka2.tv](http://peka2.tv) API
 
 ## Текущая версия
-### 0.0.16
+### 0.1.0
 ### [История изменений](CHANGELOG.md)
 
 
@@ -42,7 +42,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 ```
 
 
-##### В случае вопросов, ошибок или неточностей документации, пишите в Помощь на сайте [funstream.tv](http://funstream.tv/stream/all/top) (необходимо залогиниться, категория 'Технические вопросы') или в Мейн чат на сайте [peka2.tv](http://peka2.tv/) пользователю `drow`.
+##### В случае вопросов, ошибок или неточностей документации, пишите в Помощь на сайте [funstream.tv](http://funstream.tv/stream/all/top) (необходимо залогиниться, категория 'Технические вопросы') или в Мейн чат на сайте [peka2.tv](http://peka2.tv) пользователю `drow`.
 
 
 # API
