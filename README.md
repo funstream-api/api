@@ -233,8 +233,6 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 - [**Уведомления**](notification.md)
     - [**Событие уведомления**](notification.md#Событие-уведомления)
     - [**Прочие уведомления**](notification.md#Прочие-уведомления)
-        - [**Донат в чате**](notification.md#Донат-в-чате)
-            - [`chatChannelDonateLevel` Изменение донат уровня канала чата](notification.md#Изменение-донат-уровня-канала-чата)
         - [**Сторонние сервисы в чате**](notification.md#Сторонние-сервисы-в-чате)
             - [`chatThirdpartySendMessageError` Ошибка отправки сообщения в чат сервис](notification.md#Ошибка-отправки-сообщения-в-чат-сервис)
 - [**Сторонние сервисы**](thirdparty.md)
