@@ -249,13 +249,5 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
         - [`thirdpartyLogin` Логин через сторонние сервисы](thirdparty.md#Логин-через-сторонние-сервисы)
         - [`thirdpartyRegister` Регистрация через сторонние сервисы](thirdparty.md#Регистрация-через-сторонние-сервисы-1)
 
-- [**Sc2tv**](sc2tv.md)
-    - [**Авторизация**](sc2tv.md#Авторизация)
-        - [`POST` `A` `/api/sc2tv/authUrl` Получить урл авторизации](sc2tv.md#Получить-урл-авторизации)
-        - [`POST` `A` `/api/sc2tv/check` Проверить права](sc2tv.md#Проверить-права)
-    - [**Донат**](sc2tv.md#Донат)
-        - [`POST` `A` `/api/sc2tv/donate` Донат произвольной суммы](sc2tv.md#Донат-произвольной-суммы)
-        - [`POST` `A` `/api/sc2tv/donate/fast` Микродонат](sc2tv.md#Микродонат)
-
 
 Спасибо @JAremko за помощь в оформлении документации.
