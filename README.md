@@ -54,7 +54,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 - **`S`** Саппорты, роль `support`
 - **`B`** Администратор блокировок, роль `blocker`
 - **`Sm`** Администратор смайлов, роль `smiler`
-- **`MS`** Мастерстримеры, роль `masterstreamer`
+- **`MS`** Стример с партнёркой, роль `masterstreamer`
 - **`RA`** Администратор ролей, роль `roleAdmin`
 - **`Sc`** Изменение расписания, роль `schedule`
 - **`Se`** Управление сезонами соревнования, роль `seasoner`
@@ -127,9 +127,6 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
         - [`POST` `A` `/api/ignore/check` Проверить на игнор](common.md#Проверить-на-игнор)
         - [`POST` `A` `/api/ignore/list` Список игнорируемого](common.md#Список-игнорируемого)
         - [`POST` `A` `/api/ignore/remove` Удалить из списка игнорируемого](common.md#Удалить-из-списка-игнорируемого)
-    - [**Мастерстримеры**](common.md#Мастерстримеры)
-        - [`POST` `P` `/api/masterstreamer/list` Список иконок и смайлов мастерстримеров](common.md#Список-иконок-и-смайлов-мастерстримеров)
-        - [`POST` `P` `/api/masterstreamer/icon/list` Список выбранных пользователями иконок](common.md#Список-выбранных-пользователями-иконок)
     - [**Расписание**](common.md#Расписание)
         - [`POST` `P` `/api/schedule/get` Список расписания](common.md#Список-расписания)
         - [`POST` `Sc` `/api/schedule/my` Расписание пользователя](common.md#Расписание-пользователя)
@@ -156,9 +153,9 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
     - [**Смайлы**](smile.md#Смайлы)
         - [`POST` `P` `/api/smile` Доступные смайлы](smile.md#Доступные-смайлы)
         - [`POST` `MS/Sm` `/api/smile/add` Добавить смайл](smile.md#Добавить-смайл)
-        - [`POST` `Sm` `/api/smile/approve` Утвердить изменения в смайлах мастерстримера](smile.md#Утвердить-изменения-в-смайлах-мастерстримера)
-        - [`POST` `Sm` `/api/smile/pending` Список изменений в смайлах мастерстримеров на утверждение](smile.md#Список-изменений-в-смайлах-мастерстримеров-на-утверждение)
-        - [`POST` `Sm` `/api/smile/reject` Отклонить изменения в смайлах мастерстримера](smile.md#Отклонить-изменения-в-смайлах-мастерстримера)
+        - [`POST` `Sm` `/api/smile/approve` Утвердить изменения в смайлах стримера](smile.md#Утвердить-изменения-в-смайлах-стримера)
+        - [`POST` `Sm` `/api/smile/pending` Список изменений в смайлах стримеров на утверждение](smile.md#Список-изменений-в-смайлах-стримеров-на-утверждение)
+        - [`POST` `Sm` `/api/smile/reject` Отклонить изменения в смайлах стримера](smile.md#Отклонить-изменения-в-смайлах-стримера)
         - [`POST` `MS/Sm` `/api/smile/remove` Удалить смайлы](smile.md#Удалить-смайлы)
         - [`POST` `MS/Sm` `/api/smile/update` Обновить смайлы](smile.md#Обновить-смайлы)
         - [`POST` `MS` `/api/smile/ms/pending` Наличие смайлов в ожидании утверждения](smile.md#Наличие-смайлов-в-ожидании-утверждения)
