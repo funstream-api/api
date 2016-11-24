@@ -7,10 +7,10 @@
 
 ## Общее
 
-Запрос посылается методом `POST`, если не указано другое, параметры запроса в JSON формате, **протокол HTTP**.  
+Запрос посылается методом `POST` для основного апи и через `Websocket` для чата, если не указано иного. Параметры запроса в JSON формате, **протокол HTTP**.  
 Авторизация происходит через токен в `Header`. Например
 ```
-POST /user/current HTTP/1.1
+POST /api/user/current HTTP/1.1
 Token: Bearer your-token-here
 ```
 
@@ -18,7 +18,7 @@ Token: Bearer your-token-here
 При ошибке ответ приходит со статусом `500`. Формат ответа ошибки
 ```ts
 {
-    message: string; // error message
+    message: string; // Текст ошибки
 }
 ```
 
@@ -38,11 +38,11 @@ Accept: application/json; version=1.0
 Примеры запросов на `curl`
 ```sh
 curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -X POST http://funstream.tv/api/user/current
-curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer .." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
+curl -H "Content-Type: application/json" -H "Accept: application/json; version 1.0" -H "Token: Bearer ..." -X POST -d '{content: "stream"}' http://funstream.tv/api/subscribe/subscribers
 ```
 
 
-##### В случае вопросов, ошибок или неточностей документации, пишите в Помощь на сайтах [funstream.tv](http://funstream.tv/stream/all/top) или [sc2tv.ru](http://sc2tv.ru) (необходимо залогиниться), категория 'Технические вопросы'.
+##### В случае вопросов, ошибок или неточностей документации, пишите в Помощь на сайте [funstream.tv](http://funstream.tv/stream/all/top) (необходимо залогиниться, категория 'Технические вопросы') или в Мейн чат на сайте [peka2.tv](http://peka2.tv/) пользователю `drow`.
 
 
 # API

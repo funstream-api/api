@@ -2,6 +2,7 @@
 =============================
 
 - [JavaScript](#javascript)
+- [Go](#go)
 - [Node.js](#nodejs)
 - [C#](#c)
 
@@ -50,8 +51,14 @@
 
         console.log('socket reconnect');
     });
- /script
+</script>
 ```
+
+
+##### Go
+
+Клиент и сервер для socket.io https://github.com/graarh/golang-socketio
+
 
 
 ##### Node.js
@@ -85,7 +92,7 @@ socket.emit('/chat/join', {channel: 'main'}, function(data) {
 
 ##### C\#
 
-```C#
+```c#
 socket = IO.Socket("wss://chat.funstream.tv", new IO.Options { Transports = ImmutableList.Create("websocket") });
 
 socket.On(Socket.EVENT_CONNECT, (a) =>
