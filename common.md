@@ -529,14 +529,10 @@
 {
     id: number; // Идентификатор элемента контента
     owner: Object; // Владелец, объект из ответа /api/user
-    category: Object; // Категория, объект из ответа /api/category
+    category: Object | null; // Категория, объект из ответа /api/category
     name: string; // Название
-    adult: boolean; // Флаг 18+
     rating: number; // Рейтинг
-    image: string; // Ссылка на картинку
     thumbnail: string; // Ссылка на превью
-    hidden: boolean; // Флаг скрытия в списке
-    slug: string; // Имя в ссылке на элемент контента(например /stream/<slug>, /room/<slug>)
 }
 ```
 *[`/api/user`](#Данные-пользователя), [`/api/category`](#Категория-контента)*
@@ -546,9 +542,10 @@
 **стрим**
 ```ts
 {
-    description: string;
     start_at: unixtime;
-    active: boolean;
+    online: boolean;
+    tv: boolean;
+    selected: number;
 }
 ```
 *[описание полей стрима](#Данные-стрима)*
@@ -556,8 +553,12 @@
 **комната**
 ```ts
 {
+    adult: boolean;
     available: boolean;
+    image: string;
+    hidden: boolean;
     mode: string;
+    slug: string;
 }
 ```
 *[описание полей комнаты](room.md#Данные-комнаты)*
