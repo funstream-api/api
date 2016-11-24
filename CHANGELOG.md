@@ -14,6 +14,8 @@
 #### BREAKING CHANGES
 - **common**
     - [`/api/stream`](common.md#Данные-стрима) убрано поле `slug`, используйте `owner.slug` с тем же значением
+- **smile**
+    - [`/api/smile`](smile.md#Доступные-смайлы) убраны поля `level`, `masterStreamerLevel`, `siteLevel` (их возможное наличие стоит игнорировать)
 
 
 
