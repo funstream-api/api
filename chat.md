@@ -277,7 +277,6 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
     from: { // Объект пользователя отправителя сообщения
         id: number; // Идентификатор пользователя
         name: string; // Имя пользователя
-        color: number; // Идентификатор цвета имени пользователя
     },
     to: Object | null; // Объект пользователя к которому обращаются, аналогично from
     text: string; // Текст сообщения
@@ -288,6 +287,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
         icon: number; // Идентификатор активной иконки, см /api/icon/list
         subscriptions: number[]; // Список идентификаторов стримеров на которых подписан пользователь
     };
+    parentId: number; // Идентификатор сообщения родителя
 }
 ```
 *[`/api/store/bonus/list`](store.md#Список-бонусов), [`/api/icon/list`](smile.md#Список-иконок)*  
@@ -325,11 +325,12 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `all` Общий поток публичных каналов(`main`, `stream/*`)
 - `system` Системные сообщения
 - `stream/<streamerId>` Стрим
-- `room/<room_id>` Комната
 - `goodgame.ru/<streamerId>` Сообщения с гудгейма
 - `twitch.tv/<streamerId>` Сообщения с твича
 - `support/<id>` Вопрос к поддержке
 - `private/<fromId>/<toId>` Личные сообщения, (from_id <= to_id)
+- `comments/article/<articleId>` Комментарии к статье
+- `comments/stream/<streamerId>` Комментарии к стриму
 
 `streamerId`, `fromId`, `toId` - идентификаторы соответствующих пользователей
 

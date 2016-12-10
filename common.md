@@ -371,12 +371,15 @@
     tv: boolean; // Флаг кинотеатра
     selected: number; // Приоритет закрепления в топе
     active: boolean; // Если false, то стрим доступен только администраторам стримов
+    streamStartedAt: unixtime; // Время начала текущего стрима, 0 если стрим оффлайн
+    subscribers: number; // Число добавивших стрим в избранное
     players: Array [ // Все добавленные плееры
         {
             provider: string; // Стрим сервис, см ниже
             channel: string; // Имя канала
             active: bolean; // Флаг активности, если false то онлайн статус плеера не используется для определения онлайна стрима
             online: boolean; // Онлайн статус
+            position: number; // Порядок для сортировки
             preview: string; // Абсолютная ссылка на картинку превью
             url: string; // Полная ссылка на канал стрим сервиса
         },
@@ -530,19 +533,6 @@
 ```
 *[описание полей стрима](#Данные-стрима)*
 
-**комната**
-```ts
-{
-    adult: boolean;
-    available: boolean;
-    image: string;
-    hidden: boolean;
-    mode: string;
-    slug: string;
-}
-```
-*[описание полей комнаты](room.md#Данные-комнаты)*
-
 
 ## Подписки
 
@@ -585,7 +575,7 @@
 **запрос**
 ```ts
 {
-    content: string; // Тип контента, [stream, room]
+    content: string; // Тип контента, [stream]
     id: number; // Идентификатор элемента контента
 }
 ```
