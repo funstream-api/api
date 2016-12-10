@@ -371,6 +371,8 @@
     tv: boolean; // Флаг кинотеатра
     selected: number; // Приоритет закрепления в топе
     active: boolean; // Если false, то стрим доступен только администраторам стримов
+    streamStartedAt: unixtime; // Время начала текущего стрима, 0 если стрим оффлайн
+    subscribers: number; // Число добавивших стрим в избранное
     players: Array [ // Все добавленные плееры
         {
             provider: string; // Стрим сервис, см ниже

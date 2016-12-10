@@ -1,4 +1,6 @@
 # 0.2.0 (2016-12-XX)
+- **common**
+    - [`/api/stream`](common.md#Данные-стрима) добавлены поля `streamStartedAt`, `subscribers`
 
 
 
