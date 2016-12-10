@@ -1,6 +1,7 @@
 # 0.2.0 (2016-12-XX)
 - **common**
     - [`/api/stream`](common.md#Данные-стрима) добавлены поля `streamStartedAt`, `subscribers`
+    - [`/api/stream`](common.md#Данные-стрима) в объект плеера добавлено поле порядка для сортировки `position`
 - **payment**
     - [`payment/stream`](payment.md#Донат-на-стрим) добавлено событие доната на стрим
 
