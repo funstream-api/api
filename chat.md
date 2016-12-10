@@ -287,6 +287,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
         icon: number; // Идентификатор активной иконки, см /api/icon/list
         subscriptions: number[]; // Список идентификаторов стримеров на которых подписан пользователь
     };
+    parentId: number; // Идентификатор сообщения родителя
 }
 ```
 *[`/api/store/bonus/list`](store.md#Список-бонусов), [`/api/icon/list`](smile.md#Список-иконок)*  
@@ -328,6 +329,8 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `twitch.tv/<streamerId>` Сообщения с твича
 - `support/<id>` Вопрос к поддержке
 - `private/<fromId>/<toId>` Личные сообщения, (from_id <= to_id)
+- `comments/article/<articleId>` Комментарии к статье
+- `comments/stream/<streamerId>` Комментарии к стриму
 
 `streamerId`, `fromId`, `toId` - идентификаторы соответствующих пользователей
 
