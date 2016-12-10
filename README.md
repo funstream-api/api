@@ -169,7 +169,7 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
         - [`POST` `A/StS` `/api/store/subscription/setStatus` Изменение статуса подписки](store.md#Изменение-статуса-подписки)
     - [**Уведомления**](store.md#Уведомления-1)
         - [`bonus/purchase` Куплен/добавлен бонус](store.md#Куплендобавлен-бонус)
-        - [`/bonus/points` Изменился баланс баллов](store.md#Изменился-баланс-баллов)
+        - [`bonus/points` Изменился баланс баллов](store.md#Изменился-баланс-баллов)
         - [`bonus/subscription` Изменилась/добавилась подписка](store.md#Измениласьдобавилась-подписка)
 - [**Комнаты**](room.md)
     - [**Основное**](room.md#Основное)
