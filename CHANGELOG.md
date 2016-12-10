@@ -3,14 +3,16 @@
     - [`/api/stream`](common.md#Данные-стрима) добавлены поля `streamStartedAt`, `subscribers`
 - **payment**
     - [`payment/stream`](payment.md#Донат-на-стрим) добавлено событие доната на стрим
-- **store**
-    - [`bonus/points`](store.md#Изменился-баланс-баллов) поправлен тип события с `/bonus/points` на `bonus/points`
 
 #### BREAKING CHANGES
+- **chat**
+    - [`/chat/message`](chat.md#Новое-сообщение) из объектов `from`/`to` убрано поле `color` как неактуальное
 - **poll**
     - удалён раздел голосований
 - **room**
     - удалён раздел комнат
+- **store**
+    - [`bonus/points`](store.md#Изменился-баланс-баллов) поправлен тип события с `/bonus/points` на `bonus/points`
 
 
 
