@@ -532,19 +532,6 @@
 ```
 *[описание полей стрима](#Данные-стрима)*
 
-**комната**
-```ts
-{
-    adult: boolean;
-    available: boolean;
-    image: string;
-    hidden: boolean;
-    mode: string;
-    slug: string;
-}
-```
-*[описание полей комнаты](room.md#Данные-комнаты)*
-
 
 ## Подписки
 
@@ -587,7 +574,7 @@
 **запрос**
 ```ts
 {
-    content: string; // Тип контента, [stream, room]
+    content: string; // Тип контента, [stream]
     id: number; // Идентификатор элемента контента
 }
 ```
