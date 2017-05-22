@@ -1,4 +1,4 @@
-# 0.X.X (2016-12-XX)
+# 0.3.X (2016-12-XX)
 
 #### BREAKING CHANGES
 - **chat**

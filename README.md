@@ -56,8 +56,6 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
 - **`Sm`** Администратор смайлов, роль `smiler`
 - **`MS`** Стример с партнёркой, роль `masterstreamer`
 - **`RA`** Администратор ролей, роль `roleAdmin`
-- **`Sc`** Изменение расписания, роль `schedule`
-- **`Se`** Управление сезонами соревнования, роль `seasoner`
 - **`StA`** Администратор магазина, роль `storeAdmin`
 - **`StS`** Поддержка магазина, роль `storeSupport`
 - **`C`** Закрытый, для внутреннего использования
@@ -201,7 +199,6 @@ curl -H "Content-Type: application/json" -H "Accept: application/json; version 1
         - [**Сторонние сервисы в чате**](notification.md#Сторонние-сервисы-в-чате)
             - [`chatThirdpartySendMessageError` Ошибка отправки сообщения в чат сервис](notification.md#Ошибка-отправки-сообщения-в-чат-сервис)
 - [**Сторонние сервисы**](thirdparty.md)
-    - [`POST` `A` `/api/oauth/thirdparty/goodgame` Сохранение данных авторизации для GoodGame](thirdparty.md#Сохранение-данных-авторизации-для-goodgame)
     - [`POST` `C` `/api/oauth/thirdparty/register` Регистрация через сторонние сервисы](thirdparty.md#Регистрация-через-сторонние-сервисы)
     - [**Уведомления**](thirdparty.md#Уведомления-1)
         - [`thirdpartyLogin` Логин через сторонние сервисы](thirdparty.md#Логин-через-сторонние-сервисы)
