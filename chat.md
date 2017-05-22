@@ -225,6 +225,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
         name: string; // Имя пользователя
     }
     text: string; // Текст сообщения
+    anonymous: boolean; // Анонимное сообщение
 }
 ```
 **ответ**
@@ -274,11 +275,11 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 {
     id: number;  // Идентификатор сообщения
     channel: string; // Идентификатор канала, см. раздел 4
-    from: { // Объект пользователя отправителя сообщения
+    from: { // Отправитель сообщения
         id: number; // Идентификатор пользователя
         name: string; // Имя пользователя
     },
-    to: Object | null; // Объект пользователя к которому обращаются, аналогично from
+    to: Object | null; // Получатель сообщения, аналогично from
     text: string; // Текст сообщения
     time: unixtime; // Время сообщения
     type: string; // Тип сообщения, см. раздел 5
@@ -288,6 +289,7 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
         subscriptions: number[]; // Список идентификаторов стримеров на которых подписан пользователь
     };
     parentId: number; // Идентификатор сообщения родителя
+    anonymous: boolean; // Флаг анонимного сообщения
 }
 ```
 *[`/api/store/bonus/list`](store.md#Список-бонусов), [`/api/icon/list`](smile.md#Список-иконок)*  
