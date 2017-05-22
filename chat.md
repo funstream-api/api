@@ -331,8 +331,10 @@ AND (`from` not in (1, 2, 3) AND `to` not in (1, 2, 3) AND (`from` = 1 OR `to` =
 - `twitch.tv/<streamerId>` Сообщения с твича
 - `support/<id>` Вопрос к поддержке
 - `private/<fromId>/<toId>` Личные сообщения, (from_id <= to_id)
-- `comments/article/<articleId>` Комментарии к статье
 - `comments/stream/<streamerId>` Комментарии к стриму
+- `comments/longread/<articleId>` Комментарии к статье
+- `comments/news/<newsPostId>` Комментарии к новости
+- `comments/blog/<blogPostId>` Комментарии к блогу
 
 `streamerId`, `fromId`, `toId` - идентификаторы соответствующих пользователей
 
